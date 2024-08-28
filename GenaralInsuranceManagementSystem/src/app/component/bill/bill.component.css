@@ -1,0 +1,76 @@
+/* General table styling */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #e1e8ef;
+  border-collapse: collapse;
+  font-size: 0.85rem; /* Smaller font size */
+}
+
+.table th,
+.table td {
+  padding: 0.5rem; /* Reduced padding */
+  vertical-align: middle;
+  text-align: center;
+  border-top: 1px solid #dee2e6;
+}
+
+/* Table header styling */
+.table thead th {
+  background-color: #e1e5ea;
+  font-weight: bold;
+  border-bottom: 2px solid #dee2e6;
+}
+
+/* Table row hover effect */
+.table-striped tbody tr {
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.table-striped tbody tr:hover {
+  background-color: #eaeaea; /* Light gray background */
+  box-shadow: 0 4px 8px #1b74e1; /* Subtle blue shadow effect */
+  transform: scale(1.02); /* Slightly scale up for emphasis */
+}
+
+/* Table row focus effect for accessibility */
+.table-striped tbody tr:focus {
+  outline: 2px solid #4CAF50; /* Green outline for focus */
+  outline-offset: 2px;
+}
+
+/* Table striped rows */
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9; /* Light background for odd rows */
+}
+
+/* Table cell styling */
+.table td {
+  border-bottom: 1px solid #dee2e6;
+  line-height: 1.4; /* Slightly reduced line height */
+}
+
+.table th {
+  border-bottom: 2px solid #dee2e6;
+}
+
+/* Responsive table styling */
+@media (max-width: 768px) {
+  .table {
+      font-size: 12px; /* Even smaller text on smaller screens */
+  }
+
+  .table td, .table th {
+      padding: 6px; /* Further reduced padding */
+  }
+}
+
+/* Custom styles for table rows */
+.table-container {
+  margin-top: 30px;
+}
+
+.table td button {
+  margin: 2px;
+  padding: 0.25rem 0.5rem; /* Smaller buttons */
+}

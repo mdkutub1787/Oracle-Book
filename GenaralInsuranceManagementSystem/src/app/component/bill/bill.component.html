@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Bills</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .table th, .table td {
+      text-align: center;
+    }
+    .btn-primary {
+      float: right;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #004085; /* Darker shade on hover */
+    }
+    .table tbody tr:hover {
+      background-color: #f5f5f5; /* Light gray background on hover */
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <button type="button" class="btn btn-primary" (click)="navigateToAddBill()">
+    <i class="fas fa-plus"></i>
+    Create Bill
+  </button>
+  <table class="table table-striped mt-3">
+    <thead>
+    <tr>
+      <th><i class="fas fa-user"></i> Policy Holder</th>
+      <th><i class="fas fa-money-bill-wave"></i> Sum Insured</th>
+      <th><i class="fas fa-fire"></i> Fire</th>
+      <th><i class="fas fa-hand-holding-usd"></i> R&SD</th>
+      <th><i class="fas fa-coins"></i> Net Premium</th>
+      <th><i class="fas fa-calendar-day"></i> TAX</th>
+      <th><i class="fas fa-wallet"></i> Gross Premium</th>
+      <th class="text-center"><i class="fas fa-tools"></i> Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let bil of bills | async">
+      <td>{{ bil.policies.policyholder }}</td>
+      <td>{{ bil.policies.sumInsured | currency:'TK':'symbol' }}</td>
+      <td>{{ bil.policies.sumInsured * bil.fire | currency:'TK':'symbol' }}</td>
+      <td>{{ bil.policies.sumInsured * bil.rsd | currency:'TK':'symbol' }}</td>
+      <td>
+        {{ (bil.policies.sumInsured * bil.fire + bil.policies.sumInsured * bil.rsd) | currency:'TK':'symbol' }}
+      </td>
+      <td>
+        {{ (bil.policies.sumInsured * bil.fire + bil.policies.sumInsured * bil.rsd) * bil.tax | currency:'TK':'symbol' }}
+      </td>
+      <td>
+        {{ (bil.policies.sumInsured * bil.fire + bil.policies.sumInsured * bil.rsd) + ((bil.policies.sumInsured * bil.fire + bil.policies.sumInsured * bil.rsd) * bil.tax) | currency:'TK':'symbol' }}
+      </td>
+      <td>
+        <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editBill(bil)">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="btn btn-outline-danger" aria-label="Delete" (click)="deleteBill(bil.id)">
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

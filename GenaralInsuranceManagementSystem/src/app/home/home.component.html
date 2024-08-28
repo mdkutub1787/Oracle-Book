@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome (Latest Version) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  
+</head>
+<body>
+
+  <!-- Breadcrumb Navigation -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item success" aria-current="page">
+        <a href="/home">Dashboard</a>
+      </li>
+    </ol>
+  </nav>
+
+  <!-- Card Layout -->
+  <div class="container my-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card policy-card border-light shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title">Policy</h5>
+          </div>
+          <div class="card-body text-center">
+            <i class="card-icon fas fa-users"></i>
+          </div>
+          <div class="card-footer text-center">
+            <a href="/viewpolicy" class="btn action-button">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card bill-card border-light shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title">Policy Bill</h5>
+          </div>
+          <div class="card-body text-center">
+            <i class="card-icon fas fa-receipt"></i>
+          </div>
+          <div class="card-footer text-center">
+            <a href="/viewbill" class="btn action-button">View</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card reciept-card border-light shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title">Receipt</h5>
+          </div>
+          <div class="card-body text-center">
+            <i class="card-icon fas fa-list-alt"></i>
+          </div>
+          <div class="card-footer text-center">
+            <a href="/viewreciept" class="btn action-button">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.min.js"></script>
+</body>
+</html>

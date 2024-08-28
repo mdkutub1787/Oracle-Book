@@ -1,0 +1,127 @@
+<!-- createreceipt.component.html -->
+<div class="container">
+  <h2>Create Receipt</h2>
+
+  <form [formGroup]="receiptForm" (ngSubmit)="createReceipt()">
+    <div class="form-group">
+      <label for="id">Receipt ID</label>
+      <input id="id" formControlName="id" class="form-control" />
+      <div *ngIf="receiptForm.get('id')?.invalid && receiptForm.get('id')?.touched" class="text-danger">
+        Receipt ID is required.
+      </div>
+    </div>
+
+    <div formGroupName="bill">
+      <h3>Bill Details</h3>
+
+      <div class="form-group">
+        <label for="fire">Fire</label>
+        <input id="fire" formControlName="fire" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="rsd">RSD</label>
+        <input id="rsd" formControlName="rsd" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="netPremium">Net Premium</label>
+        <input id="netPremium" formControlName="netPremium" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="tax">Tax</label>
+        <input id="tax" formControlName="tax" class="form-control" />
+      </div>
+
+      <div class="form-group">
+        <label for="grossPremium">Gross Premium</label>
+        <input id="grossPremium" formControlName="grossPremium" class="form-control" />
+      </div>
+
+      <h4>Policy Details</h4>
+      <div formGroupName="policies">
+        <div class="form-group">
+          <label for="policyholder">Policyholder</label>
+          <select id="policyholder" formControlName="policyholder" class="form-control">
+            <option *ngFor="let policy of policyholders" [value]="policy.id">{{ policy.policyholder }}
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="billNo">Bill No</label>
+          <input id="billNo" formControlName="billNo" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input id="date" formControlName="date" type="date" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="bankName">Bank Name</label>
+          <input id="bankName" formControlName="bankName" class="form-control" />
+        </div>
+
+        
+
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input id="address" formControlName="address" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="stockInsured">Stock Insured</label>
+          <input id="stockInsured" formControlName="stockInsured" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="sumInsured">Sum Insured</label>
+          <input id="sumInsured" formControlName="sumInsured" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="interestInsured">Interest Insured</label>
+          <input id="interestInsured" formControlName="interestInsured" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="coverage">Coverage</label>
+          <input id="coverage" formControlName="coverage" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input id="location" formControlName="location" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="construction">Construction</label>
+          <input id="construction" formControlName="construction" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="owner">Owner</label>
+          <input id="owner" formControlName="owner" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="usedAs">Used As</label>
+          <input id="usedAs" formControlName="usedAs" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="periodFrom">Period From</label>
+          <input id="periodFrom" formControlName="periodFrom" type="date" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="periodTo">Period To</label>
+          <input id="periodTo" formControlName="periodTo" type="date" class="form-control" />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="receiptForm.invalid">Create Receipt</button>
+  </form>
+</div>

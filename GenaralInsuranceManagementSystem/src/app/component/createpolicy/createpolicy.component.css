@@ -1,0 +1,8 @@
+.form-label mat-icon {
+    margin-right: 8px; /* Space between icon and label text */
+    font-size: 1.2rem; /* Medium icon size */
+}
+
+.btn-custom mat-icon {
+    margin-right: 5px; /* Space between icon and button text */
+}

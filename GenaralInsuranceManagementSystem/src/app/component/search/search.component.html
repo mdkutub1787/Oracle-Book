@@ -1,0 +1,34 @@
+<div class="container">
+    <h2>Search Policies</h2>
+  
+    <form [formGroup]="searchForm" (ngSubmit)="searchPolicies()">
+     
+      <div class="form-group">
+        <label for="value">Search Value</label>
+        <input id="value" formControlName="value" [(ngModel)]="searchValue" class="form-control" placeholder="Enter search value">
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+  
+    <!-- Policies Table -->
+    <div class="mt-4">
+      <h3>Search Results</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Policyholder</th>
+            <th>Address</th>
+            <th>Sum Insured</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let policy of policies">
+            <td>{{ policy.policyholder }}</td>
+            <td>{{ policy.address }}</td>
+            <td>{{ policy.sumInsured }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

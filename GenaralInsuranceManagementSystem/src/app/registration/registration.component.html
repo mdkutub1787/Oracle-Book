@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="card register-card p-4 shadow-sm">
+        <h2 class="text-center mb-4" style="font-size: 1.5rem;">Register Form</h2>
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()" class="needs-validation" novalidate>
+            <div class="mb-3 form-group">
+                <label for="name" class="form-label">
+                    <i class="fas fa-user"></i> <!-- Font Awesome Icon -->
+                    Name
+                </label>
+                <input type="text" id="name" formControlName="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="email" class="form-label">
+                    <i class="fas fa-envelope"></i> <!-- Font Awesome Icon -->
+                    Email
+                </label>
+                <input type="email" id="email" formControlName="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="password" class="form-label">
+                    <i class="fas fa-lock"></i> <!-- Font Awesome Icon -->
+                    Password
+                </label>
+                <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            <div class="mb-3 form-group">
+                <label for="photo" class="form-label">
+                    <i class="fas fa-camera"></i> <!-- Font Awesome Icon -->
+                    Photo
+                </label>
+                <input type="text" id="photo" formControlName="photo" class="form-control" placeholder="Enter photo URL">
+            </div>
+            <button type="submit" class="btn btn-primary rounded-pill">
+                <i class="fas fa-user-check"></i> <!-- Font Awesome Icon -->
+                Register
+            </button>
+        </form>
+    </div>
+</div>

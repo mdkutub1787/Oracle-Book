@@ -1,0 +1,22 @@
+.container {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.form-group mat-icon {
+    margin-right: 8px; /* Space between icon and label */
+    font-size: 1.2rem; /* Medium icon size */
+}
+
+button {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem; /* Medium font size */
+    padding: 0.5rem 1rem; /* Medium padding */
+}

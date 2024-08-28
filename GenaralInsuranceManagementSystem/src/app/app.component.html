@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    /* Navbar fixed at the top */
+    .navbar-fixed-top {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    /* Sidebar styling */
+    #sidebar {
+      width: 200px; /* Reduced width for smaller sidebar */
+      height: 100vh;
+      position: fixed;
+      top: 56px; /* Adjust for navbar height */
+      background-color: #007bff; /* Blue color for sidebar */
+      color: #fff; /* White text color */
+    }
+
+    /* Main content adjustment for sidebar */
+    main {
+      margin-left: 200px; /* Adjust for sidebar width */
+      margin-top: 56px; /* Adjust for navbar height */
+    }
+
+    /* Medium-sized image */
+    .img-medium {
+      width: 100px;
+      height: 100px;
+    }
+
+    /* Custom styles for avatar */
+    .avatar {
+      width: 100px; /* Medium size */
+      height: 100px; /* Medium size */
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    /* Sidebar header styling */
+    .sidebar-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* Center horizontally */
+      padding: 15px;
+    }
+
+    /* Custom styles for the card icons */
+    .card-icon {
+      font-size: 40px;
+    }
+
+    /* Action button styling */
+    .action-button {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    .action-button:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    /* Sidebar and Navbar colors */
+    .bg-blue-custom {
+      background-color: #007bff; /* Blue color for both sidebar and navbar */
+    }
+
+    /* Sidebar link styles */
+    #sidebar .nav-link {
+      color: #fff; /* White text color for links */
+      font-size: 1.15rem; /* Slightly smaller font size */
+      text-decoration: none; /* Remove underline from links */
+    }
+
+    /* Remove hover effect for all sidebar links */
+    #sidebar .nav-link:hover {
+      color: #fff; /* Keep the color white on hover */
+      text-decoration: none; /* Prevent underline on hover */
+    }
+
+    /* Navbar link styles */
+    .navbar-nav .nav-link {
+      color: #fff; /* White text color for navbar links */
+      text-decoration: none; /* Remove underline from links */
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #fff; /* Keep the color white on hover */
+      text-decoration: none; /* Prevent underline on hover */
+    }
+
+    /* Search icon styling */
+    .search-icon {
+      font-size: 1.25rem; /* Adjust size as needed */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bootstrap Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-blue-custom navbar-fixed-top">
+    <a class="navbar-brand" href="#">Dashboard</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/home'"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/viewpolicy'"><i class="fas fa-file-alt"></i> Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/viewbill'"><i class="fas fa-receipt"></i> Bill</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/viewreciept'"><i class="fas fa-list-alt"></i> Receipt</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/reg'"><i class="fas fa-user-plus"></i> Registration</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/login'"><i class="fas fa-sign-in-alt"></i> Login</a>
+        </li>
+       
+      <!-- Search bar -->
+      <li class="nav-item">
+        <form class="form-inline" [routerLink]="'/search'">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </li>
+        <!-- User profile and logout links directly in the navbar -->
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/userprofile'"><i class="fas fa-user"></i> Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/logout'"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Bootstrap Sidebar (Collapsed) -->
+  <div class="d-flex">
+    <nav id="sidebar" class="bg-blue-custom">
+      <div class="sidebar-header">
+        <img class="avatar" src="https://i.postimg.cc/SxVwPyGz/download.jpg" alt="User Admin" />
+        <h5 class="name">Islami Insurance</h5>
+        <p class="designation">Bangladesh Ltd </p>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/home'"><i class="fas fa-home"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/viewpolicy'"><i class="fas fa-users"></i> Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/viewbill'"><i class="fas fa-tag"></i> Bill</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="'/viewreciept'"><i class="fas fa-user"></i> Receipt</a>
+        </li>
+      </ul>
+    </nav>
+
+    <main role="main" class="flex-fill">
+      <div class="container mt-3">
+      
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
+  
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
