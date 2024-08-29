@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receipt Page</title>
+
+ 
+
+</head>
+<body>
+
+  <!-- Create Receipt Button aligned to the right -->
+  <div class="container mt-3">
+
+    <!-- Print Section -->
+    <div id="print-section">
+      <div class="avatar-container">
+        <!-- Small Image Centered -->
+        <img class="avatar-small" src="https://i.postimg.cc/SxVwPyGz/download.jpg" alt="User Admin" />
+      </div>
+
+      <!-- Bill Information Card -->
+      <div class="card mb-3">
+        <div class="card-header text-center">Bill Information</div>
+        <div class="card-body">
+          <p><strong>Date:</strong> {{ receipt?.bill?.policies?.date | date }}</p>
+        </div>
+      </div>
+
+      <!-- Insured Details Card -->
+      <div class="card mb-3">
+        <div class="card-header text-center">Insured Details</div>
+        <div class="card-body">
+          <p><strong>Bank Name:</strong> {{ receipt?.bill?.policies?.bankName }}</p>
+          <p><strong>Policyholder:</strong> {{ receipt?.bill?.policies?.policyholder }}</p>
+          <p><strong>Address:</strong> {{ receipt?.bill?.policies?.address }}</p>
+        </div>
+      </div>
+
+      <!-- Segregation of The Sum Insured Card -->
+      <div class="card mb-3">
+        <div class="card-header text-center">Segregation of The Sum Insured</div>
+        <div class="card-body">
+          <p><strong>Stock Insured:</strong> {{ receipt?.bill?.policies?.stockInsured }}</p>
+          <p><strong>Sum Insured:</strong> {{ receipt?.bill?.policies?.sumInsured | currency: 'TK': 'symbol': '1.0-0' }}</p>
+        </div>
+      </div>
+
+      <!-- Situation Card -->
+      <div class="card mb-3">
+        <div class="card-header text-center">Situation</div>
+        <div class="card-body">
+          <p><strong>Interest Insured:</strong> {{ receipt?.bill?.policies?.interestInsured }}</p>
+          <p><strong>Coverage:</strong> {{ receipt?.bill?.policies?.coverage }}</p>
+          <p><strong>Location:</strong> {{ receipt?.bill?.policies?.location }}</p>
+          <p><strong>Construction:</strong> {{ receipt?.bill?.policies?.construction }}</p>
+          <p><strong>Owner:</strong> {{ receipt?.bill?.policies?.owner }}</p>
+          <p><strong>Used As:</strong> {{ receipt?.bill?.policies?.usedAs }}</p>
+        </div>
+      </div>
+
+      <!-- Period Card -->
+      <div class="card mb-3">
+        <div class="card-header text-center">Period</div>
+        <div class="card-body">
+          <p><strong>Period From:</strong> {{ receipt?.bill?.policies?.periodFrom | date }}</p>
+          <p><strong>Period To:</strong> {{ receipt?.bill?.policies?.periodTo | date }}</p>
+        </div>
+      </div>
+
+      <!-- Premium Rate Card -->
+      <div class="card mb-3">
+        <div class="card-header text-center">Premium Rate</div>
+        <div class="card-body">
+          <p><strong>Rate:</strong> {{ receipt?.bill?.fire }}%</p>
+          <p><strong>R&SD:</strong> {{ receipt?.bill?.rsd }}%</p>
+          <p><strong>Fire Premium:</strong> {{ getFirePremium(receipt) | currency: 'TK': 'symbol' }}</p>
+          <p><strong>VAT:</strong> {{ getVAT(receipt) | currency: 'TK': 'symbol' }}</p>
+          <p><strong>Gross Premium:</strong> {{ getGrossPremium(receipt) | currency: 'TK': 'symbol' }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button printSectionId="print-section" ngxPrint class="btn btn-primary printbtn">
+        <i class="fas fa-print"></i> <!-- Font Awesome icon for "print" -->
+        Print
+      </button>
+    </div>
+
+  </div>
+
+
+
+</body>
+</html>

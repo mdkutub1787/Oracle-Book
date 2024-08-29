@@ -3,6 +3,7 @@ import { PolicyService } from '../../service/policy.service';
 import { BillService } from '../../service/bill.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RecieptService } from '../../service/reciept.service';
+import { ReceiptModel } from '../../model/reciept.model';
 
 @Component({
   selector: 'app-reciept',
@@ -11,9 +12,7 @@ import { RecieptService } from '../../service/reciept.service';
 })
 export class RecieptComponent implements OnInit {
 
-  policies: any[] = [];
-  bills: any[] = [];
-  receipts: any[] = [];
+  receipts: ReceiptModel[] = [];
 
   constructor(
     private policiesService: PolicyService,
@@ -24,8 +23,6 @@ export class RecieptComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadPolicies();
-    this.loadBills();
     this.loadReceipts();
   }
 
@@ -33,30 +30,19 @@ export class RecieptComponent implements OnInit {
     this.router.navigateByUrl('/createreciept');
   }
 
-  private loadPolicies(): void {
-    this.policiesService.getAllPolicies().subscribe(policies => {
-      this.policies = policies;
-    }, error => {
-      console.error('Error fetching policies:', error);
-      alert('Failed to fetch policies. Please try again.');
-    });
-  }
-
-  private loadBills(): void {
-    this.billService.getAllBillForReciept().subscribe(bills => {
-      this.bills = bills;
-    }, error => {
-      console.error('Error fetching bills:', error);
-      alert('Failed to fetch bills. Please try again.');
-    });
-  }
-
   private loadReceipts(): void {
-    this.recieptService.getAllReciept().subscribe(receipts => {
-      this.receipts = receipts;
-    }, error => {
-      console.error('Error fetching receipts:', error);
-      alert('Failed to fetch receipts. Please try again.');
+    this.recieptService.getAllReciept().subscribe({
+      next: response => {
+        this.receipts = response;
+      },
+      error: error => {
+        console.error('Error fetching receipts:', error);
+        alert('Failed to fetch receipts. Please try again.');
+      }
     });
+  }
+
+  viewReceipt(id: string) {
+    this.router.navigate(['/printreciept', id]);
   }
 }
