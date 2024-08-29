@@ -38,7 +38,7 @@ export class CreatepolicyComponent implements OnInit {
       owner: [''],
       usedAs: [''],
       periodFrom: ['', Validators.required],
-      periodTo: [{ value: '', disabled: true }] // Disable periodTo to prevent user input
+      periodTo: [{ value: '' }] // Disable periodTo to prevent user input
     });
 
     this.formValue.get('periodFrom')?.valueChanges.subscribe(value => {

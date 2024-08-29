@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PolicyModel } from '../../model/policy.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BillModel } from '../../model/bill.model';
 import { BillService } from '../../service/bill.service';
 import { PolicyService } from '../../service/policy.service';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './createbill.component.css'
 })
 export class CreatebillComponent {
+  
   policies: PolicyModel[] = [];
   billForm!: FormGroup;
   bill: BillModel = new BillModel();
@@ -20,30 +21,49 @@ export class CreatebillComponent {
     private billService: BillService,
     private policyService: PolicyService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    
   ) { }
 
   ngOnInit(): void {
+    const currentDate = new Date().toISOString().substring(0, 10); // Format as YYYY-MM-DD
     this.loadPolicies();
 
     this.billForm = this.formBuilder.group({
       fire: [''],
       rsd: [''],
-      netPremium: [{ value: '', disabled: true }], // Disable to prevent manual editing
+      netPremium: [{ value: '' }], // Disable to prevent manual editing
       tax: [''],
-      grossPremium: [{ value: '', disabled: true }], // Disable to prevent manual editing
+      grossPremium: [{ value: '' }], // Disable to prevent manual editing
       policies: this.formBuilder.group({
         id: [undefined],
         billNo: [undefined],
-        date: [undefined],
+        date: [currentDate],
         bankName: [undefined],
         policyholder: [undefined],
         address: [undefined],
         sumInsured: [undefined],
         stockInsured: [undefined],
         interestInsured: [undefined],
+        coverage: [undefined],
+        location: [undefined],
+        construction: [undefined],
+        owner: [undefined],
         usedAs: [undefined],
+        periodFrom: ['', Validators.required],
+        periodTo: [{ value: '' }]
       })
+    });
+
+    this.billForm.get('periodFrom')?.valueChanges.subscribe(value => {
+      if (value) {
+        const periodFromDate = new Date(value);
+        const periodToDate = new Date(periodFromDate);
+        periodToDate.setFullYear(periodFromDate.getFullYear() + 1);
+        this.billForm.patchValue({
+          periodTo: periodToDate.toISOString().substring(0, 10) // Format as YYYY-MM-DD
+        }, { emitEvent: false });
+      }
     });
 
     this.billForm.get('policies')?.get('policyholder')?.valueChanges
