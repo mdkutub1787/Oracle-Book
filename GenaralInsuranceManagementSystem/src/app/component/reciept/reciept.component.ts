@@ -26,9 +26,7 @@ export class RecieptComponent implements OnInit {
     this.loadReceipts();
   }
 
-  navigateToAddReciept() {
-    this.router.navigateByUrl('/createreciept');
-  }
+ 
 
   private loadReceipts(): void {
     this.recieptService.getAllReciept().subscribe({
@@ -44,5 +42,20 @@ export class RecieptComponent implements OnInit {
 
   viewReceipt(id: string) {
     this.router.navigate(['/printreciept', id]);
+  }
+
+  deleteReceipt(id: string): void {
+    
+      this.recieptService.deleteReceipt(id).subscribe(() => {
+        this.receipts = this.receipts.filter(receipt => receipt.id == id);
+        
+      });
+    }
+  
+  
+
+
+  navigateToAddReciept() {
+    this.router.navigateByUrl('/createreciept');
   }
 }

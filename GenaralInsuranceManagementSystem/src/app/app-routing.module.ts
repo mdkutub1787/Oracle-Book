@@ -13,8 +13,9 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { LogoutComponent } from './logout/logout.component';
-import { SearchComponent } from './component/search/search.component';
 import { PrintReceiptComponent } from './component/printreceipt/printreceipt.component';
+import { AuthGuard } from './guard/authguard.guard';
+import { RoleGuard } from './guard/roleguard.guard';
 
 const routes: Routes = [
   {path: '',pathMatch: 'full',redirectTo: '/home'},
@@ -32,10 +33,9 @@ const routes: Routes = [
   { path: "login", component: LoginComponent},
   { path: "logout", component: LogoutComponent},
   { path: "userprofile", component: UserprofileComponent},
-  { path: "search", component: SearchComponent},
 
 
-  
+  { path: "**", redirectTo: 'login', pathMatch: 'full' },
 ];
 
 @NgModule({

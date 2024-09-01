@@ -41,7 +41,7 @@ export class RegistrationComponent implements OnInit {
           next: res => {
             console.log('User registered successfully:', res);
             this.authService.storeToken(res.token);
-            this.router.navigate(['/'])
+            this.router.navigate(['login'])
           },
           error: (err) => {
             console.error('Error registering user:', err);

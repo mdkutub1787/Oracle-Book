@@ -29,6 +29,29 @@
                     </select>
                 </div>
             </div>
+            <div class="row">
+                <div class="form-group col-md-6 mb-3" formGroupName="policies">
+                    <label for="stockInsured">
+                        <i class="fas fa-box"></i>
+                        Stock Insured
+                    </label>
+                    <select id="stockInsured" formControlName="stockInsured" class="form-control" required>
+                        <option value="" disabled>Select your stock insured</option>
+                        <option *ngFor="let pol of policies" [ngValue]="pol.stockInsured">{{pol.stockInsured}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-6 mb-3" formGroupName="policies">
+                    <label for="construction">
+                        <i class="fas fa-building"></i>
+                        Construction
+                    </label>
+                    <select id="construction" formControlName="construction" class="form-control" required>
+                        <option value="" disabled>Select your construction</option>
+                        <option *ngFor="let pol of policies" [ngValue]="pol.construction">{{pol.construction}}</option>
+                    </select>
+                </div>
+            </div>
 
             <div class="row">
                 <div class="form-group col-md-6 mb-3" formGroupName="policies">
@@ -75,7 +98,7 @@
                         <i class="fas fa-receipt"></i>
                         Tax Rate
                     </label>
-                    <input id="tax" type="number" class="form-control" formControlName="tax" placeholder="Enter your tax rate">
+                    <input id="tax" type="number" class="form-control" formControlName="tax" placeholder="Enter your tax rate" readonly>
                 </div>
 
                 <div class="col-md-6 mb-3">

@@ -33,7 +33,7 @@ export class CreatebillComponent {
       fire: [''],
       rsd: [''],
       netPremium: [{ value: '' }], // Disable to prevent manual editing
-      tax: [''],
+      tax: ['.15'],
       grossPremium: [{ value: '' }], // Disable to prevent manual editing
       policies: this.formBuilder.group({
         id: [undefined],

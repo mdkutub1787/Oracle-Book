@@ -24,8 +24,8 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { LogoutComponent } from './logout/logout.component';
-import { SearchComponent } from './component/search/search.component';
 import { PrintReceiptComponent } from './component/printreceipt/printreceipt.component';
+import { NavbarComponent } from './guard/navbar/navbar.component';
 
 
 @NgModule({
@@ -44,8 +44,8 @@ import { PrintReceiptComponent } from './component/printreceipt/printreceipt.com
     LoginComponent,
     UserprofileComponent,
     LogoutComponent,
-    SearchComponent,
-    PrintReceiptComponent
+    PrintReceiptComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

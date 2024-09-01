@@ -1,0 +1,42 @@
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bill NO</th>
+                <th>Date</th>
+                <th>Bank Name</th>
+                <th>Policy Holder</th>
+                <th>Address</th>
+                <th>Sum Insured </th>
+                <th>Stock Insured</th>
+                <th>Interet</th>
+                <th>Used As</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let pol of policyes |async">
+                <td>{{pol.billNo}}</td>
+                <td>{{pol.date}}</td>
+                <td>{{pol.bankName}}</td>
+                <td>{{pol.policyholder}}</td>
+                <td>{{pol.address}}</td>
+                <td>{{pol.sumInsured}}</td>
+                <td>{{pol.stockInsured}}</td>
+                <td>{{pol.interestInsured}}</td>
+                <td>{{pol.usedAs}}</td>
+
+                <td>
+                    <button class="btn btn-warning" (click)="(pol.id)">Edit</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="(pol.id )">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

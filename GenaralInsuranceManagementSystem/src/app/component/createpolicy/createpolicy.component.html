@@ -17,10 +17,12 @@
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         .form-label {
             display: flex;
             align-items: center;
         }
+
         .form-label i {
             margin-right: 8px;
         }
@@ -35,6 +37,7 @@
                 Policy Add Form
             </h3>
             <form [formGroup]="formValue" (ngSubmit)="createPolicy()" class="form-container">
+
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="date" class="form-label">
@@ -46,10 +49,10 @@
                     <div class="col-md-6 mb-3">
                         <label for="bankName" class="form-label">
                             <i class="fas fa-university"></i>
-                            Bank Name
+                            Bank  & Branch Name
                         </label>
                         <input type="text" class="form-control rounded-pill shadow-sm" id="bankName"
-                            formControlName="bankName" placeholder="Enter bank name">
+                            formControlName="bankName" placeholder="Enter bank & brance name">
                     </div>
                 </div>
                 <div class="row">
@@ -103,7 +106,7 @@
                             Coverage
                         </label>
                         <input type="text" class="form-control rounded-pill shadow-sm" id="coverage"
-                            formControlName="coverage" placeholder="Enter coverage details">
+                            formControlName="coverage" placeholder="Enter coverage details" readonly>
                     </div>
                 </div>
                 <div class="row">
@@ -112,7 +115,8 @@
                             <i class="fas fa-building"></i>
                             Construction
                         </label>
-                        <select class="form-control rounded-pill shadow-sm" id="construction" formControlName="construction">
+                        <select class="form-control rounded-pill shadow-sm" id="construction"
+                            formControlName="construction">
                             <option value="" disabled selected>Select construction type</option>
                             <option value="1st Class">1st Class</option>
                             <option value="2nd Class">2nd Class</option>
@@ -134,8 +138,8 @@
                             <i class="fas fa-user-tie"></i>
                             Owner
                         </label>
-                        <input type="text" class="form-control rounded-pill shadow-sm" id="owner" formControlName="owner"
-                            placeholder="Enter owner name">
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="owner"
+                            formControlName="owner" placeholder="Enter owner name" readonly>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="usedAs" class="form-label">

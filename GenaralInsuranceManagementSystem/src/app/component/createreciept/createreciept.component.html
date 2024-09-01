@@ -23,24 +23,21 @@
         </div>
 
         <div class="row">
-          <div class="col-md-6 mb-3">
+          <!-- <div class="col-md-6 mb-3">
             <label for="tax" class="form-label">
               <i class="fas fa-percentage"></i>
               Tax
             </label>
             <input type="number" class="form-control rounded-pill shadow-sm" id="tax" formControlName="tax">
-          </div>
+          </div> -->
           <div class="col-md-6 mb-3">
             <label for="netPremium" class="form-label">
               <i class="fas fa-coins"></i>
               Net Premium
             </label>
-            <input type="text" class="form-control rounded-pill shadow-sm" id="netPremium" formControlName="netPremium" readonly
-            >
+            <input type="text" class="form-control rounded-pill shadow-sm" id="netPremium" formControlName="netPremium" readonly>
           </div>
-        </div>
 
-        <div class="row">
           <div class="col-md-6 mb-3">
             <label for="grossPremium" class="form-label">
               <i class="fas fa-money-bill"></i>
@@ -51,21 +48,11 @@
           </div>
         </div>
 
+      
+
         <!-- Policy Section -->
         <div formGroupName="policies">
           <h4 class="text-center">Policy Details</h4>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="date" class="form-label">
-                <i class="fas fa-map-marker-alt"></i>
-                Date
-              </label>
-              <input type="date" class="form-control rounded-pill shadow-sm" id="date" formControlName="date"
-                placeholder="Enter date">
-            </div>
-          </div>
-
 
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -87,6 +74,29 @@
                 placeholder="Enter bank name">
             </div>
           </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="billNo" class="form-label">
+                <i class="fas fa-file-invoice"></i>
+                Bill No
+              </label>
+              <input type="number" class="form-control rounded-pill shadow-sm" id="billNo" formControlName="billNo"
+                placeholder="Enter billNo">
+            </div>
+            
+            <div class="col-md-6 mb-3">
+              <label for="date" class="form-label">
+                <i class="fas fa-map-marker-alt"></i>
+                Date
+              </label>
+              <input type="date" class="form-control rounded-pill shadow-sm" id="date" formControlName="date"
+                placeholder="Enter date">
+            </div>
+          </div>
+
+
+          
 
           <div class="row">
             <div class="col-md-6 mb-3">

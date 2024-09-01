@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../model/user.model';
-import { AuthService } from '../service/auth.service';
+import { UserModel } from '../../model/user.model';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrl: './navbar.component.css'
 })
-export class HomeComponent implements OnInit{
+export class NavbarComponent implements OnInit{
 
   userRole: string | null = '';
   currentUser: UserModel| null = null;

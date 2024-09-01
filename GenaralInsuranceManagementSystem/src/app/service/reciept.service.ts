@@ -24,4 +24,8 @@ export class RecieptService {
   createReciept(reciept: ReceiptModel): Observable<ReceiptModel> {
     return this.http.post<ReceiptModel>(this.baseUrl, reciept);
   }
+
+  deleteReceipt(id: string): Observable<any> {
+    return this.http.delete(this.baseUrl + id);
+  }
 }

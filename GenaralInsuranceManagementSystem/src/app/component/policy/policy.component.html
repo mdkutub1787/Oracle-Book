@@ -59,10 +59,10 @@
             <div class="col-md-12">
                 <div class="table-wrapper">
                     <!-- Table Rows -->
-                    <div class="table-row" *ngFor="let pol of policies | async; let number = index">
+                    <div class="table-row" *ngFor="let pol of policies | async ">
                         <div class="table-cell">
                             <div class="data-row">
-                                <strong>Bill No:</strong> <span>{{ number + 101 }}</span>
+                                <strong>Bill No:</strong> <span>{{pol.billNo }}</span>
                             </div>
                             <div class="data-row">
                                 <strong>Date:</strong> <span>{{ pol.date }}</span>
