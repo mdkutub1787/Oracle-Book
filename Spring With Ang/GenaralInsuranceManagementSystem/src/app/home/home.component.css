@@ -1,0 +1,125 @@
+/* Breadcrumb styling */
+.breadcrumb-item a {
+  color: #007bff; /* Blue color */
+}
+
+.breadcrumb-item.success a {
+  color: #28a745; /* Green color */
+}
+
+/* Card icon styling */
+.card-icon {
+  font-size: 3rem;
+  color: #ffffff; /* White color for icons */
+}
+
+/* Action button styling */
+.action-button {
+  background-color: #007bff;
+  color: #ffffff;
+  border-radius: 25px; /* More rounded corners */
+  padding: 0.5rem 1.5rem; /* Increased padding */
+  font-size: 1rem; /* Adjust font size */
+  transition: background-color 0.3s, transform 0.3s; /* Smooth transitions */
+}
+
+.action-button:hover {
+  background-color: #00b31b;
+  transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Card styling */
+.policy-card {
+  background-color: green;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.bill-card {
+  background-color: red;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.reciept-card {
+  background-color: orange;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+/* Card header and footer styling */
+.card-header {
+  background: rgba(0, 0, 0, 0.1); /* Light overlay */
+}
+
+.card-footer {
+  background: rgba(241, 239, 239, 0.05); /* Lighter overlay */
+}
+
+/* Card title styling */
+.card-title {
+  color: #ffffff; /* White text color */
+  font-size: 1.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card-icon {
+    font-size: 2.5rem;
+  }
+
+  .action-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Footer image sizing */
+
+.withImage {
+  margin-right: 10px; /* Adjust the spacing between images */
+}
+
+.withImage img {
+  max-width: 40px; /* Adjust the image size if needed */
+  height: auto;
+}
+.fire-insurance-card, .merin-insurance-card, .motor-insurance-card {
+  width: 300px; /* Fixed width for all cards */
+  height: 400px; /* Fixed height for all cards */
+  margin: 0 auto; /* Centers the cards horizontally */
+  overflow: hidden; /* Ensures content doesn't overflow */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card img {
+  width: 100%; /* Ensures the image fits inside the card */
+  height: auto; /* Maintains the aspect ratio of the image */
+}
+
+.fire-insurance-card {
+  background-color: #ffcccc;
+}
+
+.merin-insurance-card {
+  background-color: #cce5ff;
+}
+
+.motor-insurance-card {
+  background-color: #d5f5e3;
+}
+
+.action-button {
+  width: 80%; /* Button width relative to the card */
+  margin: 0 auto; /* Centers the button inside the card */
+}
+
+

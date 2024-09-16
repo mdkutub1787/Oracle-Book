@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policy Add Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+    
+    </style>
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="col-md-10 mb-5">
+            <h3 class="text-center mb-4">
+                <i class="fas fa-plus"></i>
+                Policy Add Form
+            </h3>
+            <form [formGroup]="formValue" (ngSubmit)="createPolicy()" class="form-container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="date" class="form-label" aria-label="Date">
+                            <i class="fas fa-calendar-alt"></i> Date
+                        </label>
+                        <input type="date" class="form-control rounded-pill shadow-sm" id="date" formControlName="date">
+                        <div *ngIf="formValue.controls['date'].invalid && formValue.controls['date'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Date is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="bankName" class="form-label" aria-label="Bank and Branch Name">
+                            <i class="fas fa-university"></i> Bank & Branch Name
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="bankName"
+                            formControlName="bankName" placeholder="Enter bank & branch name">
+                        <div *ngIf="formValue.controls['bankName'].invalid && formValue.controls['bankName'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Bank name is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="policyholder" class="form-label" aria-label="Policyholder">
+                            <i class="fas fa-user"></i> Policy Holder
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="policyholder"
+                            formControlName="policyholder" placeholder="Enter policyholder name">
+                        <div *ngIf="formValue.controls['policyholder'].invalid && formValue.controls['policyholder'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Policyholder name is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="address" class="form-label" aria-label="Address">
+                            <i class="fas fa-home"></i> Address
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="address"
+                            formControlName="address" placeholder="Enter address">
+                        <div *ngIf="formValue.controls['address'].invalid && formValue.controls['address'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Address is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="stockInsured" class="form-label" aria-label="Stock Insured">
+                            <i class="fas fa-box"></i> Stock Insured
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="stockInsured"
+                            formControlName="stockInsured" placeholder="Enter stock insured">
+                        <div *ngIf="formValue.controls['stockInsured'].invalid && formValue.controls['stockInsured'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Stock insured is required.
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="sumInsured" class="form-label" aria-label="Sum Insured">
+                            <i class="fas fa-dollar-sign"></i> Sum Insured
+                        </label>
+                        <input type="number" class="form-control rounded-pill shadow-sm" id="sumInsured"
+                            formControlName="sumInsured" placeholder="Enter sum insured">
+                        <div *ngIf="formValue.controls['sumInsured'].invalid && formValue.controls['sumInsured'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Sum insured is required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="interestInsured" class="form-label" aria-label="Interest Insured">
+                            <i class="fas fa-star"></i> Interest Insured
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="interestInsured"
+                            formControlName="interestInsured" placeholder="Enter interest insured">
+                        <div *ngIf="formValue.controls['interestInsured'].invalid && formValue.controls['interestInsured'].touched"
+                            class="text-danger" aria-live="assertive">
+                            Interest insured is required.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="location" class="form-label" aria-label="Location">
+                            <i class="fas fa-map-marker-alt"></i> Location
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="location"
+                            formControlName="location" placeholder="Enter location">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="construction" class="form-label" aria-label="Construction">
+                            <i class="fas fa-building"></i> Construction
+                        </label>
+                        <select class="form-control rounded-pill shadow-sm" id="construction"
+                            formControlName="construction">
+                            <option value="" disabled selected>Select construction type</option>
+                            <option value="1st Class">1st Class</option>
+                            <option value="2nd Class">2nd Class</option>
+                            <option value="3rd Class">3rd Class</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="usedAs" class="form-label" aria-label="Used As">
+                            <i class="fas fa-info-circle"></i> Used As
+                        </label>
+                        <select class="form-control rounded-pill shadow-sm" id="usedAs" formControlName="usedAs">
+                            <option value="" disabled selected>Select usage type</option>
+                            <option value="Shop Only">Shop Only</option>
+                            <option value="Godwon Only">Godwon Only</option>
+                            <option value="Shop-Cum-Godwon Only">Shop-Cum-Godwon Only</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="owner" class="form-label" aria-label="Owner">
+                            <i class="fas fa-user-tie"></i> Owner
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="owner"
+                            formControlName="owner" placeholder="Enter owner name" readonly>
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="coverage" class="form-label" aria-label="Coverage">
+                            <i class="fas fa-check-square"></i> Coverage
+                        </label>
+                        <input type="text" class="form-control rounded-pill shadow-sm" id="coverage"
+                            formControlName="coverage" placeholder="Enter coverage details" readonly>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="periodFrom" class="form-label" aria-label="Period From">
+                            <i class="fas fa-calendar-alt"></i> Period From
+                        </label>
+                        <input type="date" class="form-control rounded-pill shadow-sm" id="periodFrom"
+                            formControlName="periodFrom">
+                    </div>
+                    <div class="col-md-6 col-sm-12 mb-3">
+                        <label for="periodTo" class="form-label" aria-label="Period To">
+                            <i class="fas fa-calendar-check"></i> Period To
+                        </label>
+                        <input type="date" class="form-control rounded-pill shadow-sm" id="periodTo"
+                            formControlName="periodTo" readonly>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-success btn-md rounded-pill shadow-sm"
+                        [disabled]="formValue.invalid">
+                        <i class="fas fa-paper-plane"></i> Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

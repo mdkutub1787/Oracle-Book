@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Table with Dividers</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        .table-wrapper {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .table-row {
+            display: flex;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-cell {
+            flex: 1;
+            padding: 10px;
+        }
+
+        .action-cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .action-cell button {
+            margin: 0 5px;
+        }
+
+        .data-row strong {
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <!-- Action Button Row -->
+        <div class="row mb-3">
+            <div class="col text-left">
+                <button type="button" class="btn btn-primary" (click)="navigateToAddBill()">
+                    <i class="fas fa-plus"></i>  Create Bill
+                </button>
+            </div>
+            <div class="col text-right">
+                <button type="button" class="btn btn-primary" (click)="navigateToAddPolicy()">
+                    <i class="fas fa-plus"></i> Create Policy 
+                </button>
+            </div>
+        </div>
+
+        <!-- Table Wrapper Row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-wrapper">
+                    <!-- Table Rows -->
+                    <div class="table-row" *ngFor="let pol of policy | async">
+                        <div class="table-cell">
+                            <div class="data-row">
+                                <strong>Bill No:</strong> <span>{{ pol.id }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Date:</strong> <span>{{ pol.date }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Bank Name:</strong> <span>{{ pol.bankName }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Policy Holder:</strong> <span>{{ pol.policyholder }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Address:</strong> <span>{{ pol.address }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Stock Insured:</strong> <span>{{ pol.stockInsured }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Sum Insured:</strong> <span>{{ pol.sumInsured }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Interest Insured:</strong> <span>{{ pol.interestInsured }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Coverage:</strong> <span>{{ pol.coverage }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Location:</strong> <span>{{ pol.location }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Construction:</strong> <span>{{ pol.construction }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Owner:</strong> <span>{{ pol.owner }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Used As:</strong> <span>{{ pol.usedAs }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Period From:</strong> <span>{{ pol.periodFrom }}</span>
+                            </div>
+                            <div class="data-row">
+                                <strong>Period To:</strong> <span>{{ pol.periodTo }}</span>
+                            </div>
+                        </div>
+
+                        <div class="action-cell">
+                            <button type="button" class="btn btn-warning" aria-label="Edit policy" (click)="editPolicy(pol.id)">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger" aria-label="Delete policy" (click)="deletePolicy(pol.id)">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
