@@ -52,6 +52,10 @@ export class PolicyComponent implements OnInit {
   editPolicy(id: number) {
     this.router.navigate(['updatepolicy', id]);
   }
+
+  detailsPolicy(id: number) {
+    this.router.navigate(['details', id]);
+  }
   
 
   navigateToAddPolicy() {

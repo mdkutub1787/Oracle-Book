@@ -14,6 +14,7 @@ import { UpdatebillComponent } from './component/updatebill/updatebill.component
 import { ReceiptComponent } from './component/receipt/receipt.component';
 import { CreatereceiptComponent } from './component/createreceipt/createreceipt.component';
 import { PrintreceiptComponent } from './component/printreceipt/printreceipt.component';
+import { PolicydetailsComponent } from './component/policydetails/policydetails.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: "viewpolicy", component: PolicyComponent },
   { path: "createpolicy", component: CreatepolicyComponent },
   { path: "updatepolicy/:id", component: UpdatepolicyComponent },
+  { path: "details/:id", component: PolicydetailsComponent },
   { path: "viewbill", component: BillComponent },
   { path: "createbill", component: CreatebillComponent },
   { path: "updatebill/:id", component: UpdatebillComponent},
