@@ -1,94 +1,96 @@
 <h3>Create Policy</h3>
-<div [hidden]="submitted" style="width: 400px;">
-  <form (ngSubmit)="onSubmit()" #policyForm="ngForm">
-    <!-- ID -->
-    <div class="form-group">
-      <label for="id">Id</label>
-      <input type="number" class="form-control" id="id" required [(ngModel)]="policy.id" name="id">
-    </div>
+<div [hidden]="submitted" class="form-container">
+  <form (ngSubmit)="createPolicy()" #policyForm="ngForm">
+    <div class="row">
+      <!-- Column 1 -->
+      <div class="col">
+        <!-- Date -->
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" class="form-control rounded-input" id="date" required [(ngModel)]="policy.date" name="date" placeholder="Select a date">
+        </div>
 
-    <!-- Date -->
-    <div class="form-group">
-      <label for="date">Date</label>
-      <input type="date" class="form-control" id="date" required [(ngModel)]="policy.date" name="date">
-    </div>
+        <!-- Bank Name -->
+        <div class="form-group">
+          <label for="bankName">Bank Name</label>
+          <input type="text" class="form-control rounded-input" id="bankName" required [(ngModel)]="policy.bankName" name="bankName" placeholder="Enter bank name">
+        </div>
 
-    <!-- Bank Name -->
-    <div class="form-group">
-      <label for="bankName">Bank Name</label>
-      <input type="text" class="form-control" id="bankName" required [(ngModel)]="policy.bankName" name="bankName">
-    </div>
+        <!-- Policyholder -->
+        <div class="form-group">
+          <label for="policyholder">Policyholder</label>
+          <input type="text" class="form-control rounded-input" id="policyholder" required [(ngModel)]="policy.policyholder" name="policyholder" placeholder="Enter policyholder name">
+        </div>
 
-    <!-- Policyholder -->
-    <div class="form-group">
-      <label for="policyholder">Policyholder</label>
-      <input type="text" class="form-control" id="policyholder" required [(ngModel)]="policy.policyholder" name="policyholder">
-    </div>
+        <!-- Address -->
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control rounded-input" id="address" required [(ngModel)]="policy.address" name="address" placeholder="Enter address">
+        </div>
 
-    <!-- Address -->
-    <div class="form-group">
-      <label for="address">Address</label>
-      <input type="text" class="form-control" id="address" required [(ngModel)]="policy.address" name="address">
-    </div>
+        <!-- Stock Insured -->
+        <div class="form-group">
+          <label for="stockInsured">Stock Insured</label>
+          <input type="text" class="form-control rounded-input" id="stockInsured" required [(ngModel)]="policy.stockInsured" name="stockInsured" placeholder="Enter stock insured">
+        </div>
 
-    <!-- Stock Insured -->
-    <div class="form-group">
-      <label for="stockInsured">Stock Insured</label>
-      <input type="text" class="form-control" id="stockInsured" required [(ngModel)]="policy.stockInsured" name="stockInsured">
-    </div>
+        <!-- Sum Insured -->
+        <div class="form-group">
+          <label for="sumInsured">Sum Insured</label>
+          <input type="number" class="form-control rounded-input" id="sumInsured" required [(ngModel)]="policy.sumInsured" name="sumInsured" placeholder="Enter sum insured">
+        </div>
+      </div>
 
-    <!-- Sum Insured -->
-    <div class="form-group">
-      <label for="sumInsured">Sum Insured</label>
-      <input type="number" class="form-control" id="sumInsured" required [(ngModel)]="policy.sumInsured" name="sumInsured">
-    </div>
+      <!-- Column 2 -->
+      <div class="col">
+        <!-- Interest Insured -->
+        <div class="form-group">
+          <label for="interestInsured">Interest Insured</label>
+          <input type="text" class="form-control rounded-input" id="interestInsured" required [(ngModel)]="policy.interestInsured" name="interestInsured" placeholder="Enter interest insured">
+        </div>
 
-    <!-- Interest Insured -->
-    <div class="form-group">
-      <label for="interestInsured">Interest Insured</label>
-      <input type="text" class="form-control" id="interestInsured" required [(ngModel)]="policy.interestInsured" name="interestInsured">
-    </div>
+        <!-- Coverage -->
+        <div class="form-group">
+          <label for="coverage">Coverage</label>
+          <input type="text" class="form-control rounded-input" id="coverage" required [(ngModel)]="policy.coverage" name="coverage" placeholder="Enter coverage">
+        </div>
 
-    <!-- Coverage -->
-    <div class="form-group">
-      <label for="coverage">Coverage</label>
-      <input type="text" class="form-control" id="coverage" required [(ngModel)]="policy.coverage" name="coverage">
-    </div>
+        <!-- Location -->
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" class="form-control rounded-input" id="location" required [(ngModel)]="policy.location" name="location" placeholder="Enter location">
+        </div>
 
-    <!-- Location -->
-    <div class="form-group">
-      <label for="location">Location</label>
-      <input type="text" class="form-control" id="location" required [(ngModel)]="policy.location" name="location">
-    </div>
+        <!-- Construction -->
+        <div class="form-group">
+          <label for="construction">Construction</label>
+          <input type="text" class="form-control rounded-input" id="construction" required [(ngModel)]="policy.construction" name="construction" placeholder="Enter construction type">
+        </div>
 
-    <!-- Construction -->
-    <div class="form-group">
-      <label for="construction">Construction</label>
-      <input type="text" class="form-control" id="construction" required [(ngModel)]="policy.construction" name="construction">
-    </div>
+        <!-- Owner -->
+        <div class="form-group">
+          <label for="owner">Owner</label>
+          <input type="text" class="form-control rounded-input" id="owner" required [(ngModel)]="policy.owner" name="owner" placeholder="Enter owner's name">
+        </div>
 
-    <!-- Owner -->
-    <div class="form-group">
-      <label for="owner">Owner</label>
-      <input type="text" class="form-control" id="owner" required [(ngModel)]="policy.owner" name="owner" >
-    </div>
+        <!-- Used As -->
+        <div class="form-group">
+          <label for="usedAs">Used As</label>
+          <input type="text" class="form-control rounded-input" id="usedAs" required [(ngModel)]="policy.usedAs" name="usedAs" placeholder="Enter usage type">
+        </div>
 
-    <!-- Used As -->
-    <div class="form-group">
-      <label for="usedAs">Used As</label>
-      <input type="text" class="form-control" id="usedAs" required [(ngModel)]="policy.usedAs" name="usedAs">
-    </div>
+        <!-- Period From -->
+        <div class="form-group">
+          <label for="periodFrom">Period From</label>
+          <input type="date" class="form-control rounded-input" id="periodFrom" required [(ngModel)]="policy.periodFrom" name="periodFrom" placeholder="Select a start date">
+        </div>
 
-    <!-- Period From -->
-    <div class="form-group">
-      <label for="periodFrom">Period From</label>
-      <input type="date" class="form-control" id="periodFrom" required [(ngModel)]="policy.periodFrom" name="periodFrom">
-    </div>
-
-    <!-- Period To -->
-    <div class="form-group">
-      <label for="periodTo">Period To</label>
-      <input type="date" class="form-control" id="periodTo" [(ngModel)]="policy.periodTo" name="periodTo" >
+        <!-- Period To -->
+        <div class="form-group">
+          <label for="periodTo">Period To</label>
+          <input type="date" class="form-control rounded-input" id="periodTo" [(ngModel)]="policy.periodTo" name="periodTo" placeholder="Select an end date">
+        </div>
+      </div>
     </div>
 
     <!-- Submit Button -->

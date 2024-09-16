@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PolicyModel } from '../../model/policy.model';
 import { PolicyService } from '../../service/policy.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './createpolicy.component.html',
   styleUrls: ['./createpolicy.component.css']
 })
-export class CreatepolicyComponent implements OnInit {
+export class CreatepolicyComponent {
 
   policy: PolicyModel = new PolicyModel();
   errorMessage: string = '';
@@ -19,15 +19,6 @@ export class CreatepolicyComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {}
-
-  // Reset the form and create a new policy object
-  newPolicy(): void {
-    this.submitted = false;
-    this.policy = new PolicyModel();
-  }
-
-  // Handle the form submission to create a new policy
   createPolicy() {
     this.policyService.createPolicy(this.policy)
       .subscribe({
@@ -42,10 +33,5 @@ export class CreatepolicyComponent implements OnInit {
       });
   }
 
-  // Submit the form and call createPolicy method
-  onSubmit() {
-    this.submitted = true;
-    this.createPolicy();
-  }
 
 }
