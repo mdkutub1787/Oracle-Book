@@ -32,5 +32,10 @@
 
 .data-row strong {
     display: inline-block;
-    width: 150px;
+    width: 200px;
 }
+
+.table-wrapper, .table-cell {
+    color: blue;
+}
+

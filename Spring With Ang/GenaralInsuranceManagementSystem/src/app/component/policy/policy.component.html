@@ -45,7 +45,7 @@
                         <td>{{ policy.bankName }}</td>
                         <td>{{ policy.policyholder }}</td>
                         <td>{{ policy.address }}</td>
-                        <td>{{ policy.sumInsured }}</td>
+                        <td>{{ policy.sumInsured | currency:'TK ':'symbol' }}</td>
                         <td class="text-center">
                             <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editPolicy(policy.id)">
                                 <i class="fas fa-edit"></i>
