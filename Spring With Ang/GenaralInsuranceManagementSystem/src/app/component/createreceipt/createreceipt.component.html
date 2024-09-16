@@ -1,219 +1,228 @@
-<div class="container mt-4">
-  <h2 class="text-center">Create Receipt</h2>
-  <form [formGroup]="receiptForm" (ngSubmit)="createReceipt()">
-    <div class="form-container">
+<div class="container d-flex justify-content-center">
+ 
+  <div class="col-md-12 mb-6 border border-2 border rounded">
+    <h3 class="text-center mb-4">
+      <i class="fas fa-plus"></i>
+      Receipt Add Form
+  </h3>
+    <form [formGroup]="receiptForm" (ngSubmit)="createReceipt()">
+      <div class="form-container">
 
-      <!-- Bill Section -->
-      <div formGroupName="bill">
-        <input type="number" class="form-control rounded-pill shadow-sm" id="id" [value]="receipt.id || 'Auto-generated'" readonly>
+        <!-- Bill Section -->
+        <div formGroupName="bill">
+          <input type="number" class="form-control rounded-pill shadow-sm" id="id"
+            [value]="receipt.id || 'Auto-generated'" readonly>
 
-        <div class="row">
-          <div class="col-md-6 mb-3">
-            <label for="fire" class="form-label">
-              <i class="fas fa-fire"></i>
-              Fire
-            </label>
-            <input type="number" class="form-control rounded-pill shadow-sm" id="fire" formControlName="fire">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="fire" class="form-label">
+                <i class="fas fa-fire"></i>
+                Fire
+              </label>
+              <input type="number" class="form-control rounded-pill shadow-sm" id="fire" formControlName="fire">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="rsd" class="form-label">
+                <i class="fas fa-shield-alt"></i>
+                RSD
+              </label>
+              <input type="number" class="form-control rounded-pill shadow-sm" id="rsd" formControlName="rsd">
+            </div>
           </div>
-          <div class="col-md-6 mb-3">
-            <label for="rsd" class="form-label">
-              <i class="fas fa-shield-alt"></i>
-              RSD
-            </label>
-            <input type="number" class="form-control rounded-pill shadow-sm" id="rsd" formControlName="rsd">
-          </div>
-        </div>
 
-        <div class="row">
-          <!-- <div class="col-md-6 mb-3">
+          <div class="row">
+            <!-- <div class="col-md-6 mb-3">
             <label for="tax" class="form-label">
               <i class="fas fa-percentage"></i>
               Tax
             </label>
             <input type="number" class="form-control rounded-pill shadow-sm" id="tax" formControlName="tax">
           </div> -->
-          <div class="col-md-6 mb-3">
-            <label for="netPremium" class="form-label">
-              <i class="fas fa-coins"></i>
-              Net Premium
-            </label>
-            <input type="text" class="form-control rounded-pill shadow-sm" id="netPremium" formControlName="netPremium" readonly>
+            <div class="col-md-6 mb-3">
+              <label for="netPremium" class="form-label">
+                <i class="fas fa-coins"></i>
+                Net Premium
+              </label>
+              <input type="text" class="form-control rounded-pill shadow-sm" id="netPremium"
+                formControlName="netPremium" readonly>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <label for="grossPremium" class="form-label">
+                <i class="fas fa-money-bill"></i>
+                Gross Premium
+              </label>
+              <input type="text" class="form-control rounded-pill shadow-sm" id="grossPremium" readonly
+                formControlName="grossPremium">
+            </div>
           </div>
 
-          <div class="col-md-6 mb-3">
-            <label for="grossPremium" class="form-label">
-              <i class="fas fa-money-bill"></i>
-              Gross Premium
-            </label>
-            <input type="text" class="form-control rounded-pill shadow-sm" id="grossPremium" readonly
-              formControlName="grossPremium" >
+
+
+          <!-- Policy Section -->
+          <div formGroupName="policies">
+            <h4 class="text-center">Policy Details</h4>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="policyholder" class="form-label">
+                  <i class="fas fa-user"></i>
+                  Policy Holder
+                </label>
+                <select id="policyholder" formControlName="policyholder" class="form-control rounded-pill shadow-sm"
+                  required>
+                  <option value="" disabled>Select your policy holder</option>
+                  <option *ngFor="let policy of bill" [ngValue]="policy.policy.policyholder">
+                    {{policy.policy.policyholder}}</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="bankName" class="form-label">
+                  <i class="fas fa-university"></i>
+                  Bank Name
+                </label>
+                <input type="text" class="form-control rounded-pill shadow-sm" id="bankName" formControlName="bankName"
+                  placeholder="Enter bank name">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="billNo" class="form-label">
+                  <i class="fas fa-file-invoice"></i>
+                  Bill No
+                </label>
+                <input type="number" class="form-control rounded-pill shadow-sm" id="id" formControlName="id"
+                  placeholder="Enter billNo">
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label for="date" class="form-label">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Date
+                </label>
+                <input type="date" class="form-control rounded-pill shadow-sm" id="date" formControlName="date"
+                  placeholder="Enter date">
+              </div>
+            </div>
+
+
+
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="address" class="form-label">
+                  <i class="fas fa-home"></i>
+                  Address
+                </label>
+                <input type="text" class="form-control rounded-pill shadow-sm" id="address" formControlName="address"
+                  placeholder="Enter address">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="location" class="form-label">
+                  <i class="fas fa-map-marker-alt"></i>
+                  Location
+                </label>
+                <input type="text" class="form-control rounded-pill shadow-sm" id="location" formControlName="location"
+                  placeholder="Enter location">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="sumInsured" class="form-label">
+                  <i class="fas fa-dollar-sign"></i>
+                  Sum Insured
+                </label>
+                <input type="number" class="form-control rounded-pill shadow-sm" id="sumInsured"
+                  formControlName="sumInsured" placeholder="Enter sum insured">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="stockInsured" class="form-label">
+                  <i class="fas fa-box"></i>
+                  Stock Insured
+                </label>
+                <input type="text" class="form-control rounded-pill shadow-sm" id="stockInsured"
+                  formControlName="stockInsured" placeholder="Enter stock insured">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="interestInsured" class="form-label">
+                  <i class="fas fa-star"></i>
+                  Interest Insured
+                </label>
+                <input type="text" class="form-control rounded-pill shadow-sm" id="interestInsured"
+                  formControlName="interestInsured" placeholder="Enter interest insured">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="construction" class="form-label">
+                  <i class="fas fa-building"></i>
+                  Construction
+                </label>
+                <select class="form-control rounded-pill shadow-sm" id="construction" formControlName="construction">
+                  <option value="" disabled>Select construction type</option>
+                  <option value="1st Class">1st Class</option>
+                  <option value="2nd Class">2nd Class</option>
+                  <option value="3rd Class">3rd Class</option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="usedAs" class="form-label">
+                  <i class="fas fa-info-circle"></i>
+                  Used As
+                </label>
+                <select class="form-control rounded-pill shadow-sm" id="usedAs" formControlName="usedAs">
+                  <option value="" disabled>Select usage type</option>
+                  <option value="Shop Only">Shop Only</option>
+                  <option value="Godwon Only">Godwon Only</option>
+                  <option value="Shop-Cum-Godwon Only">Shop-Cum-Godwon Only</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="owner" class="form-label">
+                  <i class="fas fa-user-tie"></i>
+                  Owner
+                </label>
+                <input type="text" class="form-control rounded-pill shadow-sm" id="owner" formControlName="owner"
+                  placeholder="Enter owner name">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="periodFrom" class="form-label">
+                  <i class="fas fa-calendar-alt"></i>
+                  Period From
+                </label>
+                <input type="date" class="form-control rounded-pill shadow-sm" id="periodFrom"
+                  formControlName="periodFrom">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="periodTo" class="form-label">
+                  <i class="fas fa-calendar-alt"></i>
+                  Period To
+                </label>
+                <input type="date" class="form-control rounded-pill shadow-sm" id="periodTo" formControlName="periodTo"
+                  readonly>
+              </div>
+            </div>
+
           </div>
         </div>
 
-      
-
-        <!-- Policy Section -->
-        <div formGroupName="policies">
-          <h4 class="text-center">Policy Details</h4>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="policyholder" class="form-label">
-                <i class="fas fa-user"></i>
-                Policy Holder
-              </label>
-              <select id="policyholder" formControlName="policyholder" class="form-control rounded-pill shadow-sm" required>
-                <option value="" disabled>Select your policy holder</option>
-                <option *ngFor="let policy of bill" [ngValue]="policy.policy.policyholder">{{policy.policy.policyholder}}</option>
-              </select>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="bankName" class="form-label">
-                <i class="fas fa-university"></i>
-                Bank Name
-              </label>
-              <input type="text" class="form-control rounded-pill shadow-sm" id="bankName" formControlName="bankName"
-                placeholder="Enter bank name">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="billNo" class="form-label">
-                <i class="fas fa-file-invoice"></i>
-                Bill No
-              </label>
-              <input type="number" class="form-control rounded-pill shadow-sm" id="id" formControlName="id"
-                placeholder="Enter billNo">
-            </div>
-            
-            <div class="col-md-6 mb-3">
-              <label for="date" class="form-label">
-                <i class="fas fa-map-marker-alt"></i>
-                Date
-              </label>
-              <input type="date" class="form-control rounded-pill shadow-sm" id="date" formControlName="date"
-                placeholder="Enter date">
-            </div>
-          </div>
-
-
-          
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="address" class="form-label">
-                <i class="fas fa-home"></i>
-                Address
-              </label>
-              <input type="text" class="form-control rounded-pill shadow-sm" id="address" formControlName="address"
-                placeholder="Enter address">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="location" class="form-label">
-                <i class="fas fa-map-marker-alt"></i>
-                Location
-              </label>
-              <input type="text" class="form-control rounded-pill shadow-sm" id="location" formControlName="location"
-                placeholder="Enter location">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="sumInsured" class="form-label">
-                <i class="fas fa-dollar-sign"></i>
-                Sum Insured
-              </label>
-              <input type="number" class="form-control rounded-pill shadow-sm" id="sumInsured"
-                formControlName="sumInsured" placeholder="Enter sum insured">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="stockInsured" class="form-label">
-                <i class="fas fa-box"></i>
-                Stock Insured
-              </label>
-              <input type="text" class="form-control rounded-pill shadow-sm" id="stockInsured"
-                formControlName="stockInsured" placeholder="Enter stock insured">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="interestInsured" class="form-label">
-                <i class="fas fa-star"></i>
-                Interest Insured
-              </label>
-              <input type="text" class="form-control rounded-pill shadow-sm" id="interestInsured"
-                formControlName="interestInsured" placeholder="Enter interest insured">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="construction" class="form-label">
-                <i class="fas fa-building"></i>
-                Construction
-              </label>
-              <select class="form-control rounded-pill shadow-sm" id="construction" formControlName="construction">
-                <option value="" disabled>Select construction type</option>
-                <option value="1st Class">1st Class</option>
-                <option value="2nd Class">2nd Class</option>
-                <option value="3rd Class">3rd Class</option>
-              </select>
-            </div>
-            
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="usedAs" class="form-label">
-                <i class="fas fa-info-circle"></i>
-                Used As
-              </label>
-              <select class="form-control rounded-pill shadow-sm" id="usedAs" formControlName="usedAs">
-                <option value="" disabled>Select usage type</option>
-                <option value="Shop Only">Shop Only</option>
-                <option value="Godwon Only">Godwon Only</option>
-                <option value="Shop-Cum-Godwon Only">Shop-Cum-Godwon Only</option>
-              </select>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="owner" class="form-label">
-                <i class="fas fa-user-tie"></i>
-                Owner
-              </label>
-              <input type="text" class="form-control rounded-pill shadow-sm" id="owner" formControlName="owner"
-                placeholder="Enter owner name">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="periodFrom" class="form-label">
-                <i class="fas fa-calendar-alt"></i>
-                Period From
-              </label>
-              <input type="date" class="form-control rounded-pill shadow-sm" id="periodFrom"
-                formControlName="periodFrom">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="periodTo" class="form-label">
-                <i class="fas fa-calendar-alt"></i>
-                Period To
-              </label>
-              <input type="date" class="form-control rounded-pill shadow-sm" id="periodTo" formControlName="periodTo"
-                readonly>
-            </div>
-          </div>
+        <div class="text-center mb-3">
+          <button type="submit" class="btn btn-outline-success rounded-pill shadow-sm" [disabled]="!receiptForm.valid">
+            <i class="fas fa-paper-plane"></i> Submit
+          </button>
 
         </div>
-      </div>
 
-      <div class="text-center mb-3">
-        <button type="submit" class="btn btn-outline-success rounded-pill shadow-sm" [disabled]="!receiptForm.valid">
-          <i class="fas fa-paper-plane"></i> Submit
-        </button>
-        
       </div>
-
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
