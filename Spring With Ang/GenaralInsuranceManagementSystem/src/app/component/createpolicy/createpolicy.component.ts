@@ -24,7 +24,11 @@ export class CreatepolicyComponent implements OnInit{
     const today = new Date();
     const formattedDate = today.toISOString().split('T')[0]; 
     this.policy.date = formattedDate;
-  }
+    this.policy.owner = 'The Insured';  
+    this.policy.coverage = 'Fire &/or Lightning only'; 
+    
+}
+
 
   createPolicy() {
     this.policyService.createPolicy(this.policy)
@@ -39,6 +43,4 @@ export class CreatepolicyComponent implements OnInit{
         }
       });
   }
-
-
 }
