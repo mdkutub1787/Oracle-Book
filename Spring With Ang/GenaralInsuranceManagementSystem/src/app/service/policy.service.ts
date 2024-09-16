@@ -22,6 +22,8 @@ export class PolicyService {
     return this.http.post(this.baseUrl + "save", policy);
   }
 
+  
+
   // Delete a policy by ID
   deletePolicy(id: number): Observable<any> {
     return this.http.delete(this.baseUrl + "delete/" + id);
