@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PolicyModel } from '../../model/policy.model';
 import { PolicyService } from '../../service/policy.service';
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './createpolicy.component.html',
   styleUrls: ['./createpolicy.component.css']
 })
-export class CreatepolicyComponent {
+export class CreatepolicyComponent implements OnInit{
 
   policy: PolicyModel = new PolicyModel();
   errorMessage: string = '';
@@ -18,6 +18,13 @@ export class CreatepolicyComponent {
     private policyService: PolicyService,
     private router: Router
   ) {}
+
+
+  ngOnInit(): void {
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0]; 
+    this.policy.date = formattedDate;
+  }
 
   createPolicy() {
     this.policyService.createPolicy(this.policy)
