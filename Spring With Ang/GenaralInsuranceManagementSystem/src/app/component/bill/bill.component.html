@@ -44,12 +44,12 @@
     <tbody>
       <tr *ngFor="let bil of bills">
         <td>{{ bil.policy.policyholder }}</td>
-        <td>{{ bil.policy.sumInsured | currency:'TK ':'symbol' }}</td>
-        <td>{{ getFireAmount(bil) | currency:'TK ':'symbol' }}</td>
-        <td>{{ getRsdAmount(bil) | currency:'TK ':'symbol' }}</td>
-        <td>{{ getNetPremium(bil) | currency:'TK ':'symbol' }}</td>
-        <td>{{ getTaxAmount(bil) | currency:'TK ':'symbol' }}</td>
-        <td>{{ getGrossPremium(bil) | currency:'TK ':'symbol' }}</td>
+        <td>{{ bil.policy.sumInsured | currency:'TK':'symbol' }}</td>
+        <td>{{ getFireAmount(bil) | currency:'TK':'symbol' }}</td>
+        <td>{{ getRsdAmount(bil) | currency:'TK':'symbol' }}</td>
+        <td>{{ getNetPremium(bil) | currency:'TK':'symbol' }}</td>
+        <td>{{ getTaxAmount(bil) | currency:'TK':'symbol' }}</td>
+        <td>{{ getGrossPremium(bil) | currency:'TK':'symbol' }}</td>
         <td class="text-center">
             <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editBill(bil)">
               <i class="fas fa-edit"></i>
