@@ -34,9 +34,9 @@ export class CreatebillComponent implements OnInit {
     this.billForm = this.formBuilder.group({
       fire: [''],
       rsd: [''],
-      netPremium: [{ value: '', disabled: true }], // Disabled as it is a computed value
+      netPremium: [{ value: '' }],
       tax: ['0.15'], // Tax is fixed at 15%
-      grossPremium: [{ value: '', disabled: true }], // Disabled as it is a computed value
+      grossPremium: [{ value: '' }], 
       policies: this.formBuilder.group({
         id: [undefined],
         billNo: [undefined],
