@@ -137,7 +137,7 @@ export class CreatebillComponent implements OnInit {
         this.loadPolicies(); // Reload policies after creating the bill
         this.billForm.reset(); // Reset form after success
         this.router.navigate(['viewbill']); // Navigate to the bill view page
-        alert('Bill created successfully!'); // Success message
+        // alert('Bill created successfully!'); // Success message
       },
       error: error => {
         console.error('Error creating bill:', error);
