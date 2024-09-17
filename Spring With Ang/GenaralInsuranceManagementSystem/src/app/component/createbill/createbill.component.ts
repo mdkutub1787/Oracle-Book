@@ -25,39 +25,39 @@ export class CreatebillComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.loadPolicies();
     this.initializeForm();
+    this.loadPolicies();
     this.setupSubscriptions();
   }
 
   initializeForm(): void {
     this.billForm = this.formBuilder.group({
-      fire: [''],
-      rsd: [''],
-      netPremium: [{ value: '' }],
-      tax: ['15'], // Tax is fixed at 15%
-      grossPremium: [{ value: '' }],
+      fire: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      rsd: [null, [Validators.required, Validators.min(0), Validators.max(100)]],
+      netPremium: [{ value: 0, }],
+      tax: [15, [Validators.min(0), Validators.max(100)]],
+      grossPremium: [{ value: 0,  }],
       policies: this.formBuilder.group({
-        policyholder: ['', Validators.required],
-        sumInsured: ['', Validators.required]
+        policyholder: [null, Validators.required],
+        address: [null, Validators.required],
+        sumInsured: [null, Validators.required]
       })
     });
+
+    this.calculatePremiums(); 
   }
 
   setupSubscriptions(): void {
-    // Trigger recalculation on any change in fire, rsd, or sumInsured
     this.billForm.valueChanges.subscribe(() => this.calculatePremiums());
-  
-    // Subscribe to policyholder changes and update related fields
+
     this.billForm.get('policies.policyholder')?.valueChanges.subscribe(policyholder => {
       const selectedPolicy = this.policies.find(policy => policy.policyholder === policyholder);
       if (selectedPolicy) {
-        this.billForm.get('policies')?.patchValue(selectedPolicy, { emitEvent: false }); // Prevent infinite loop
-        this.calculatePremiums(); // Recalculate premiums when policyholder changes
+        this.billForm.get('policies')?.patchValue(selectedPolicy, { emitEvent: false });
+        this.calculatePremiums();
       }
     });
   }
-  
 
   loadPolicies(): void {
     this.policyService.viewAllPolicyForBill().subscribe({
@@ -72,53 +72,50 @@ export class CreatebillComponent implements OnInit {
   }
 
   calculatePremiums(): void {
-    const fireRate = (this.billForm.get('fire')?.value || 0) / 100; // Convert percentage to decimal
-    const rsdRate = (this.billForm.get('rsd')?.value || 0) / 100; // Convert percentage to decimal
+    const fireRate = Math.round((this.billForm.get('fire')?.value || 0) * 100) / 100; 
+    const rsdRate = Math.round((this.billForm.get('rsd')?.value || 0) * 100) / 100; 
     const sumInsured = this.billForm.get('policies.sumInsured')?.value || 0;
-    const taxRate = 0.15; // Fixed 15% tax rate
+    const taxRate = Math.round((this.billForm.get('tax')?.value || 15) * 100) / 100; 
 
-    const netPremium = this.getTotalPremium(sumInsured, fireRate, rsdRate);
-    const taxAmount = this.getTotalTax(netPremium, taxRate);
-    const grossPremium = netPremium + taxAmount;
+    if (fireRate > 100 || rsdRate > 100 || taxRate > 100) {
+      alert('Rates must be less than or equal to 100%.');
+      return;
+    }
+
+    const netPremium = sumInsured * (fireRate + rsdRate) / 100;
+    const tax = netPremium * taxRate / 100;
+    const grossPremium = netPremium + tax;
 
     this.billForm.patchValue({
       netPremium: netPremium,
       grossPremium: grossPremium
-    }, { emitEvent: false });
-  }
-
-  getTotalPremium(sumInsured: number, fireRate: number, rsdRate: number): number {
-    return sumInsured * fireRate + (sumInsured * rsdRate);
-  }
-
-  getTotalTax(netPremium: number, taxRate: number): number {
-    return netPremium * taxRate;
+    }, { emitEvent: false }); 
   }
 
   createBill(): void {
+    if (this.billForm.invalid) {
+      alert('Please fill in all required fields correctly.');
+      return;
+    }
+
     const formValues = this.billForm.value;
-  
-    // Map form values to bill model
     this.bill.fire = formValues.fire;
     this.bill.rsd = formValues.rsd;
     this.bill.netPremium = formValues.netPremium;
     this.bill.tax = formValues.tax;
     this.bill.grossPremium = formValues.grossPremium;
-  
-    // Ensure that the policy is correctly mapped
+
     const selectedPolicy = this.policies.find(policy => policy.policyholder === formValues.policies.policyholder);
     if (!selectedPolicy) {
       alert('Policy not found. Please select a valid policyholder.');
       return;
     }
-    this.bill.policy = selectedPolicy; // Set the correct policy
-  
-    // Call service to create bill
+    this.bill.policy = selectedPolicy;
+
     this.billService.createBill(this.bill).subscribe({
       next: () => {
-        this.loadPolicies(); // Reload policies after creating the bill
-        this.billForm.reset(); // Reset form after success
-        this.router.navigate(['viewbill']); // Navigate to the bill view page
+        this.billForm.reset();
+        this.router.navigate(['viewbill']);
       },
       error: error => {
         console.error('Error creating bill:', error);
@@ -126,5 +123,4 @@ export class CreatebillComponent implements OnInit {
       }
     });
   }
-  
 }
