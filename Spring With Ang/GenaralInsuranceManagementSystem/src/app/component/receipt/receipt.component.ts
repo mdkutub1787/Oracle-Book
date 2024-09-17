@@ -46,12 +46,17 @@ export class ReceiptComponent {
   }
 
   deleteReceipt(id: number): void {
-    
-      this.receiptService.deleteReceipt(id).subscribe(() => {
-        this.receipts = this.receipts.filter(receipt => receipt.id == id);
-        
-      });
-    }
+    this.receiptService.deleteReceipt(id).subscribe({
+      next: () => {
+        this.receipts = this.receipts.filter(receipt => receipt.id !== id);
+        this.router.navigate(['/viewreciept']);
+      },
+      error: (err) => {
+        console.error('Error deleting receipt:', err);
+        alert('There was an error deleting the receipt. Please try again.');
+      }
+    });
+  }
   
 
   navigateToAddReceipt() {

@@ -91,19 +91,27 @@ export class UpdatebillComponent {
   }
 
   calculatePremiums(): void {
-    const formValues = this.billForm.value;
-    const sumInsured = formValues.policies.sumInsured || 0;
-    const fireRate = formValues.fire || 0;
-    const rsdRate = formValues.rsd || 0;
-    const taxRate = formValues.tax || 0;
+    const fireRate = (this.billForm.get('fire')?.value || 0) / 100; // Convert percentage to decimal
+    const rsdRate = (this.billForm.get('rsd')?.value || 0) / 100; // Convert percentage to decimal
+    const sumInsured = this.billForm.get('policies.sumInsured')?.value || 0;
+    const taxRate = 0.15; // Fixed 15% tax rate
 
-    const netPremium = (sumInsured * fireRate + sumInsured * rsdRate);
-    const grossPremium = netPremium + (netPremium * taxRate);
+    const netPremium = this.getTotalPremium(sumInsured, fireRate, rsdRate);
+    const taxAmount = this.getTotalTax(netPremium, taxRate);
+    const grossPremium = netPremium + taxAmount;
 
     this.billForm.patchValue({
       netPremium: netPremium,
       grossPremium: grossPremium
     }, { emitEvent: false });
+  }
+
+  getTotalPremium(sumInsured: number, fireRate: number, rsdRate: number): number {
+    return sumInsured * fireRate + (sumInsured * rsdRate);
+  }
+
+  getTotalTax(netPremium: number, taxRate: number): number {
+    return netPremium * taxRate;
   }
 
   updateBill(): void {
