@@ -35,7 +35,7 @@ export class CreatebillComponent implements OnInit {
       fire: [''],
       rsd: [''],
       netPremium: [{ value: '' }],
-      tax: ['0.15'], // Tax is fixed at 15%
+      tax: ['15'], // Tax is fixed at 15%
       grossPremium: [{ value: '' }], 
       policies: this.formBuilder.group({
         id: [undefined],

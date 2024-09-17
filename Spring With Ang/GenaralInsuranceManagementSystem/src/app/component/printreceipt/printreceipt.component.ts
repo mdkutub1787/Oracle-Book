@@ -6,9 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-printreceipt',
   templateUrl: './printreceipt.component.html',
-  styleUrl: './printreceipt.component.css'
+  styleUrls: ['./printreceipt.component.css'] // Correcting "styleUrl" to "styleUrls"
 })
-export class PrintreceiptComponent implements OnInit{
+export class PrintreceiptComponent implements OnInit {
 
   receipt?: ReceiptModel;
 
@@ -18,30 +18,24 @@ export class PrintreceiptComponent implements OnInit{
     private route: ActivatedRoute 
   ) { }
 
-
-
   ngOnInit(): void {
-
     const id = this.route.snapshot.params['id'];
     this.receiptService.getReceiptById(id).subscribe({
       next: response => {
         this.receipt = response;
       },
       error: error => {
-        alert(error)
+        alert(error);
       }
-    })
-
+    });
   }
 
   getSumInsured(): number {
-    // Provide a default value if `sumInsured` is undefined
     return this.receipt?.bill?.policy?.sumInsured ?? 0;
   }
 
   getFireRate(): number {
-    // Provide a default value if `fire` is undefined
-    return this.receipt?.bill?.fire ?? 0;
+    return (this.receipt?.bill?.fire ?? 0) / 100;
   }
 
   getTotalFire(): number {
@@ -51,8 +45,7 @@ export class PrintreceiptComponent implements OnInit{
   }
 
   getRsdRate(): number {
-    // Provide a default value if `rsd` is undefined
-    return this.receipt?.bill?.rsd ?? 0;
+    return (this.receipt?.bill?.rsd ?? 0) / 100;
   }
 
   getTotalRsd(): number {
@@ -62,8 +55,7 @@ export class PrintreceiptComponent implements OnInit{
   }
 
   getTaxRate(): number {
-    // Provide a default value if `tax` is undefined
-    return this.receipt?.bill?.tax ?? 0;
+    return (this.receipt?.bill?.tax ?? 0) / 100;
   }
 
   getTotalPremium(): number {
@@ -84,4 +76,5 @@ export class PrintreceiptComponent implements OnInit{
     const totalTax = this.getTotalTax();
     return totalPremium + totalTax;
   }
+
 }

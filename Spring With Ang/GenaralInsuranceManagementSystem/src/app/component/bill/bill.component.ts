@@ -26,8 +26,6 @@ export class BillComponent implements OnInit {
 
   ngOnInit(): void {
     this.policyes = this.policiesService.viewAllPolicyForBill();
-
-    // Subscribe to the observable to fetch bills
     this.billService.viewAllBill().subscribe({
       next: (data: BillModel[]) => {
         this.bills = data;
@@ -75,36 +73,31 @@ export class BillComponent implements OnInit {
   }
 
   getFireAmount(bill: BillModel): number {
-    const sumInsured = bill.policy?.sumInsured || 0;
-    const fireRate = bill.fire || 0;
-    return sumInsured * fireRate;
+    return (bill.policy.sumInsured * bill.fire) / 100; // Assuming 'fire' is a percentage
   }
 
+
+
   getRsdAmount(bill: BillModel): number {
-    const sumInsured = bill.policy?.sumInsured || 0;
-    const rsdRate = bill.rsd || 0;
-    return sumInsured * rsdRate;
+    return (bill.policy.sumInsured * bill.rsd) / 100; // Assuming 'rsd' is a percentage
   }
 
   getNetPremium(bill: BillModel): number {
-    const sumInsured = bill.policy.sumInsured || 0;
-    const fireRate = bill.fire || 0;
-    const rsdRate = bill.rsd || 0;
-
-    return sumInsured * (fireRate + rsdRate);
+    const fireAmount = this.getFireAmount(bill);
+    const rsdAmount = this.getRsdAmount(bill);
+    return fireAmount + rsdAmount;
   }
 
   getTaxAmount(bill: BillModel): number {
     const netPremium = this.getNetPremium(bill);
-    const taxRate = 0.15; // 15% fixed tax rate
-
-    return netPremium * taxRate;
+    return (netPremium * bill.tax) / 100; // Assuming 'tax' is a decimal (e.g., 0.15 for 15%)
   }
 
   getGrossPremium(bill: BillModel): number {
     const netPremium = this.getNetPremium(bill);
     const taxAmount = this.getTaxAmount(bill);
-
     return netPremium + taxAmount;
   }
+
+  
 }
