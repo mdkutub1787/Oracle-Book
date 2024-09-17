@@ -96,9 +96,9 @@ export class UpdatebillComponent {
     const sumInsured = this.billForm.get('policies.sumInsured')?.value || 0;
     const taxRate = 0.15; // Fixed 15% tax rate
 
-    const netPremium = this.getTotalPremium(sumInsured, fireRate, rsdRate);
-    const taxAmount = this.getTotalTax(netPremium, taxRate);
-    const grossPremium = netPremium + taxAmount;
+    const netPremium = this.roundToTwoDecimalPlaces(this.getTotalPremium(sumInsured, fireRate, rsdRate));
+    const taxAmount = this.roundToTwoDecimalPlaces(this.getTotalTax(netPremium, taxRate));
+    const grossPremium = this.roundToTwoDecimalPlaces(netPremium + taxAmount);
 
     this.billForm.patchValue({
       netPremium: netPremium,
@@ -112,6 +112,10 @@ export class UpdatebillComponent {
 
   getTotalTax(netPremium: number, taxRate: number): number {
     return netPremium * taxRate;
+  }
+
+  roundToTwoDecimalPlaces(value: number): number {
+    return Math.round(value * 100) / 100;
   }
 
   updateBill(): void {

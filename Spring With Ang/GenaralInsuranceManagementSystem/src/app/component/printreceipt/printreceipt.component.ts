@@ -41,7 +41,7 @@ export class PrintreceiptComponent implements OnInit {
   getTotalFire(): number {
     const sumInsured = this.getSumInsured();
     const fireRate = this.getFireRate();
-    return sumInsured * fireRate;
+    return Math.round(sumInsured * fireRate);
   }
 
   getRsdRate(): number {
@@ -51,7 +51,7 @@ export class PrintreceiptComponent implements OnInit {
   getTotalRsd(): number {
     const sumInsured = this.getSumInsured();
     const rsdRate = this.getRsdRate();
-    return sumInsured * rsdRate;
+    return Math.round(sumInsured * rsdRate);
   }
 
   getTaxRate(): number {
@@ -62,19 +62,19 @@ export class PrintreceiptComponent implements OnInit {
     const sumInsured = this.getSumInsured();
     const fireRate = this.getFireRate();
     const rsdRate = this.getRsdRate();
-    return sumInsured * (fireRate + rsdRate);
+    return Math.round(sumInsured * (fireRate + rsdRate));
   }
 
   getTotalTax(): number {
     const totalPremium = this.getTotalPremium();
     const taxRate = this.getTaxRate();
-    return totalPremium * taxRate;
+    return Math.round(totalPremium * taxRate);
   }
 
   getTotalPremiumWithTax(): number {
     const totalPremium = this.getTotalPremium();
     const totalTax = this.getTotalTax();
-    return totalPremium + totalTax;
+    return Math.round(totalPremium + totalTax);
   }
 
 }
