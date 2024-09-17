@@ -36,10 +36,12 @@ public class Bill {
 
     // Many Bills can belong to one Policy
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "policy_id", nullable = false)  // Foreign key for Policy entity
+    @JoinColumn(name = "policyId", nullable = false)  // Foreign key for Policy entity
     private Policy policy;
 
     @JsonIgnore
     @OneToMany(mappedBy = "bill", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Receipt> receipts;
+
+
 }

@@ -26,14 +26,17 @@ export class CreatebillComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPolicies();
+    this.initializeForm();
+    this.setupSubscriptions();
+  }
 
-    // Initialize form with validation and calculation logic
+  initializeForm(): void {
     this.billForm = this.formBuilder.group({
       fire: [''],
       rsd: [''],
-      netPremium:  [''], 
-      tax: ['15'], // Tax is set to 15%
-      grossPremium: [''], 
+      netPremium: [{ value: '', disabled: true }], // Disabled as it is a computed value
+      tax: ['0.15'], // Tax is fixed at 15%
+      grossPremium: [{ value: '', disabled: true }], // Disabled as it is a computed value
       policies: this.formBuilder.group({
         id: [undefined],
         billNo: [undefined],
@@ -53,11 +56,11 @@ export class CreatebillComponent implements OnInit {
         periodTo: [{ value: '' }]
       })
     });
+  }
 
-    // Trigger recalculation on any change in fire, rsd, tax, or sumInsured
-    ['fire', 'rsd', 'tax', 'policies.sumInsured'].forEach(field => {
-      this.billForm.get(field)?.valueChanges.subscribe(() => this.calculatePremiums());
-    });
+  setupSubscriptions(): void {
+    // Trigger recalculation on any change in fire, rsd, or sumInsured
+    this.billForm.valueChanges.subscribe(() => this.calculatePremiums());
 
     // Subscribe to periodFrom changes to update periodTo
     this.billForm.get('periodFrom')?.valueChanges.subscribe(value => {
@@ -88,26 +91,33 @@ export class CreatebillComponent implements OnInit {
       },
       error: error => {
         console.error('Error loading policies:', error);
+        alert('There was an error loading policies. Please try again.'); // User feedback
       }
     });
   }
 
   calculatePremiums(): void {
-    const formValues = this.billForm.value;
-    const sumInsured = parseFloat(formValues.policies.sumInsured) || 0;
-    const fireRate = parseFloat(formValues.fire) / 100 || 0; // Convert percentage to decimal
-    const rsdRate = parseFloat(formValues.rsd) / 100 || 0; // Convert percentage to decimal
-    const taxRate = parseFloat(formValues.tax) || 0;
+    const fireRate = (this.billForm.get('fire')?.value || 0) / 100; // Convert percentage to decimal
+    const rsdRate = (this.billForm.get('rsd')?.value || 0) / 100; // Convert percentage to decimal
+    const sumInsured = this.billForm.get('policies.sumInsured')?.value || 0;
+    const taxRate = 0.15; // Fixed 15% tax rate
 
-    // Calculating net and gross premiums
-    const netPremium = sumInsured * (fireRate + rsdRate);
-    const grossPremium = netPremium + (netPremium * taxRate);
+    const netPremium = this.getTotalPremium(sumInsured, fireRate, rsdRate);
+    const taxAmount = this.getTotalTax(netPremium, taxRate);
+    const grossPremium = netPremium + taxAmount;
 
-    // Update form fields with the calculated premiums
     this.billForm.patchValue({
-      netPremium: netPremium.toFixed(2),
-      grossPremium: grossPremium.toFixed(2)
+      netPremium: netPremium,
+      grossPremium: grossPremium
     }, { emitEvent: false });
+  }
+
+  getTotalPremium(sumInsured: number, fireRate: number, rsdRate: number): number {
+    return sumInsured * fireRate + (sumInsured * rsdRate);
+  }
+
+  getTotalTax(netPremium: number, taxRate: number): number {
+    return netPremium * taxRate;
   }
 
   createBill(): void {
@@ -127,9 +137,11 @@ export class CreatebillComponent implements OnInit {
         this.loadPolicies(); // Reload policies after creating the bill
         this.billForm.reset(); // Reset form after success
         this.router.navigate(['viewbill']); // Navigate to the bill view page
+        alert('Bill created successfully!'); // Success message
       },
       error: error => {
         console.error('Error creating bill:', error);
+        alert('There was an error creating the bill. Please try again.'); // Error message
       }
     });
   }
