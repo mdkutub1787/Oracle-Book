@@ -6,17 +6,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-printmoneyreceipt',
   templateUrl: './printmoneyreceipt.component.html',
-  styleUrl: './printmoneyreceipt.component.css'
+  styleUrls: ['./printmoneyreceipt.component.css']
 })
-export class PrintmoneyreceiptComponent implements OnInit{
-
+export class PrintmoneyreceiptComponent implements OnInit {
   moneyreceipt?: MoneyReceiptModel;
 
   constructor(
     private moneyreceiptService: MoneyreceiptService,
     private router: Router,
-    private route: ActivatedRoute 
-  ) { }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
@@ -75,5 +74,30 @@ export class PrintmoneyreceiptComponent implements OnInit{
     const totalPremium = this.getTotalPremium();
     const totalTax = this.getTotalTax();
     return Math.round(totalPremium + totalTax);
+  }
+
+  convertToWords(num: number): string {
+    const ones = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"];
+    const tens = ["", "", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"];
+
+    const numToWords = (n: number): string => {
+      if (n < 20) return ones[n];
+      if (n < 100) return tens[Math.floor(n / 10)] + (n % 10 ? " " + ones[n % 10] : "");
+      if (n < 1000) return ones[Math.floor(n / 100)] + " Hundred" + (n % 100 ? " " + numToWords(n % 100) : "");
+      if (n < 100000) return numToWords(Math.floor(n / 1000)) + " Thousand" + (n % 1000 ? " " + numToWords(n % 1000) : "");
+      return "";
+    };
+
+    return numToWords(num);
+  }
+
+  convertAmountToWords(amount: number): string {
+    const words = this.convertToWords(amount);
+    return `${words} Taka`;
+  }
+
+  getTotalAmountInWords(): string {
+    const totalAmount = this.getTotalPremiumWithTax();
+    return this.convertAmountToWords(totalAmount);
   }
 }

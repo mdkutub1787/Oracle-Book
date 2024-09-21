@@ -1,6 +1,7 @@
 <!-- Print Section -->
 <div id="print-section">
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,15 +15,26 @@
 
     <body>
         <div class="container">
-            <div class="d-flex align-items-start">
-                <!-- Avatar -->
-                <div class="full-width-left">
-                    <img class="avatar-small" src="https://i.postimg.cc/SxVwPyGz/download.jpg" alt="Avatar" />
-                </div>
+            <!-- Company Logo and Header -->
+            <div class="d-flex justify-content-center mb-4">
+                <img src="https://i.postimg.cc/SxVwPyGz/download.jpg" alt="Company Logo" class="img-fluid"
+                    style="width: 150px;" />
             </div>
 
             <!-- Money Receipt Table -->
-            <table class="table table-bordered col-mb-3">
+            <table class="table table-bordered mb-3">
+                <tbody>
+                    <tr>
+                        <td><strong>Bill No:</strong></td>
+                        <td>{{ moneyreceipt?.bill?.policy?.id }}</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <!-- Money Receipt Info -->
+            <table class="table table-bordered mb-3">
                 <thead>
                     <tr>
                         <th colspan="4" class="text-center">Money Receipt</th>
@@ -30,31 +42,49 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Bill No:</strong></td>
-                        <td>{{ moneyreceipt?.bill?.policy?.id }}</td>
-                        <td><strong>Issue Date:</strong></td>
-                        <td>{{ moneyreceipt?.bill?.policy?.date | date }}</td>
+                        <td><strong>Date:</strong></td>
+                        <td>{{ moneyreceipt?.date }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Issuing Office:</strong></td>
+                        <td>{{ moneyreceipt?.issuingOffice }}</td>
+                    </tr>
+                   
+                    <tr>
+                        <td><strong>Money Receipt No:</strong></td>
+                        <td>{{ moneyreceipt?.moneyReceiptNo }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Class Of Insurance:</strong></td>
+                        <td>{{ moneyreceipt?.classOfInsurance }}</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Received with thanks from:</strong></td>
+                        <td>
+                            {{ moneyreceipt?.bill?.policy?.bankName }},
+                            {{ moneyreceipt?.bill?.policy?.policyholder }},
+                            {{ moneyreceipt?.bill?.policy?.address }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>The Sum of</strong></td>
+                        <td>TK {{ getTotalPremiumWithTax() | number:'1.2-2' }} ({{ getTotalAmountInWords() }})</td>
+
+                    </tr>
+
+                    <tr>
+                        <td><strong>Mode Of Payment:</strong></td>
+                        <td>{{ moneyreceipt?.modeOfPayment }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Issued Against:</strong></td>
+                        <td>{{ moneyreceipt?.issuedAgainst }}</td>
                     </tr>
                 </tbody>
             </table>
 
-            <table class="table table-bordered col-mb-3">
-                <tbody>
-                    <tr>
-                        <td><strong>Bank Name:</strong></td>
-                        <td>{{ moneyreceipt?.bill?.policy?.bankName }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Policyholder:</strong></td>
-                        <td>{{ moneyreceipt?.bill?.policy?.policyholder }}</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Address:</strong></td>
-                        <td>{{ moneyreceipt?.bill?.policy?.address }}</td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <!-- Financial Breakdown -->
             <table class="table table-bordered">
                 <tbody>
                     <tr>
@@ -81,6 +111,7 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
+
     </html>
 </div>
 
