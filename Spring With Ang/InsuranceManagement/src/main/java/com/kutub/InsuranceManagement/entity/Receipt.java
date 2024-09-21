@@ -23,8 +23,6 @@ public class Receipt {
     @JoinColumn(name = "billId")
     private Bill bill;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "moneyreceipt", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<MoneyReceipt> moneyReceipts;
+
 
 }

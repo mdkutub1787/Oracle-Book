@@ -20,6 +20,10 @@ export class BillService {
     return this.http.get<BillModel[]>(this.baseUrl)
      
   }
+  getAllBillForMoneyReceipt(): Observable<BillModel[]> {
+    return this.http.get<BillModel[]>(this.baseUrl)
+     
+  }
 
   createBill(bills: BillModel): Observable<BillModel> {
     return this.http.post<BillModel>(this.baseUrl+"save", bills);

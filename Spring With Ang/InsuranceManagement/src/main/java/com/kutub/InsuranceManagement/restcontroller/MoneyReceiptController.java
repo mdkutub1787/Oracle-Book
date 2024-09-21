@@ -1,9 +1,7 @@
 package com.kutub.InsuranceManagement.restcontroller;
 
 import com.kutub.InsuranceManagement.entity.MoneyReceipt;
-import com.kutub.InsuranceManagement.entity.Receipt;
 import com.kutub.InsuranceManagement.service.MoneyReceiptService;
-import com.kutub.InsuranceManagement.service.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +12,7 @@ import java.util.List;
 @CrossOrigin("*")
 
 public class MoneyReceiptController {
-
-
+    
     @Autowired
     private MoneyReceiptService moneyReceiptService;
 

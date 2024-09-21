@@ -16,6 +16,8 @@ import { CreatereceiptComponent } from './component/createreceipt/createreceipt.
 import { PrintreceiptComponent } from './component/printreceipt/printreceipt.component';
 import { PolicydetailsComponent } from './component/policydetails/policydetails.component';
 import { MoneyreceiptComponent } from './component/moneyreceipt/moneyreceipt.component';
+import { CreatemoneyreceiptComponent } from './component/createmoneyreceipt/createmoneyreceipt.component';
+import { PrintmoneyreceiptComponent } from './component/printmoneyreceipt/printmoneyreceipt.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,8 @@ const routes: Routes = [
   { path: "createreciept", component: CreatereceiptComponent},
   { path: "printreciept/:id", component: PrintreceiptComponent},
   { path: "viewmoneyreciept", component: MoneyreceiptComponent},
+  { path: "createmoneyreciept", component: CreatemoneyreceiptComponent},
+  { path: "printmoneyreciept/:id", component: PrintmoneyreceiptComponent},
   { path: "reg", component: RegistrationComponent},
   { path: "login", component: LoginComponent},
   { path: "logout", component: LogoutComponent},

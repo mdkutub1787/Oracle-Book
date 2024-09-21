@@ -1,0 +1,92 @@
+<!-- Print Section -->
+<div id="print-section">
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Receipt Page</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- Custom CSS -->
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="d-flex align-items-start">
+                <!-- Avatar -->
+                <div class="full-width-left">
+                    <img class="avatar-small" src="https://i.postimg.cc/SxVwPyGz/download.jpg" alt="Avatar" />
+                </div>
+            </div>
+
+            <!-- Money Receipt Table -->
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="text-center">Money Receipt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bill No:</strong></td>
+                        <td>{{ moneyreceipt?.bill?.policy?.id }}</td>
+                        <td><strong>Issue Date:</strong></td>
+                        <td>{{ moneyreceipt?.bill?.policy?.date | date }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered col-mb-3">
+                <tbody>
+                    <tr>
+                        <td><strong>Bank Name:</strong></td>
+                        <td>{{ moneyreceipt?.bill?.policy?.bankName }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Policyholder:</strong></td>
+                        <td>{{ moneyreceipt?.bill?.policy?.policyholder }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Address:</strong></td>
+                        <td>{{ moneyreceipt?.bill?.policy?.address }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td><strong>Net Premium</strong></td>
+                        <td class="currency-symbol">BDT</td>
+                        <td>{{ getTotalPremium() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tax</strong></td>
+                        <td class="currency-symbol">BDT</td>
+                        <td>{{ getTotalTax() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gross Premium</strong></td>
+                        <td class="currency-symbol"><strong>BDT</strong></td>
+                        <td><strong>{{ getTotalPremiumWithTax() | number:'1.2-2' }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+</div>
+
+<!-- Print Button -->
+<div class="d-flex justify-content-center mt-3">
+    <button printSectionId="print-section" ngxPrint class="btn btn-primary printbtn">
+        <i class="fas fa-print"></i> Download PDF
+    </button>
+</div>

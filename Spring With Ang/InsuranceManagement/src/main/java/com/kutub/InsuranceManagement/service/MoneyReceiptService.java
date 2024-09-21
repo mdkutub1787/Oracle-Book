@@ -3,6 +3,7 @@ package com.kutub.InsuranceManagement.service;
 import com.kutub.InsuranceManagement.entity.Bill;
 import com.kutub.InsuranceManagement.entity.MoneyReceipt;
 import com.kutub.InsuranceManagement.entity.Receipt;
+import com.kutub.InsuranceManagement.repository.BillRepository;
 import com.kutub.InsuranceManagement.repository.MoneyReceiptRepository;
 import com.kutub.InsuranceManagement.repository.ReceiptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +17,20 @@ public class MoneyReceiptService {
     @Autowired
     private MoneyReceiptRepository moneyReceiptRepository;
     @Autowired
-    private ReceiptRepository receiptRepository ;
+    private BillRepository billRepository;
 
     public List<MoneyReceipt> getAllMoneyReceipt() {
         return  moneyReceiptRepository.findAll();
     }
 
     public void saveMoneyReceipt(MoneyReceipt mr) {
-        Receipt receipt = receiptRepository.findById(mr.getReceipt().getId())
-                .orElseThrow(
-                        () -> new RuntimeException("Receipt not found " + mr.getReceipt().getId())
-                );
-        mr.setReceipt(receipt);
-        moneyReceiptRepository.save(mr);
-    }
+            Bill bill = billRepository.findById(mr.getBill().getId())
+                    .orElseThrow(
+                            () -> new RuntimeException("Bill not found " + mr.getBill().getId())
+                    );
+            mr.setBill(bill);
+            moneyReceiptRepository.save(mr);
+        }
 
 
     public MoneyReceipt findById(int id) {

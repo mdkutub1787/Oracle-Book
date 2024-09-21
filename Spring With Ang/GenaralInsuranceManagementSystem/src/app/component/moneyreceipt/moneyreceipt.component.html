@@ -16,33 +16,48 @@
     <div class="container">
 
 
-
+        <button type="button" class="btn btn-primary mt-3 btn-right" (click)="navigateToAddMoneyReceipt()">
+            <i class="fas fa-plus"></i>
+           Money Create Receipt
+        </button>
 
         <table class="table table-striped mt-3">
             <thead>
                 <tr>
-                    <th><i class="fas fa-user"></i> Offece </th>
-                    <th><i class="fas fa-user"></i> Policy Holder</th>
+                    <th><i class="fas fa-user"></i>Issuing Offece </th>
                     <th><i class="fas fa-building"></i> Bank Name</th>
+                    <th><i class="fas fa-user"></i> Policy Holder</th>
                     <th><i class="fas fa-map-marker-alt"></i> Address</th>
-                    <th><i class="fas fa-dollar-sign"></i> Sum Insured</th>
                     <th><i class="fas fa-coins"></i> Net Premium</th>
+                    <th><i class="fas fa-coins"></i>VAT</th>
                     <th><i class="fas fa-wallet"></i> Gross Premium</th>
                     <th class="text-center"><i class="fas fa-cogs"></i> Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let mr of moneyreceipts">
-                    <td> {{ mr.issuingOffice }}</td>
-                    <td> {{ mr.receipt?.bill?.policy?.policyholder }}</td>
-                    <td> {{ mr.receipt?.bill?.policy?.bankName }}</td>
-                    <td> {{ mr.receipt?.bill?.policy?.address }}</td>
-                    <td>{{ mr.receipt?.bill?.policy?.sumInsured | currency:'TK':'symbol'}}</td>
-                    <td>{{ mr.receipt?.bill?.netPremium | currency:'TK':'symbol'}}</td>
-                    <td>{{ mr.receipt?.bill?.grossPremium | currency:'TK':'symbol'}}</td>
+                    <td>{{ mr.issuingOffice }}</td>
+                    <td>{{ mr.bill?.policy?.bankName }}</td>
+                    <td>{{ mr.bill?.policy?.policyholder }}</td>
+                    <td>{{ mr.bill?.policy?.address }}</td>
+                    <td>{{ mr.bill?.netPremium | currency:'TK':'symbol'}}</td>
+                    <td>{{ mr.bill?.tax | currency:'TK':'symbol'}}</td>
+                    <td>{{ mr.bill?.grossPremium | currency:'TK':'symbol'}}</td>
 
-             
 
+                    <td class="text-center">
+                        <!-- Print View button -->
+                        <button class="btn custom-btn" aria-label="Print View"
+                            (click)="mr.id && viewMoneyReceipt(mr.id)">
+                            <i class="fas fa-eye"></i> Print View
+                        </button>
+
+                        <!-- Delete button -->
+                        <button class="btn btn-outline-danger ml-2" aria-label="Delete"
+                            (click)="mr.id && deleteMoneyReceipt(mr.id)">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
 
                 </tr>
             </tbody>

@@ -28,6 +28,8 @@ import { ReceiptComponent } from './component/receipt/receipt.component';
 import { PrintreceiptComponent } from './component/printreceipt/printreceipt.component';
 import { PolicydetailsComponent } from './component/policydetails/policydetails.component';
 import { MoneyreceiptComponent } from './component/moneyreceipt/moneyreceipt.component';
+import { CreatemoneyreceiptComponent } from './component/createmoneyreceipt/createmoneyreceipt.component';
+import { PrintmoneyreceiptComponent } from './component/printmoneyreceipt/printmoneyreceipt.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { MoneyreceiptComponent } from './component/moneyreceipt/moneyreceipt.com
     ReceiptComponent,
     PrintreceiptComponent,
     PolicydetailsComponent,
-    MoneyreceiptComponent
+    MoneyreceiptComponent,
+    CreatemoneyreceiptComponent,
+    PrintmoneyreceiptComponent
   ],
   imports: [
     BrowserModule,

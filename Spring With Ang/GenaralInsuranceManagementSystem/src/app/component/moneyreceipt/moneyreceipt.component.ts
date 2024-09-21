@@ -34,4 +34,30 @@ export class MoneyreceiptComponent {
     });
   }
 
+
+  viewReceipt(id: number) {
+    this.router.navigate(['/printreciept', id]);
+  }
+
+  deleteMoneyReceipt(id: number): void {
+    this.moneyreceiptService.deleteMoneyReceipt(id).subscribe({
+      next: () => {
+        this.moneyreceipts = this.moneyreceipts.filter(moneyreceipt => moneyreceipt.id !== id);
+        this.router.navigate(['/viewmoneyreciept']);
+      },
+      error: (err) => {
+        console.error('Error deleting moneyreceipt:', err);
+        alert('There was an error deleting the moneyreceipt. Please try again.');
+      }
+    });
+  }
+
+  viewMoneyReceipt(id: number) {
+    this.router.navigate(['/printmoneyreciept', id]);
+  }
+
+  navigateToAddMoneyReceipt() {
+    this.router.navigateByUrl('/createmoneyreciept');
+  }
+
 }

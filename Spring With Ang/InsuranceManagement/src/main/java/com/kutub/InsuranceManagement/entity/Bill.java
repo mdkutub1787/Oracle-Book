@@ -44,4 +44,6 @@ public class Bill {
     private List<Receipt> receipts;
 
 
+
+
 }

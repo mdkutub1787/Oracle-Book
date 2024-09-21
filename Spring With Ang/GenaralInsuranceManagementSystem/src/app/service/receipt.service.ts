@@ -30,9 +30,6 @@ export class ReceiptService {
   }
 
 
-  getAllReceiptForMoneyReceipt(): Observable<ReceiptModel[]> {
-    return this.http.get<ReceiptModel[]>(this.baseUrl)
-     
-  }
+ 
   
 }

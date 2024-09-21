@@ -1,4 +1,5 @@
-import { ReceiptModel } from "./receipt.model";
+
+import { BillModel } from "./bill.model";
 
 export class MoneyReceiptModel {
     id?: number;
@@ -6,9 +7,8 @@ export class MoneyReceiptModel {
     moneyReceiptNo?: number;
     classOfInsurance?: string;
     date?: string;
-    receivedFrom?: string;
     modeOfPayment?: string;
     issuedAgainst?: string;
-  
-    receipt?: ReceiptModel;
+   
+    bill?: BillModel;
 }

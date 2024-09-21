@@ -24,9 +24,6 @@ public class MoneyReceipt {
 
     private String date;
 
-    private String receivedFrom;
-
-
     private String modeOfPayment;
   
     private String issuedAgainst;
@@ -34,8 +31,8 @@ public class MoneyReceipt {
 
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "receiptId")
-    private Receipt receipt;
+    @JoinColumn(name = "billId")
+    private Bill bill;
 
 
 }

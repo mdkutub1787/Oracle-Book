@@ -19,7 +19,16 @@ export class MoneyreceiptService {
   getMoneyReceiptById(id: number): Observable<MoneyReceiptModel> {
     return this.http.get<MoneyReceiptModel>(this.baseUrl + id)
   }
-  createReceipt(moneyreciept: MoneyReceiptModel): Observable<MoneyReceiptModel> {
+  createMoneyReceipt(moneyreciept: MoneyReceiptModel): Observable<MoneyReceiptModel> {
     return this.http.post<MoneyReceiptModel>(this.baseUrl + "save", moneyreciept);
   }
+
+  
+
+  deleteMoneyReceipt(id: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}delete/${id}`);
+  }
+
+
+
 }
