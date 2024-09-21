@@ -1,0 +1,126 @@
+<!-- Add Bill -->
+<div class="container d-flex justify-content-center">
+    <div class="form-container col-md-8 mb-4">
+        <h3 class="text-center text-2xl font-bold mb-4">
+            <i class="fas fa-plus"></i>
+            Bill Add Form
+        </h3>
+        <form [formGroup]="billForm" (ngSubmit)="createBill()">
+            <div class="row">
+                <!-- Policyholder Field -->
+                <div class="form-group col-md-6 mb-3" formGroupName="policies">
+                    <label for="policyholder" class="form-label">
+                        <i class="fas fa-user"></i>
+                        Policy Holder
+                    </label>
+                    <select id="policyholder" formControlName="policyholder" class="form-control rounded-pill" required>
+                        <option value="" disabled>Select your policy holder</option>
+                        <option *ngFor="let pol of policies" [ngValue]="pol.policyholder">{{pol.policyholder}}</option>
+                    </select>
+                    <div *ngIf="billForm.get('policies.policyholder')?.invalid && (billForm.get('policies.policyholder')?.touched || billForm.get('policies.policyholder')?.dirty)" class="text-danger">
+                        <div *ngIf="billForm.get('policies.policyholder')?.errors?.['required']">Policy holder is required.</div>
+                    </div>
+                </div>
+
+                <!-- Address Field -->
+                <div class="form-group col-md-6 mb-3" formGroupName="policies">
+                    <label for="address" class="form-label">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Address
+                    </label>
+                    <select id="address" formControlName="address" class="form-control rounded-pill" required>
+                        <option value="" disabled>Select your address</option>
+                        <option *ngFor="let pol of policies" [ngValue]="pol.address">{{pol.address}}</option>
+                    </select>
+                    <div *ngIf="billForm.get('policies.address')?.invalid && (billForm.get('policies.address')?.touched || billForm.get('policies.address')?.dirty)" class="text-danger">
+                        <div *ngIf="billForm.get('policies.address')?.errors?.['required']">Address is required.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Sum Insured Field -->
+                <div class="form-group col-md-6 mb-3" formGroupName="policies">
+                    <label for="sumInsured" class="form-label">
+                        <i class="fas fa-dollar-sign"></i>
+                        Sum Insured
+                    </label>
+                    <select id="sumInsured" formControlName="sumInsured" class="form-control rounded-pill" required>
+                        <option value="" disabled>Select sum insured</option>
+                        <option *ngFor="let pol of policies" [ngValue]="pol.sumInsured">{{pol.sumInsured}}</option>
+                    </select>
+                    <div *ngIf="billForm.get('policies.sumInsured')?.invalid && (billForm.get('policies.sumInsured')?.touched || billForm.get('policies.sumInsured')?.dirty)" class="text-danger">
+                        <div *ngIf="billForm.get('policies.sumInsured')?.errors?.['required']">Sum insured is required.</div>
+                    </div>
+                </div>
+
+                <!-- Fire Rate Field -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="fire" class="form-label">
+                        <i class="fas fa-fire"></i>
+                        Fire Rate (%)
+                    </label>
+                    <input id="fire" type="number" class="form-control rounded-pill" formControlName="fire" placeholder="Enter fire rate" step="0.01" max="100">
+                    <div *ngIf="billForm.get('fire')?.invalid && (billForm.get('fire')?.touched || billForm.get('fire')?.dirty)" class="text-danger">
+                        <div *ngIf="billForm.get('fire')?.errors?.['required']">Fire rate is required.</div>
+                        <div *ngIf="billForm.get('fire')?.errors?.['min']">Fire rate must be at least 0.</div>
+                        <div *ngIf="billForm.get('fire')?.errors?.['max']">Fire rate cannot exceed 100.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- R&SD Rate Field -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="rsd" class="form-label">
+                        <i class="fas fa-chart-line"></i>
+                        R&SD Rate (%)
+                    </label>
+                    <input id="rsd" type="number" class="form-control rounded-pill" formControlName="rsd" placeholder="Enter R&SD rate" step="0.01" max="100">
+                    <div *ngIf="billForm.get('rsd')?.invalid && (billForm.get('rsd')?.touched || billForm.get('rsd')?.dirty)" class="text-danger">
+                        <div *ngIf="billForm.get('rsd')?.errors?.['required']">R&SD rate is required.</div>
+                        <div *ngIf="billForm.get('rsd')?.errors?.['min']">R&SD rate must be at least 0.</div>
+                        <div *ngIf="billForm.get('rsd')?.errors?.['max']">R&SD rate cannot exceed 100.</div>
+                    </div>
+                </div>
+
+                <!-- Net Premium Field -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="netPremium" class="form-label">
+                        <i class="fas fa-wallet"></i>
+                        Net Premium
+                    </label>
+                    <input id="netPremium" type="number" class="form-control rounded-pill" formControlName="netPremium" placeholder="Net Premium" [value]="billForm.get('netPremium')?.value" >
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Tax Field -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="tax" class="form-label">
+                        <i class="fas fa-receipt"></i>
+                        Tax Rate (%)
+                    </label>
+                    <input id="tax" type="number" class="form-control rounded-pill" formControlName="tax" placeholder="Enter tax rate" step="0.01" readonly>
+                </div>
+
+                <!-- Gross Premium Field -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="grossPremium" class="form-label">
+                        <i class="fas fa-euro-sign"></i>
+                        Gross Premium
+                    </label>
+                    <input id="grossPremium" type="number" class="form-control rounded-pill" formControlName="grossPremium" placeholder="Gross Premium" [value]="billForm.get('grossPremium')?.value" >
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-outline-success rounded-pill shadow-sm" [disabled]="billForm.invalid">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

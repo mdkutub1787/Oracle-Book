@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Carousel</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Custom CSS to maintain image size */
+    .carousel-item img {
+      object-fit: cover;
+      height: 500px;
+      /* Ensure the height is 500px */
+      width: 100%;
+      /* Make sure the image width spans the carousel */
+    }
+
+    .carousel-caption {
+      bottom: 20px;
+      /* Position caption at the bottom */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Carousel -->
+  <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://i.postimg.cc/J0KWssrC/fire-takaful.jpg" class="d-block w-100" alt="First slide">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- Optional: Add caption content here -->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.postimg.cc/656YXZt9/marine-takaful.jpg" class="d-block w-100" alt="Second slide">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- Optional: Add caption content here -->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="https://i.postimg.cc/W1FmN6KP/car.jpg" class="d-block w-100" alt="Third slide">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- Optional: Add caption content here -->
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+
+  </div>
+
+
+
+  <!-- Bootstrap JavaScript Bundle (with Popper) -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript to control autoplay, timeout, and hover pause -->
+  <script>
+    // Options
+    const autoplayTimeout = 2000; // 2 seconds between slides
+
+    // Initialize carousel
+    const carouselElement = document.getElementById('carouselExampleCaptions');
+    const carousel = new bootstrap.Carousel(carouselElement, {
+      interval: autoplayTimeout,
+      ride: 'carousel',
+      pause: false // No pause on hover
+    });
+
+  </script>
+
+
+  <!-- <ng-container *ngIf="userRole === 'Admin'"> -->
+    <div class="container my-4">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card policy-card border-light shadow-sm">
+            <div class="card-header text-center">
+              <h5 class="card-title">Policy</h5>
+            </div>
+            <div class="card-body text-center">
+              <i class="card-icon fas fa-users"></i>
+            </div>
+            <div class="card-footer text-center">
+              <a href="/viewpolicy" class="btn action-button">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bill-card border-light shadow-sm">
+            <div class="card-header text-center">
+              <h5 class="card-title">Policy Bill</h5>
+            </div>
+            <div class="card-body text-center">
+              <i class="card-icon fas fa-receipt"></i>
+            </div>
+            <div class="card-footer text-center">
+              <a href="/viewbill" class="btn action-button">View</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card reciept-card border-light shadow-sm">
+            <div class="card-header text-center">
+              <h5 class="card-title">Receipt</h5>
+            </div>
+            <div class="card-body text-center">
+              <i class="card-icon fas fa-list-alt"></i>
+            </div>
+            <div class="card-footer text-center">
+              <a href="/viewreciept" class="btn action-button">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </ng-container> -->
+
+
+  <!-- kind of insurance card  -->
+  <div class="container my-4">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card fire-insurance-card border-light shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title">Fire Insurance</h5>
+          </div>
+          <div class="card-body text-center">
+            <img src="https://i.postimg.cc/J0KWssrC/fire-takaful.jpg" alt="Fire Insurance Image" class="img-fluid">
+          </div>
+          <div class="card-footer text-center">
+            <a href="https://www.islamiinsurance.com/products-services/fire-takaful" class="btn action-button">Fire
+              Insurance</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card merin-insurance-card border-light shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title">Merin Insurance</h5>
+          </div>
+          <div class="card-body text-center">
+            <img src="https://i.postimg.cc/7hGFXKDX/marine-takaful.jpg" alt="Merin Insurance Image" class="img-fluid">
+          </div>
+          <div class="card-footer text-center">
+            <a href="https://www.islamiinsurance.com/products-services/marine-takaful" class="btn action-button">Merin
+              Insurance</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card motor-insurance-card border-light shadow-sm">
+          <div class="card-header text-center">
+            <h5 class="card-title">Motor Insurance</h5>
+          </div>
+          <div class="card-body text-center">
+            <img src="https://i.postimg.cc/Kcf4rnnh/car.jpg" alt="Motor Insurance Image" class="img-fluid">
+          </div>
+          <div class="card-footer text-center">
+            <a href="https://www.islamiinsurance.com/products-services/motor-takaful" class="btn action-button">Motor
+              Insurance</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!--  Start footer  -->
+  <footer class="footer mt-auto footer_stics">
+    <div class="footer-big pl-4" style="padding-left: 0px !important;">
+      <div class="container">
+        <div class="row">
+          <!-- First Column -->
+          <div class="col-md-3 first_item col-sm-12">
+            <div class="footer-widget">
+              <div class="widget-about">
+                <p style="text-transform:uppercase; font-size:12px;">
+                  Islami Insurance Bangladesh Ltd.
+                </p>
+                <span>Our Trade License No: 03-085465 <br> TIN No: 463536257431</span>
+                <ul class="contact-details">
+                  <li>
+                    <h4>55112831, 55112832, 55112833</h4>
+                  </li>
+                  <li>
+                    <img src="https://i.postimg.cc/nh7WXscj/footer-Mail.png">
+                    <a href="mailto:support@aazztech.com">islamiinsurancegmail.com</a>
+                  </li>
+                  <li>
+                    <img src="https://i.postimg.cc/7LkW0xfB/footer-Open.png">
+                    <p class="p_10 time">Available 10:00am - 06:00pm</p>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Second Column -->
+          <div class="col-md-3 col-sm-4">
+            <div class="footer-widget">
+              <div class="footer-menu footer-menu--1">
+                <h4 class="footer-widget-title">USEFUL LINKS</h4>
+                <ul>
+                  <li><a href="https://www.islamiinsurance.com/frontend/terms">Terms and Conditions</a></li>
+                  <li><a href="https://www.islamiinsurance.com/frontend/refund">Refund and Return Policy</a></li>
+                  <li><a href="https://www.islamiinsurance.com/frontend/privacy">Privacy Policy</a></li>
+                  <li><a href="https://www.islamiinsurance.com/aboutus/who-we-are">Who we are</a></li>
+                  <li><a href="https://www.islamiinsurance.com/aboutus/message-from-chairman">Message From Chairman</a>
+                  </li>
+                  <li><a href="https://www.islamiinsurance.com/aboutus/message-from-ceo">Message From CEO</a></li>
+                  <li><a href="https://www.islamiinsurance.com/financial-indicator/shareholding-structure">Shareholding
+                      Structure</a></li>
+                  <li><a href="https://www.islamiinsurance.com/financial-indicator/quarterly-reports">Quarterly
+                      Reports</a></li>
+                  <li><a href="https://www.islamiinsurance.com/financial-indicator/price-sensitive-information">Price
+                      Sensitive Information</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Third Column -->
+          <div class="col-md-3 col-sm-4">
+            <div class="footer-widget">
+              <div class="footer-menu">
+                <h4 class="footer-widget-title">MEDIA</h4>
+                <ul>
+                  <li><a href="https://www.islamiinsurance.com/media/achievement-awerds">Achievements &amp; Awards</a>
+                  </li>
+                  <li><a href="https://www.islamiinsurance.com/media/news-and-event">News &amp; Events</a></li>
+                  <li><a href="https://www.islamiinsurance.com/media/blog">Blog</a></li>
+                </ul>
+                <h4 class="footer-widget-title">PAYMENT GATEWAYS</h4>
+                <ul style="display: flex; padding-left: 0px; list-style: none;">
+                  <!-- First Row of Payment Gateway Logos -->
+                  <li class="withImage">
+                    <img src="https://i.postimg.cc/LXvwmr4x/bkash.png" alt="Bkash">
+                  </li>
+                  <li class="withImage" style="margin-left: 15px;">
+                    <img src="https://i.postimg.cc/MTXNK9cx/rocket.png" alt="Rocket">
+                  </li>
+                  <li class="withImage" style="margin-left: 15px;">
+                    <img src="https://i.postimg.cc/nznWts0B/footer-Nogod.png" alt="Nogod">
+                  </li>
+                </ul>
+
+                <!-- Additional Logos Below -->
+                <ul style="padding-left: 0px; list-style: none;">
+                  <li style="margin-top: 15px;">
+                    <img src="https://i.postimg.cc/rsPHrxrW/SSL-logo.png" alt="SSL Logo"
+                      style="width:100%; height:10%; background:black;">
+                  </li>
+                  <li style="margin-top: 15px;">
+                    <img src="https://i.postimg.cc/L4CwwKbX/ssllogo.jpg" alt="SSL Logo 2"
+                      style="width:30%; height:10%; background:black;">
+                  </li>
+                </ul>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- Fourth Column -->
+          <div class="col-md-3 col-sm-4">
+            <div class="footer-widget">
+              <div class="footer-menu no-padding">
+                <h4 class="footer-widget-title">CONNECT WITH US</h4>
+                <ul>
+                  <li><a href="https://www.islamiinsurance.com/contact-us/find-us-in-google-maps">Find Us In Google
+                      Map</a></li>
+                  <li><a href="https://www.islamiinsurance.com/contact-us/head-office">Head office</a></li>
+                  <li><a href="https://www.islamiinsurance.com/contact-us/branches">Branches</a></li>
+                </ul>
+                <h4 class="footer-widget-title">SOCIAL MEDIA</h4>
+                <ul style="display: flex; padding-left: 0; margin: 0; list-style-type: none;">
+                  <li class="withImage_tiny">
+                    <a href="https://www.facebook.com/Islami-Insurance-Bangladesh-Limited-108963554788132"
+                      target="_blank">
+                      <img src="https://i.postimg.cc/8CmnbqvT/facebook.png">
+                    </a>
+                  </li>
+                  <li class="withImage_tiny">
+                    <img src="https://i.postimg.cc/t4hrXL2F/twitter-icon.png">
+                  </li>
+                  <li class="withImage_tiny">
+                    <a href="https://www.youtube.com/channel/UCicGdhGFHMa2KD4Zf2bN2hg" target="_blank">
+                      <img src="https://i.postimg.cc/T1L9BSKL/youtube.png">
+                    </a>
+                  </li>
+                  <li class="withImage_tiny">
+                    <a href="https://www.islamiinsurance.com:2096/" target="_blank">
+                      <img src="https://i.postimg.cc/nh7WXscj/footer-Mail.png">
+                    </a>
+                  </li>
+                  <li class="withImage_tiny">
+                    <a href="https://www.linkedin.com/in/islami-insurance-bangladesh-limited-77048621b/"
+                      target="_blank">
+                      <img src="https://i.postimg.cc/2j1NzSvv/linkedin.png">
+                    </a>
+                  </li>
+                </ul>
+
+                <h4 class="footer-widget-title">
+                  WEBMAIL
+                  <p class="withImage_tiny">
+                    <a href="https://www.islamiinsurance.com:2096/" target="_blank">
+                      <img src="https://i.postimg.cc/YqLnP4Fn/325.jpg" style="height:40px;width:40px;">
+                    </a>
+                  </p>
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </footer>
+
+
+</body>
+
+</html>
