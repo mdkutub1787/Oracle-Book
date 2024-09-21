@@ -34,13 +34,16 @@ export class CreatemoneyreceiptComponent implements OnInit {
     this.loadPolicies();
     this.loadBills();
 
+    const today = new Date();
+    const formattedDate = today.toISOString().split('T')[0];
+
   
     this.moneyreceiptForm = this.formBuilder.group({
       id: [null],
       issuingOffice: [null],
       moneyReceiptNo: [null],
       classOfInsurance: [null],
-      date: [null],
+      date: [formattedDate],
       modeOfPayment: [null],
       issuedAgainst: [null],
       bill: this.formBuilder.group({
