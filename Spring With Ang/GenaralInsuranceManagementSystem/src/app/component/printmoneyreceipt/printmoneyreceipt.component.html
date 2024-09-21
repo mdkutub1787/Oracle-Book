@@ -11,30 +11,47 @@
         <!-- Font Awesome CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- Custom CSS -->
+        <style>
+            /* Remove borders from all tables */
+            table {
+                border: none !important;
+            }
+            th, td {
+                border: none !important;
+            }
+        </style>
     </head>
 
     <body>
-        <div class="container">
-            <!-- Company Logo and Header -->
-            <div class="d-flex justify-content-center mb-4">
-                <img src="https://i.postimg.cc/SxVwPyGz/download.jpg" alt="Company Logo" class="img-fluid"
-                    style="width: 150px;" />
+
+        <!-- Company Logo and Header -->
+        <div class="contact-info">
+            <h1><strong>ইসলামী ইন্স্যুরেন্স কোম্পানী লিমিটে</strong></h1>
+            <div class="address">
+                <strong>Crystal Insurance Grce: DR Tower (14th floor), 65/2/2, Box Culvert Road, Purana Paltan,Dhaka-1000.</strong><br>
+                <strong>Kushtia Branch</strong>
+                <strong>Tel: 02478853405 , </strong>
+                <strong>Mob: 01712-984537</strong><br>
+                <strong>Tel. No.: +88 02 55112733 (Hunting)</strong><br>
+                <strong>Fax: +88 02 55112742</strong><br>
+                <strong>Email: infociclbd.com</strong><br>
+                <strong>Web: www.ciclbd.com</strong>
             </div>
+        </div>
+        <div class="container">
 
             <!-- Money Receipt Table -->
-            <table class="table table-bordered mb-3">
+            <table class="table mb-3">
                 <tbody>
                     <tr>
                         <td><strong>Bill No:</strong></td>
                         <td>{{ moneyreceipt?.bill?.policy?.id }}</td>
                     </tr>
-
-
                 </tbody>
             </table>
 
             <!-- Money Receipt Info -->
-            <table class="table table-bordered mb-3">
+            <table class="table mb-3">
                 <thead>
                     <tr>
                         <th colspan="4" class="text-center">Money Receipt</th>
@@ -49,7 +66,6 @@
                         <td><strong>Issuing Office:</strong></td>
                         <td>{{ moneyreceipt?.issuingOffice }}</td>
                     </tr>
-                   
                     <tr>
                         <td><strong>Money Receipt No:</strong></td>
                         <td>{{ moneyreceipt?.moneyReceiptNo }}</td>
@@ -58,7 +74,6 @@
                         <td><strong>Class Of Insurance:</strong></td>
                         <td>{{ moneyreceipt?.classOfInsurance }}</td>
                     </tr>
-
                     <tr>
                         <td><strong>Received with thanks from:</strong></td>
                         <td>
@@ -70,9 +85,7 @@
                     <tr>
                         <td><strong>The Sum of</strong></td>
                         <td>TK {{ getTotalPremiumWithTax() | number:'1.2-2' }} ({{ getTotalAmountInWords() }})</td>
-
                     </tr>
-
                     <tr>
                         <td><strong>Mode Of Payment:</strong></td>
                         <td>{{ moneyreceipt?.modeOfPayment }}</td>
@@ -85,7 +98,7 @@
             </table>
 
             <!-- Financial Breakdown -->
-            <table class="table table-bordered">
+            <table class="table">
                 <tbody>
                     <tr>
                         <td><strong>Net Premium</strong></td>

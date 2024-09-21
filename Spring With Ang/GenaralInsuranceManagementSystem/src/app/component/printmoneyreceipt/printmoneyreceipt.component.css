@@ -1,0 +1,28 @@
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid #ddd; /* Light border for definition */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.contact-info strong {
+    font-weight: bold;
+    color: #333; /* Darker color for contrast */
+}
+
+.address, .phone, .email-web {
+    margin: 0.5rem 0; /* Spacing between lines */
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+    .contact-info {
+        padding: 0.5rem;
+    }
+}
