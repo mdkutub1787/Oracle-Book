@@ -1,24 +1,75 @@
 <div class="container d-flex justify-content-center">
- 
+
   <div class="col-md-12 mb-6 border border-2 border rounded">
     <h3 class="text-center mb-4">
       <i class="fas fa-plus"></i>
       Receipt Create Form
-  </h3>
+    </h3>
     <form [formGroup]="moneyreceiptForm" (ngSubmit)="createMoneyReceipt()">
       <div class="form-container">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="issuingOffice" class="form-label">
+              <i class="fas fa-university"></i>
+              Office
+            </label>
+            <input type="text" class="form-control rounded-pill shadow-sm" id="issuingOffice"
+              formControlName="issuingOffice" placeholder="Enter issuingOffice">
+          </div>
 
-        <div class="col-md-6 mb-3">
-          <label for="issuingOffice" class="form-label">
-            <i class="fas fa-university"></i>
-          Office 
-          </label>
-          <input type="text" class="form-control rounded-pill shadow-sm" id="issuingOffice" formControlName="issuingOffice"
-            placeholder="Enter issuingOffice">
+          <div class="col-md-6 mb-3">
+            <label for="moneyReceiptNo" class="form-label">
+              <i class="fas fa-university"></i>
+              Money Receipt No
+            </label>
+            <input type="number" class="form-control rounded-pill shadow-sm" id="moneyReceiptNo"
+              formControlName="moneyReceiptNo" placeholder="Enter moneyReceiptNo">
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="classOfInsurance" class="form-label">
+              <i class="fas fa-university"></i>
+              Class Of Insurance
+            </label>
+            <input type="text" class="form-control rounded-pill shadow-sm" id="classOfInsurance"
+              formControlName="classOfInsurance" placeholder="Enter classOfInsurance">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="date" class="form-label">
+              <i class="fas fa-university"></i>
+              Date
+            </label>
+            <input type="date" class="form-control rounded-pill shadow-sm" id="date"
+              formControlName="date" placeholder="Enter date">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="modeOfPayment" class="form-label">
+              <i class="fas fa-university"></i>
+              Mode Of Payment
+            </label>
+            <input type="text" class="form-control rounded-pill shadow-sm" id="modeOfPayment"
+              formControlName="modeOfPayment" placeholder="Enter modeOfPayment">
+          </div>
+
+          <div class="col-md-6 mb-3">
+            <label for="issuedAgainst" class="form-label">
+              <i class="fas fa-university"></i>
+              Issued Against
+            </label>
+            <input type="text" class="form-control rounded-pill shadow-sm" id="issuedAgainst"
+              formControlName="issuedAgainst" placeholder="Enter issuedAgainst">
+          </div>
+        </div>
+
+
         <!-- Bill Section -->
         <div formGroupName="bill">
-         
+
 
           <div class="row">
             <div class="col-md-6 mb-3">
@@ -38,13 +89,6 @@
           </div>
 
           <div class="row">
-            <!-- <div class="col-md-6 mb-3">
-            <label for="tax" class="form-label">
-              <i class="fas fa-percentage"></i>
-              Tax
-            </label>
-            <input type="number" class="form-control rounded-pill shadow-sm" id="tax" formControlName="tax">
-          </div> -->
             <div class="col-md-6 mb-3">
               <label for="netPremium" class="form-label">
                 <i class="fas fa-coins"></i>
@@ -64,11 +108,8 @@
             </div>
           </div>
 
-
-
           <!-- Policy Section -->
           <div formGroupName="policies">
-            <h4 class="text-center">Policy Details</h4>
 
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -224,7 +265,8 @@
         </div>
 
         <div class="text-center mb-3">
-          <button type="submit" class="btn btn-outline-success rounded-pill shadow-sm" [disabled]="!moneyreceiptForm.valid">
+          <button type="submit" class="btn btn-outline-success rounded-pill shadow-sm"
+            [disabled]="!moneyreceiptForm.valid">
             <i class="fas fa-paper-plane"></i> Submit
           </button>
 
