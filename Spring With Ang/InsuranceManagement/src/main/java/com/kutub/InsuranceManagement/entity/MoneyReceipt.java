@@ -1,30 +1,41 @@
 package com.kutub.InsuranceManagement.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "receipts")
-public class Receipt {
+@Table(name = "moneyreceipts")
+public class MoneyReceipt {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "billId")
-    private Bill bill;
+    private String issuingOffice;
 
-//    @JsonIgnore
-//    @OneToMany(mappedBy = "moneyreceipt", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private List<MoneyReceipt> moneyReceipts;
+    private int moneyReceiptNo;
+
+    private String classOfInsurance;
+
+    private String date;
+
+    private String receivedFrom;
+
+
+    private String modeOfPayment;
+  
+    private String issuedAgainst;
+
+
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "receiptId")
+    private Receipt receipt;
+
 
 }

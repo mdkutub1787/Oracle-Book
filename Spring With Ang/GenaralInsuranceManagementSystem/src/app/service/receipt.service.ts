@@ -28,5 +28,11 @@ export class ReceiptService {
   deleteReceipt(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}delete/${id}`);
   }
+
+
+  getAllReceiptForMoneyReceipt(): Observable<ReceiptModel[]> {
+    return this.http.get<ReceiptModel[]>(this.baseUrl)
+     
+  }
   
 }

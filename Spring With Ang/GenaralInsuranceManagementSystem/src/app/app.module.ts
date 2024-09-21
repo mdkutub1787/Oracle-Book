@@ -27,6 +27,7 @@ import { CreatereceiptComponent } from './component/createreceipt/createreceipt.
 import { ReceiptComponent } from './component/receipt/receipt.component';
 import { PrintreceiptComponent } from './component/printreceipt/printreceipt.component';
 import { PolicydetailsComponent } from './component/policydetails/policydetails.component';
+import { MoneyreceiptComponent } from './component/moneyreceipt/moneyreceipt.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { PolicydetailsComponent } from './component/policydetails/policydetails.
     CreatereceiptComponent,
     ReceiptComponent,
     PrintreceiptComponent,
-    PolicydetailsComponent
+    PolicydetailsComponent,
+    MoneyreceiptComponent
   ],
   imports: [
     BrowserModule,

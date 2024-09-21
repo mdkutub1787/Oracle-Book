@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Bills</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Custom CSS -->
+</head>
+
+<body>
+    <div class="container">
+
+
+
+
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th><i class="fas fa-user"></i> Offece </th>
+                    <th><i class="fas fa-user"></i> Policy Holder</th>
+                    <th><i class="fas fa-building"></i> Bank Name</th>
+                    <th><i class="fas fa-map-marker-alt"></i> Address</th>
+                    <th><i class="fas fa-dollar-sign"></i> Sum Insured</th>
+                    <th><i class="fas fa-coins"></i> Net Premium</th>
+                    <th><i class="fas fa-wallet"></i> Gross Premium</th>
+                    <th class="text-center"><i class="fas fa-cogs"></i> Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let mr of moneyreceipts">
+                    <td> {{ mr.issuingOffice }}</td>
+                    <td> {{ mr.receipt?.bill?.policy?.policyholder }}</td>
+                    <td> {{ mr.receipt?.bill?.policy?.bankName }}</td>
+                    <td> {{ mr.receipt?.bill?.policy?.address }}</td>
+                    <td>{{ mr.receipt?.bill?.policy?.sumInsured | currency:'TK':'symbol'}}</td>
+                    <td>{{ mr.receipt?.bill?.netPremium | currency:'TK':'symbol'}}</td>
+                    <td>{{ mr.receipt?.bill?.grossPremium | currency:'TK':'symbol'}}</td>
+
+             
+
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
