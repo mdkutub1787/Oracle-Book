@@ -1,53 +1,19 @@
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Styled Table</title>
+    <title>Policy Table</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Font Awesome CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Custom CSS -->
 </head>
 
 <body>
 
-    <div class="container mt-5">
-        <!-- Search and Filter Controls -->
-        <div class="mb-3">
-            <form class="d-flex flex-column flex-sm-row">
-                <!-- Search Input -->
-                <div class="me-2 flex-grow-1">
-                    <label for="searchInput" class="visually-hidden">Search by policyholder or bank name</label>
-                    <input 
-                        id="searchInput"
-                        type="text" 
-                        class="form-control" 
-                        placeholder="Search by policyholder or bank name" 
-                        [(ngModel)]="searchQuery"
-                        [ngModelOptions]="{ standalone: true }" 
-                        (ngModelChange)="searchPolicyHolderAndBankName()" 
-                    />
-                </div>
-            </form>
-        </div>
-    
-        <!-- Displaying filtered policies -->
-        <div *ngIf="filtered.length === 0" class="alert alert-info">No policies found matching your search.</div>
-    
-        <ul class="list-group">
-            <li *ngFor="let policy of filtered" class="list-group-item">
-                {{ policy.policyholder }} - {{ policy.bankName }}
-            </li>
-        </ul>
-    </div>
+
     <div class="container mt-4">
         <div class="row mb-3">
             <div class="col text-left">
@@ -61,6 +27,12 @@
                 </button>
             </div>
         </div>
+
+        <div>
+            <input class="search-pill" [(ngModel)]="searchTerm" (input)="filterPolicy()" placeholder="Search by policyholder or bank name" />
+        </div>
+        
+
         <!-- Table Wrapper -->
         <div class="table-wrapper">
             <table class="table table-striped">
@@ -76,7 +48,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let policy of policy | async">
+                    <tr *ngFor="let policy of filteredPolicy">
                         <td>{{ policy.id }}</td>
                         <td>{{ policy.bankName }}</td>
                         <td>{{ policy.policyholder }}</td>
@@ -86,14 +58,12 @@
                             <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editPolicy(policy.id)">
                                 <i class="fas fa-edit"></i>
                             </button>
-                            <button class="btn btn-outline-danger" aria-label="Delete"
-                                (click)="deletePolicy(policy.id)">
+                            <button class="btn btn-outline-danger" aria-label="Delete" (click)="deletePolicy(policy.id)">
                                 <i class="fas fa-trash-alt"></i>
                             </button>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-outline-primary" aria-label="View "
-                                (click)="detailsPolicy(policy.id)">
+                            <button class="btn btn-outline-primary" aria-label="View" (click)="detailsPolicy(policy.id)">
                                 <i class="fas fa-eye"></i>
                             </button>
                         </td>
