@@ -17,7 +17,6 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { LogoutComponent } from './logout/logout.component';
-import { NavbarComponent } from './guard/navbar/navbar.component';
 import { CreatepolicyComponent } from './component/createpolicy/createpolicy.component';
 import { UpdatepolicyComponent } from './component/updatepolicy/updatepolicy.component';
 import { BillComponent } from './component/bill/bill.component';
@@ -31,7 +30,7 @@ import { MoneyreceiptComponent } from './component/moneyreceipt/moneyreceipt.com
 import { CreatemoneyreceiptComponent } from './component/createmoneyreceipt/createmoneyreceipt.component';
 import { PrintmoneyreceiptComponent } from './component/printmoneyreceipt/printmoneyreceipt.component';
 import { TokenInterceptor } from './guard/TokenInterceptor';
-
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -43,7 +42,6 @@ import { TokenInterceptor } from './guard/TokenInterceptor';
     LoginComponent,
     UserprofileComponent,
     LogoutComponent,
-    NavbarComponent,
     CreatepolicyComponent,
     UpdatepolicyComponent,
     BillComponent,
@@ -56,6 +54,8 @@ import { TokenInterceptor } from './guard/TokenInterceptor';
     MoneyreceiptComponent,
     CreatemoneyreceiptComponent,
     PrintmoneyreceiptComponent,
+    NavbarComponent,
+    
  
   ],
   imports: [

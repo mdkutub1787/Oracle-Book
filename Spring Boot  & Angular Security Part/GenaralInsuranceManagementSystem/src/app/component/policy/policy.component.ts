@@ -3,8 +3,7 @@ import { PolicyService } from '../../service/policy.service';
 import { Router } from '@angular/router';
 import { PolicyModel } from '../../model/policy.model';
 import { Observable } from 'rxjs';
-
-
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-policy',
@@ -14,15 +13,13 @@ import { Observable } from 'rxjs';
 export class PolicyComponent implements OnInit {
 
   policy!: Observable<PolicyModel[]>;
-
+  filtered: PolicyModel[] = [];
+  searchQuery: string = '';
 
   constructor(
     private policyService: PolicyService,
     private router: Router
-    
   ) { }
-
-
 
   ngOnInit() {
     this.reloadPolicy();
@@ -37,18 +34,15 @@ export class PolicyComponent implements OnInit {
       .subscribe({
         next: res => {
           console.log(res);
-          this.policy = this.policyService.viewAllPolicy();
-          this.router.navigate(['viewpolicy'])
+          this.reloadPolicy();  // Reload policies after deletion
+          this.router.navigate(['viewpolicy']);
         },
         error: error => {
           console.log(error);
-
         }
-
       });
   }
   
-
   editPolicy(id: number) {
     this.router.navigate(['updatepolicy', id]);
   }
@@ -57,7 +51,6 @@ export class PolicyComponent implements OnInit {
     this.router.navigate(['details', id]);
   }
   
-
   navigateToAddPolicy() {
     this.router.navigateByUrl('/createpolicy');
   }
@@ -66,4 +59,19 @@ export class PolicyComponent implements OnInit {
     this.router.navigateByUrl('/createbill');
   }
 
+  searchPolicyHolderAndBankName(): void {
+    this.policy.pipe(
+      map((policies: PolicyModel[]) => 
+        policies.filter(policy => 
+          policy.policyholder?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          policy.bankName?.toLowerCase().includes(this.searchQuery.toLowerCase())
+        )
+      )
+    ).subscribe(filteredPolicies => {
+      this.filtered = filteredPolicies; 
+    });
+  }
+  
+
+  
 }

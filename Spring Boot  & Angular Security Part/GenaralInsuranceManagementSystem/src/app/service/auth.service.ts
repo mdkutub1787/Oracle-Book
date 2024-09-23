@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
-import { AuthResponse } from '../interface/auth-response';
+import { AuthResponse } from '../guard/auth-response';
 import { Router } from '@angular/router';
 
 @Injectable({

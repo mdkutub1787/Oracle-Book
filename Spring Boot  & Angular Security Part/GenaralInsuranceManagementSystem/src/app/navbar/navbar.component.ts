@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserModel } from '../../model/user.model';
-import { AuthService } from '../../service/auth.service';
+import { UserModel } from '../model/user.model';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -23,5 +23,4 @@ export class NavbarComponent implements OnInit{
     //   this.userRole = user?.role || null;
     // });
   }
-
 }

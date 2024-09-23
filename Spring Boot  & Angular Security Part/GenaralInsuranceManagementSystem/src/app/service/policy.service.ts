@@ -42,5 +42,14 @@ export class PolicyService {
     return this.http.get<PolicyModel[]>(this.baseUrl)
     
   }
+
+  getPolicyByPolicyHolder(policyholder: string): Observable<PolicyModel[]> {
+    return this.http.get<PolicyModel[]>(`${this.baseUrl}/searchpolicyholder?policyholder/${policyholder}`);
+  }
+
+  getPolicyByBankName(bankName: string): Observable<PolicyModel[]> {
+    return this.http.get<PolicyModel[]>(`${this.baseUrl}/searchbankname?bankname/${bankName}`);
+  }
+  
  
 }

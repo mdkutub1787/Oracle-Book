@@ -58,6 +58,8 @@ export class ReceiptComponent {
     this.router.navigateByUrl('/createreciept');
   }
 
-  
+  navigateToAddMoneyReceipt() {
+    this.router.navigateByUrl('/createmoneyreciept');
+  }
 
 }

@@ -34,5 +34,8 @@ export class PolicydetailsComponent implements OnInit {
     });
   }
 
+  goBack(): void {
+    this.router.navigate(['viewpolicy']);
+  }
 
 }

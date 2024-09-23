@@ -45,8 +45,16 @@
   margin-bottom: 10px;
 }
 
-.reciept-card {
+.receipt-card {
   background-color: orange;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.moneyreceipt-card {
+  background-color: rgb(255, 0, 221);
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -78,10 +86,14 @@
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
+
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }
 
 /* Footer image sizing */
-
 .withImage {
   margin-right: 10px; /* Adjust the spacing between images */
 }
@@ -90,6 +102,8 @@
   max-width: 40px; /* Adjust the image size if needed */
   height: auto;
 }
+
+/* Insurance cards styling */
 .fire-insurance-card, .merin-insurance-card, .motor-insurance-card {
   width: 300px; /* Fixed width for all cards */
   height: 400px; /* Fixed height for all cards */
@@ -117,9 +131,8 @@
   background-color: #d5f5e3;
 }
 
+/* Adjust action button */
 .action-button {
   width: 80%; /* Button width relative to the card */
   margin: 0 auto; /* Centers the button inside the card */
 }
-
-

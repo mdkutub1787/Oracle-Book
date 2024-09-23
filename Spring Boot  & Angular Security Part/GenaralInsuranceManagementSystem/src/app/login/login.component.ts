@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']); 
       },
       error: (err) => {
-        this.errorMessage = 'Login failed. Please check your credentials.';
+        this.errorMessage = 'Login failed. Please check your email ';
         this.successMessage = null;
       }
     });
