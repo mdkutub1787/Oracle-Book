@@ -10,7 +10,7 @@ export class PolicyService {
 
   baseUrl: string = "http://localhost:8080/api/policy/";
 
-  private newpolicy: PolicyModel[] = []; // Array to store policies
+  private newpolicy: PolicyModel[] = []; 
 
   constructor(private http: HttpClient) { }
 
@@ -44,25 +44,15 @@ export class PolicyService {
     return this.http.get<PolicyModel[]>(this.baseUrl);
   }
 
-  // Filter policies by policyholder or bankName on the client-side (case-insensitive, partial match)
-  filterPolicyHolder(searchTerm: string): PolicyModel[] {
-    const lowerCaseSearchTerm = searchTerm.toLowerCase();  // Convert search term to lowercase
+  // Filter policies by policyholder or bankName on the client-side 
+ searchByPolicyHolderAndBankName(searchTerm: string): PolicyModel[] {
+    const lowerCaseSearchTerm = searchTerm.toLowerCase(); 
 
     return this.newpolicy.filter(item =>
-      (item.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||   // Match against policyholder
-      item.bankName?.toLowerCase().includes(lowerCaseSearchTerm))          // Match against bankName
+      (item.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||   
+      item.bankName?.toLowerCase().includes(lowerCaseSearchTerm))     
     );
   }
 
-  // Sort policies by 'bankName' or 'policyholder' on the client-side
-  sortPolicy(by: 'bankName' | 'policyholder'): PolicyModel[] {
-    return this.newpolicy.sort((a, b) => {
-      const valueA = a[by]?.toLowerCase() ?? '';  
-      const valueB = b[by]?.toLowerCase() ?? '';
-  
-      if (valueA < valueB) return -1;
-      if (valueA > valueB) return 1;
-      return 0;
-    });
-  }
+
 }
