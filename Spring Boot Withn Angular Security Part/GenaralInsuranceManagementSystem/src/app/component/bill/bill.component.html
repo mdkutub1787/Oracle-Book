@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Bills</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<div class="container">
+
+  <div class="row mt-4">
+    <div class="col text-start">
+      <button type="button" class="btn btn-primary" (click)="navigateToAddReceipt()">
+        <i class="fas fa-plus"></i> Create Receipt
+      </button>
+    </div>
+
+    <div class="col text-end">
+      <button type="button" class="btn btn-primary" (click)="navigateToAddBill()">
+        <i class="fas fa-plus"></i> Create Bill
+      </button>
+    </div>
+  </div>
+  
+  <div class="mt-3">
+    <input 
+      class="form-control search-pill" 
+      [(ngModel)]="searchTerm" 
+      (input)="searchBill()"
+      placeholder="Search by policyholder, bank name, or bill No" 
+    />
+  </div>
+
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th><i class="fas fa-file-alt"></i>Fire Bill No</th>
+        <th><i class="fas fa-user"></i> Policy Holder</th>
+        <th><i class="fas fa-money-bill-wave"></i> Sum Insured</th>
+        <th><i class="fas fa-fire"></i> Fire</th>
+        <th><i class="fas fa-hand-holding-usd"></i> R&SD</th>
+        <th><i class="fas fa-coins"></i> Net Premium</th>
+        <th><i class="fas fa-calendar-day"></i> TAX</th>
+        <th><i class="fas fa-wallet"></i> Gross Premium</th>
+        <th class="text-center"><i class="fas fa-tools"></i> Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bill of filteredBills">
+        <td>{{ bill.policy.id }}</td>
+        <td>{{ bill.policy.policyholder }}</td> 
+        <td>{{ bill.policy.sumInsured | currency:'TK':'symbol' }}</td>
+        <td>{{ getFireAmount(bill) | currency:'TK':'symbol' }}</td>
+        <td>{{ getRsdAmount(bill) | currency:'TK':'symbol' }}</td>
+        <td>{{ getNetPremium(bill) | currency:'TK':'symbol' }}</td>
+        <td>{{ getTaxAmount(bill) | currency:'TK':'symbol' }}</td>
+        <td>{{ getGrossPremium(bill) | currency:'TK':'symbol' }}</td>
+        <td class="text-center">
+          <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editBill(bill)">
+            <i class="fas fa-edit"></i>
+          </button>
+          <button class="btn btn-outline-danger" aria-label="Delete" (click)="deleteBill(bill.id)">
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</div>
+</body>
+</html>

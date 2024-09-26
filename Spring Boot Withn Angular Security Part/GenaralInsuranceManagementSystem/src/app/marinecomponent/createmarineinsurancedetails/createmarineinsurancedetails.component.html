@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marine Insurance Details Add/Update Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="col-md-10 mb-5">
+            <h3 class="text-center mb-4">
+                <i class="fas fa-plus"></i> Marine Insurance Details Form
+            </h3>
+            <form (ngSubmit)="createOrUpdateMarineList()" #marineinsurancedetailsForm="ngForm"
+                style="border: 2px solid #ddd; padding: 20px; border-radius: 10px;">
+
+                <div class="row">
+                    <!-- First Column -->
+                    <div class="col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="date" class="form-label">
+                                <i class="fas fa-calendar-alt"></i> Date
+                            </label>
+                            <input type="date" class="form-control rounded-pill" id="date" required
+                                [(ngModel)]="marineinsurancedetails.date" name="date" placeholder="Select a date">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="bankName" class="form-label">
+                                <i class="fas fa-university"></i> Bank & Branch Name
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="bankName" required
+                                [(ngModel)]="marineinsurancedetails.bankName" name="bankName"
+                                placeholder="Enter bank & branch name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="policyholder" class="form-label">
+                                <i class="fas fa-user"></i> Policy Holder
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="policyholder" required
+                                [(ngModel)]="marineinsurancedetails.policyholder" name="policyholder"
+                                placeholder="Enter policyholder name">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">
+                                <i class="fas fa-home"></i> Address
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="address" required
+                                [(ngModel)]="marineinsurancedetails.address" name="address" placeholder="Enter address">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="stockItem" class="form-label">
+                                <i class="fas fa-box"></i> Stock Item
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="stockItem" required
+                                [(ngModel)]="marineinsurancedetails.stockItem" name="stockItem"
+                                placeholder="Enter stock item">
+                        </div>
+                     </div>
+
+                    <!-- Second Column -->
+                    <div class="col-md-6 col-sm-12">
+                        <div class="mb-3">
+                            <label for="sumInsured" class="form-label">
+                                <i class="fas fa-dollar-sign"></i> Sum Insured (USD)
+                            </label>
+                            <input type="number" class="form-control rounded-pill" id="sumInsured" required
+                                [(ngModel)]="marineinsurancedetails.sumInsured" name="sumInsured"
+                                placeholder="Enter sum insured in USD">
+                        </div>
+
+                  
+
+                        <div class="mb-3">
+                            <label for="voyageFrom" class="form-label">
+                                <i class="fas fa-map-marker-alt"></i> Voyage From
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="voyageFrom" required
+                                [(ngModel)]="marineinsurancedetails.voyageFrom" name="voyageFrom"
+                                placeholder="Enter voyage from">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="voyageTo" class="form-label">
+                                <i class="fas fa-map-marker"></i> Voyage To
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="voyageTo" required
+                                [(ngModel)]="marineinsurancedetails.voyageTo" name="voyageTo"
+                                placeholder="Enter voyage to">
+                        </div>
+                        <div class="mb-3">
+                            <label for="via" class="form-label">
+                                <i class="fas fa-map-marker"></i> Via
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="via" required
+                                [(ngModel)]="marineinsurancedetails.via" name="via" placeholder="Enter via location">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="riskCovered" class="form-label">
+                                <i class="fas fa-check-square"></i> Risk Covered
+                            </label>
+                            <input type="text" class="form-control rounded-pill" id="coverage" required
+                                [(ngModel)]="marineinsurancedetails.coverage" name="coverage"
+                                placeholder="Enter coverage" readonly>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-outline-success btn-md rounded-pill"
+                        [disabled]="marineinsurancedetailsForm.invalid">
+                        <i class="fas fa-paper-plane"></i> {{ isEditMode ? 'Update' : 'Submit' }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
