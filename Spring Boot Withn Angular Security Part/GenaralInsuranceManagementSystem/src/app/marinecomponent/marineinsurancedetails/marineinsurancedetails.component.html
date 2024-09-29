@@ -35,7 +35,13 @@
                             <strong>Stock Item:</strong> <span>{{ marineDeatails.stockItem }}</span>
                         </div>
                         <div class="data-row">
-                            <strong>Sum Insured:</strong> <span>TK {{ marineDeatails.sumInsured }}</span>
+                            <strong>Sum Insured (USD):</strong> <span>{{ marineDeatails.sumInsuredUsd | currency:'USD ':'symbol'}}</span>
+                        </div>
+                        <div class="data-row">
+                            <strong>USD Rare :</strong> <span>{{ marineDeatails.usdRate | currency:'TK ':'symbol'}}</span>
+                        </div>
+                        <div class="data-row">
+                            <strong>Sum Insured (BDT):</strong> <span>{{ marineDeatails.sumInsured | currency:'TK ':'symbol'}}</span>
                         </div>
                     
                      

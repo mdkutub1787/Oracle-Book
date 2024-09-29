@@ -1,8 +1,8 @@
 
 <div class="row mb-3">
     <div class="col text-left">
-        <button type="button" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Create Bill
+        <button type="button" class="btn btn-primary" (click)="navigateToAddMarineBill()">
+            <i class="fas fa-plus"></i> Create Marine Bill
         </button>
     </div>
     <div class="col text-right">
@@ -19,7 +19,9 @@
                 <th><i class="fas fa-university"></i> Bank Name</th>
                 <th><i class="fas fa-user"></i> Policy Holder</th>
                 <th><i class="fas fa-map-marker-alt"></i> Address</th>
-                <th><i class="fas fa-dollar-sign"></i> Sum Insured</th>
+                <th><i class="fas fa-dollar-sign"></i> Sum Insured (USD)</th>
+                <th><i class="fas fa-dollar-sign"></i> USD Rate</th>
+                <th><i class="fas fa-dollar-sign"></i> Sum Insured (BDT) </th>
                 <th><i class="fas fa-cogs"></i> Actions</th>
                 <th><i class="fas fa-eye"></i> View Details</th>
             </tr>
@@ -30,7 +32,9 @@
                 <td>{{ marine.bankName }}</td>
                 <td>{{ marine.policyholder }}</td>
                 <td>{{ marine.address }}</td>
-                <td>{{ marine.sumInsured | currency:'TK':'symbol' }}</td>
+                <td>{{ marine.sumInsuredUsd| currency:'$ ':'symbol' }}</td>
+                <td>{{ marine.usdRate | currency:'TK':'symbol' }}</td>
+                <td>{{ marine.sumInsured | currency:'TK ':'symbol' }}</td>
                 <td class="text-center">
                     <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editMarineInsurance(marine.id)">
                         <i class="fas fa-edit"></i>

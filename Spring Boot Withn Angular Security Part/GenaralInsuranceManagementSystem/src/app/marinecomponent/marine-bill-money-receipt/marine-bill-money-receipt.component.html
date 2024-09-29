@@ -1,0 +1,59 @@
+
+<div class="row mb-3">
+    <div class="col text-left">
+        <button type="button" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Create Bill
+        </button>
+    </div>
+    <div class="col text-right">
+        <button type="button" class="btn btn-primary" (click)="navigateToAddMarineMoneyReceipt()">
+            <i class="fas fa-plus"></i> Create Marine Money Meceipt 
+        </button>
+    </div>
+</div>
+<div class="table-wrapper">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th><i class="fas fa-file-alt"></i>Marine Bill No</th>
+                <th><i class="fas fa-user"></i>Issuing Offece </th>
+                <th><i class="fas fa-university"></i> Bank & Branch Name</th>
+                <th><i class="fas fa-user"></i> Policy Holder</th>
+                <th><i class="fas fa-map-marker-alt"></i> Address</th>
+                <th><i class="fas fa-coins"></i> Net Premium</th>
+                <th><i class="fas fa-wallet"></i> Gross Premium</th>
+                <th class="text-center"><i class="fas fa-cogs"></i> Action</th>
+                <th><i class="fas fa-eye"></i> View Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let mr of marinebill">
+                <td>{{ mr.marinebill?.marineDetails?.id || 'N/A' }}</td> <!-- Fallback to 'N/A' if id is undefined -->
+                <td>{{ mr.issuingOffice || 'N/A' }}</td>
+                <td>{{ mr.marinebill?.marineDetails?.bankName || 'N/A' }}</td>
+                <td>{{ mr.marinebill?.marineDetails?.policyholder || 'N/A' }}</td>
+                <td>{{ mr.marinebill?.marineDetails?.address || 'N/A' }}</td>
+                <td>{{ mr.marinebill?.netPremium || 'N/A' | currency:'TK ':'symbol':'1.2-2' }}</td>
+                <td>{{ mr.marinebill?.grossPremium || 'N/A' | currency:'TK ':'symbol':'1.2-2' }}</td>
+                
+                <td class="text-center">
+                  <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editMarineMoneyReceipt(mr.id)">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                  <button class="btn btn-outline-danger" aria-label="Delete" (click)="deleteMarineManyReceipt(mr.id)">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                </td>
+                
+                <td class="text-center">
+                  <button class="btn btn-outline-primary" aria-label="View" (click)="printMarineMoneyReceipt(mr.id)">
+                    <i class="fas fa-eye"></i>Print View
+                  </button>
+                </td>
+                
+              </tr>
+              
+            
+        </tbody>
+    </table>
+</div>

@@ -2,10 +2,8 @@ package com.kutub.InsuranceManagement.service;
 
 import com.kutub.InsuranceManagement.entity.Bill;
 import com.kutub.InsuranceManagement.entity.MoneyReceipt;
-import com.kutub.InsuranceManagement.entity.Receipt;
 import com.kutub.InsuranceManagement.repository.BillRepository;
 import com.kutub.InsuranceManagement.repository.MoneyReceiptRepository;
-import com.kutub.InsuranceManagement.repository.ReceiptRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

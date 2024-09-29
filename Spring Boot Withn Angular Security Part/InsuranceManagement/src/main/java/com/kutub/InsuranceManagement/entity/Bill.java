@@ -39,9 +39,7 @@ public class Bill {
     @JoinColumn(name = "policyId", nullable = false)  // Foreign key for Policy entity
     private Policy policy;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "bill", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Receipt> receipts;
+
 
 
 }

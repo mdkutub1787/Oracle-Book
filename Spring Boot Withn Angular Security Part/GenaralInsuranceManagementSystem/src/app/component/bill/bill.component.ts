@@ -62,6 +62,10 @@ export class BillComponent implements OnInit {
   editBill(bill: BillModel): void {
     this.router.navigate(['/updatebill', bill.id]);
   }
+
+  detailsBill(id: number) {
+    this.router.navigate(['billdetails', id]);
+  }
   
   navigateToAddBill(): void {
     this.router.navigateByUrl('/createbill');

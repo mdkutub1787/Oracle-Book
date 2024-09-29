@@ -1,4 +1,4 @@
-    /* Remove borders from all tables */
+    /* Remove borders from all tables
     table {
         border: none !important;
     }
@@ -14,7 +14,7 @@
             display: none;
         }
     }
-   
+    */
     .contact-info {
         background-color: #f8f9fa;
         padding: 20px;

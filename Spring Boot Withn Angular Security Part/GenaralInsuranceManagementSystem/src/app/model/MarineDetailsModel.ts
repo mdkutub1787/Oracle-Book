@@ -7,6 +7,8 @@ export class MarineDetailsModel {
     policyholder!: string;
     address!: string;
     stockItem!: string;
+    sumInsuredUsd!: number;
+    usdRate!: number;
     sumInsured!: number;
     voyageFrom!: string;
     voyageTo!: string;

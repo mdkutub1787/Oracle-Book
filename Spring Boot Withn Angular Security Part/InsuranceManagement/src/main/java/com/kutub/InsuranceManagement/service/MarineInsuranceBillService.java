@@ -2,6 +2,7 @@ package com.kutub.InsuranceManagement.service;
 
 import com.kutub.InsuranceManagement.entity.MarineInsuranceBill;
 import com.kutub.InsuranceManagement.repository.MarineInsuranceBillRepo;
+import com.kutub.InsuranceManagement.repository.MarineInsuranceDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,9 @@ public class MarineInsuranceBillService {
 
     @Autowired
     private MarineInsuranceBillRepo marineInsuranceBillRepo;
+
+    @Autowired
+    private MarineInsuranceDetailsRepo marineInsuranceDetailsRepo ;
 
     // Get all Marine Insurance Bills
     public List<MarineInsuranceBill> getAllMarineInsuranceBills() {

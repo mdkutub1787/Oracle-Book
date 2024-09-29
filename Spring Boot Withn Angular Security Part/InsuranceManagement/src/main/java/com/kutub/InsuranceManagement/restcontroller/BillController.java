@@ -3,7 +3,6 @@ package com.kutub.InsuranceManagement.restcontroller;
 import com.kutub.InsuranceManagement.entity.Bill;
 import com.kutub.InsuranceManagement.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
