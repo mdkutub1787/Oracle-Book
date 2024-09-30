@@ -27,26 +27,16 @@ export class MarineBillMoneyreceiptService {
     return this.http.post(this.baseUrl + "save", marinebill);
   }
 
-<<<<<<< Updated upstream
-  // Update an existing MarineMoneyReceipt by ID
-  updateMarineMoneyReceipt(id: number, marinebill: MarineMoneyReceiptModel): Observable<any> {
-    return this.http.put(`${this.baseUrl}update/${id}`, marinebill);
-  }
-
-=======
 
   // Method to update Marine Money Receipt
   updateMarineMoneyReceipt(id: number, marineMoneyReceipt: MarineMoneyReceiptModel): Observable<any> {
     return this.http.put(this.baseUrl + "update/" + id, marineMoneyReceipt);
   }
   
->>>>>>> Stashed changes
   // Delete a MarineMoneyReceipt by ID
   deleteMarineMoneyReceipt(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}delete/${id}`);
   }
-<<<<<<< Updated upstream
-=======
 
     // Filter receipts by policyholder, bankName, or id on the client side
     searchByPolicyHolderAndBankNameAndId(receipts: MarineMoneyReceiptModel[], searchTerm: string): MarineMoneyReceiptModel[] {
@@ -58,5 +48,4 @@ export class MarineBillMoneyreceiptService {
          item.marinebill?.marineDetails.id?.toString().includes(lowerCaseSearchTerm))  
       );
     }
->>>>>>> Stashed changes
 }

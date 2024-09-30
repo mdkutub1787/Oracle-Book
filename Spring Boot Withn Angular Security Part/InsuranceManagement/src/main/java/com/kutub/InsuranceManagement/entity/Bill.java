@@ -29,7 +29,7 @@ public class Bill {
     private double netPremium;
 
     @Column( name = "tax_rate_% ",nullable = false)
-    private double tax;
+    private double tax = 15;
 
     @Column(nullable = false)
     private double grossPremium;

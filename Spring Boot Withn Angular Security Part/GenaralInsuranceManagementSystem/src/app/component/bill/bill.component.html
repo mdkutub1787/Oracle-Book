@@ -16,8 +16,8 @@
 
     <div class="row mt-4">
       <div class="col text-start">
-        <button type="button" class="btn btn-primary" (click)="navigateToAddReceipt()">
-          <i class="fas fa-plus"></i> Create Receipt
+        <button type="button" class="btn btn-primary" (click)="navigateToAddMoneyReceipt()">
+          <i class="fas fa-plus"></i> Create Money Receipt
         </button>
       </div>
 
@@ -28,12 +28,18 @@
       </div>
     </div>
 
-    <div class="mt-3">
-      <input class="form-control search-pill" [(ngModel)]="searchTerm" (input)="searchBill()"
-        placeholder="Search by policyholder, bank name, or bill No" />
+    <div class="input-group w-50">
+      <div class="input-group-prepend">
+        <span class="input-group-text">
+          <i class="fas fa-search"></i>
+        </span>
+      </div>
+      <input type="text" class="form-control search-pill" [(ngModel)]="searchTerm" (input)="searchBill()"
+        placeholder="Search by policyholder, bank name, or bill no">
     </div>
 
-    <table class="table table-striped mt-3">
+
+    <table class="table table-striped mt-1">
       <thead>
         <tr>
           <th><i class="fas fa-file-alt"></i>Fire Bill No</th>
@@ -58,19 +64,19 @@
           <td>{{ getTaxAmount(bill) | currency:'TK':'symbol' }}</td>
           <td>{{ getGrossPremium(bill) | currency:'TK':'symbol' }}</td>
           <td class="text-center">
-            
+
             <button class="btn btn-outline-secondary" aria-label="Edit" (click)="editBill(bill)">
-              <i class="fas fa-edit"></i> 
+              <i class="fas fa-edit"></i>
             </button>
 
-            
+
             <button class="btn btn-outline-danger" aria-label="Delete" (click)="deleteBill(bill.id)">
-              <i class="fas fa-trash-alt"></i> 
+              <i class="fas fa-trash-alt"></i>
             </button>
 
-            
+
             <button class="btn btn-outline-primary" aria-label="Print View" (click)="detailsBill(bill.id)">
-              <i class="fas fa-print"></i> Print View 
+              <i class="fas fa-print"></i> Print View
             </button>
 
           </td>

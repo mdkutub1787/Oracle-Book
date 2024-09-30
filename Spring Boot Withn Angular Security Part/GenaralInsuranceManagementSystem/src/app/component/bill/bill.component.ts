@@ -71,8 +71,8 @@ export class BillComponent implements OnInit {
     this.router.navigateByUrl('/createbill');
   }
 
-  navigateToAddReceipt(): void {
-    this.router.navigateByUrl('/createreciept');
+  navigateToAddMoneyReceipt() {
+    this.router.navigateByUrl('/createmoneyreciept');
   }
 
   searchBill(): void {

@@ -41,8 +41,6 @@ export class MarinebillService {
     return this.http.get<MarineBillModel[]>(this.baseUrl)
      
   }
-<<<<<<< Updated upstream
-=======
 
   
   searchByPolicyHolderAndBankNameAndId(marinebill: MarineBillModel[], searchTerm: string): MarineBillModel[] {
@@ -55,5 +53,4 @@ export class MarinebillService {
     );
   }
   
->>>>>>> Stashed changes
 }

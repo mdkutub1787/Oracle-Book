@@ -6,8 +6,6 @@ import com.kutub.InsuranceManagement.repository.MarineInsuranceDetailsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
 @Service
@@ -17,7 +15,7 @@ public class MarineInsuranceBillService {
     private MarineInsuranceBillRepo marineInsuranceBillRepo;
 
     @Autowired
-    private MarineInsuranceDetailsRepo marineInsuranceDetailsRepo ;
+    private MarineInsuranceDetailsRepo marineInsuranceDetailsRepo;
 
     // Get all Marine Insurance Bills
     public List<MarineInsuranceBill> getAllMarineInsuranceBills() {
@@ -79,10 +77,8 @@ public class MarineInsuranceBillService {
         bill.setGrossPremium(roundToTwoDecimalPlaces(grossPremium));
     }
 
-    // Method to round to two decimal places using BigDecimal
+    // Method to round to two decimal places
     private double roundToTwoDecimalPlaces(double value) {
-        BigDecimal bd = new BigDecimal(Double.toString(value));
-        bd = bd.setScale(2, RoundingMode.HALF_UP);
-        return bd.doubleValue();
+        return Math.round(value * 100.0) / 100.0;
     }
 }

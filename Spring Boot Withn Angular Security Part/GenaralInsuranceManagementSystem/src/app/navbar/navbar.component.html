@@ -31,31 +31,27 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/home'"><i class="fas fa-home"></i> Home</a>
+          <a class="nav-link font-weight-bold" [routerLink]="'/home'"><i class="fas fa-home"></i> Home</a>
         </li>
 
         <!-- <ng-container *ngIf="userRole === 'Admin'"> -->
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewpolicy'"><i class="fas fa-file-alt"></i> Policy</a>
+            <a class="nav-link font-weight-bold" [routerLink]="'/viewpolicy'"><i class="fas fa-file-alt"></i>Fire Policy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewbill'"><i class="fas fa-receipt"></i> Bill</a>
+            <a class="nav-link font-weight-bold" [routerLink]="'/viewbill'"><i class="fas fa-receipt"></i>Fire Bill</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewmoneyreciept'"><i class="fas fa-money-bill"></i> Money Receipt</a>
+            <a class="nav-link font-weight-bold" [routerLink]="'/viewmoneyreciept'"><i class="fas fa-money-bill">
+            </i>Fire Money Receipt</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewmarinelist'"><i class="fas fa-money-bill"></i> Marine Insurance</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewmarinebill'"><i class="fas fa-tag"></i>Marine Bill</a>
-          </li>
+       
         <!-- </ng-container> -->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/reg'"><i class="fas fa-user-plus"></i> Signup</a>
+          <a class="nav-link font-weight-bold" [routerLink]="'/reg'"><i class="fas fa-user-plus"></i> Signup</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/login'"><i class="fas fa-sign-in-alt"></i> Login</a>
+          <a class="nav-link font-weight-bold" [routerLink]="'/login'"><i class="fas fa-sign-in-alt"></i> Login</a>
         </li>
         
 
@@ -68,10 +64,10 @@
         </li>
         <!-- User profile and logout links directly in the navbar -->
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/userprofile'"><i class="fas fa-user"></i> Profile</a>
+          <a class="nav-link font-weight-bold" [routerLink]="'/userprofile'"><i class="fas fa-user"></i> Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/logout'"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          <a class="nav-link font-weight-bold" [routerLink]="'/logout'"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </li>
       </ul>
     </div>
@@ -87,25 +83,21 @@
       </div>
       <ul class="nav flex-column">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'/home'"><i class="fas fa-home"></i> Home</a>
+          <a class="nav-link font-weight-bold" [routerLink]="'/home'"><i class="fas fa-home"></i> Home</a>
         </li>
 
         <!-- <ng-container *ngIf="userRole === 'Admin'"> -->
+       
+
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewpolicy'"><i class="fas fa-users"></i> Policy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewbill'"><i class="fas fa-tag"></i> Bill</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewmoneyreciept'"><i class="fas fa-money-bill"></i>Money Receipt</a>
+            <a class="nav-link font-weight-bold" [routerLink]="'/viewmarinelist'"><i class="fas fa-money-bill"></i> Marine Policy</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewmarinebill'"><i class="fas fa-tag"></i>Marine Bill</a>
+            <a class="nav-link font-weight-bold" [routerLink]="'/viewmarinebill'"><i class="fas fa-tag"></i>Marine Bill</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" [routerLink]="'/viewmarinemoneyreceipt'"><i class="fas fa-tag"></i>Marine Money Receipt</a>
+            <a class="nav-link font-weight-bold" [routerLink]="'/viewmarinemoneyreceipt'"><i class="fas fa-tag"></i>Marine Money Receipt</a>
           </li>
         <!-- </ng-container> -->
 

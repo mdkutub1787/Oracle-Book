@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/marine")
+@RequestMapping("api/marinepolicy")
 @CrossOrigin("*")
 public class MarineInsuranceDetailsController {
 

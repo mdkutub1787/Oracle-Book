@@ -90,62 +90,99 @@
 
   <!-- <ng-container *ngIf="userRole === 'Admin'"> -->
     <div class="container my-4">
-      <div class="row g-4">
-        <div class="col-md-3">
-          <div class="card policy-card border-light shadow-sm">
-            <div class="card-header text-center">
-              <h5 class="card-title">Policy</h5>
+      <div class="container my-4">
+        <div class="row g-4">
+          <!-- Fire Insurance Section -->
+          <div class="col-md-4">
+            <div class="card fire-policy-card border-light shadow-sm">
+              <div class="card-header text-center">
+                <h5 class="card-title">Fire Policy</h5>
+              </div>
+              <div class="card-body text-center">
+                <i class="card-icon fas fa-file-contract"></i> <!-- Policy icon -->
+              </div>
+              <div class="card-footer text-center">
+                <a href="/viewpolicy" class="btn action-button">View</a>
+              </div>
             </div>
-            <div class="card-body text-center">
-              <i class="card-icon fas fa-users"></i>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="card fire-bill-card border-light shadow-sm">
+              <div class="card-header text-center">
+                <h5 class="card-title">Fire Bill</h5>
+              </div>
+              <div class="card-body text-center">
+                <i class="card-icon fas fa-file-invoice-dollar"></i> <!-- Bill icon -->
+              </div>
+              <div class="card-footer text-center">
+                <a href="/viewbill" class="btn action-button">View</a>
+              </div>
             </div>
-            <div class="card-footer text-center">
-              <a href="/viewpolicy" class="btn action-button">View</a>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="card fire-moneyreceipt-card border-light shadow-sm">
+              <div class="card-header text-center">
+                <h5 class="card-title">Fire Money Receipt</h5>
+              </div>
+              <div class="card-body text-center">
+                <i class="card-icon fas fa-receipt"></i> <!-- Receipt icon -->
+              </div>
+              <div class="card-footer text-center">
+                <a href="/viewmoneyreceipt" class="btn action-button">View</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="card bill-card border-light shadow-sm">
-            <div class="card-header text-center">
-              <h5 class="card-title"> Bill</h5>
+    
+        <!-- Marine Insurance Section -->
+        <div class="row g-4 mt-5" btn-action>
+          <div class="col-md-4">
+            <div class="card marine-policy-card border-light shadow-sm">
+              <div class="card-header text-center">
+                <h5 class="card-title">Marine Policy</h5>
+              </div>
+              <div class="card-body text-center">
+                <i class="card-icon fas fa-anchor"></i> <!-- Marine policy icon -->
+              </div>
+              <div class="card-footer text-center">
+                <a href="/viewmarinelist" class="btn action-button">View</a>
+              </div>
             </div>
-            <div class="card-body text-center">
-              <i class="card-icon fas fa-receipt"></i>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="card marine-bill-card border-light shadow-sm">
+              <div class="card-header text-center">
+                <h5 class="card-title">Marine Bill</h5>
+              </div>
+              <div class="card-body text-center">
+                <i class="card-icon fas fa-file-invoice"></i> <!-- Bill icon -->
+              </div>
+              <div class="card-footer text-center">
+                <a href="/viewmarinebill" class="btn action-button">View</a>
+              </div>
             </div>
-            <div class="card-footer text-center">
-              <a href="/viewbill" class="btn action-button">View</a>
+          </div>
+    
+          <div class="col-md-4">
+            <div class="card marine-moneyreceipt-card border-light shadow-sm">
+              <div class="card-header text-center">
+                <h5 class="card-title">Marine Money Receipt</h5>
+              </div>
+              <div class="card-body text-center">
+                <i class="card-icon fas fa-receipt"></i> <!-- Receipt icon -->
+              </div>
+              <div class="card-footer text-center">
+                <a href="/viewmarinemoneyreceipt" class="btn action-button">View</a>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="card receipt-card border-light shadow-sm">
-            <div class="card-header text-center">
-              <h5 class="card-title">Receipt</h5>
-            </div>
-            <div class="card-body text-center">
-              <i class="card-icon fas fa-list-alt"></i>
-            </div>
-            <div class="card-footer text-center">
-              <a href="/" class="btn action-button">View</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card moneyreceipt-card border-light shadow-sm">
-            <div class="card-header text-center">
-              <h5 class="card-title">Money Receipt</h5>
-            </div>
-            <div class="card-body text-center">
-              <i class="card-icon fas fa-money-bill"></i>
-            </div>
-            <div class="card-footer text-center">
-              <a href="/viewmoneyreciept" class="btn action-button">View</a>
-            </div>
-          </div>
-        </div>
-        
       </div>
     </div>
+    
     
   <!-- </ng-container> -->
 

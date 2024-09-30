@@ -8,13 +8,15 @@ import { Observable } from 'rxjs';
 })
 export class MarinedetailsService {
 
-  baseUrl: string = "http://localhost:8080/api/marine/";
+  baseUrl: string = "http://localhost:8080/api/marinepolicy/";
 
-  private exchangeRateApiUrl = 'https://api.exchangerate-api.com/v4/latest/USD'; 
+  private exchangeRateApiUrl = 'https://api.exchangerate-api.com/v4/latest/USD';
+
+  private newpolicy: MarineDetailsModel[] = [];
 
   constructor(private http: HttpClient) { }
 
-  
+
   getMarinedetails(): Observable<any> {
     return this.http.get(this.baseUrl);
   }
@@ -48,4 +50,18 @@ export class MarinedetailsService {
     return this.http.get<MarineDetailsModel[]>(this.baseUrl);
   }
 
+  // Filter policies by policyholder, bankName, or ID  
+  searchByPolicyHolderAndBankNameAndId(searchTerm: string): MarineDetailsModel[] {
+    const lowerCaseSearchTerm = searchTerm.trim().toLowerCase();
+    if (!lowerCaseSearchTerm) {
+      return this.newpolicy;
+    }
+
+    return this.newpolicy.filter(item =>
+    (item.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||
+      item.bankName?.toLowerCase().includes(lowerCaseSearchTerm) ||
+      item.id?.toString().includes(lowerCaseSearchTerm))
+    );
+
+  }
 }

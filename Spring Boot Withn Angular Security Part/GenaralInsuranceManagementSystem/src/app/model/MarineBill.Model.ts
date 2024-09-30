@@ -10,10 +10,7 @@ export class MarineBillModel {
     "tax"!: number;
     "stampDuty"!: number;
     "grossPremium"!: number;
-<<<<<<< Updated upstream
-=======
     
->>>>>>> Stashed changes
     marineDetails!: MarineDetailsModel ;
 
    
