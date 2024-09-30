@@ -1,0 +1,101 @@
+<div class="container d-flex justify-content-center">
+    <div class="col-md-12 mb-6 border border-2 rounded">
+      <h3 class="text-center mb-4">
+        <i class="fas fa-plus"></i> Money Receipt Update Form
+      </h3>
+      <form [formGroup]="moneyReceiptForm" (ngSubmit)="onSubmit()">
+        <div class="form-container">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="issuingOffice" class="form-label">
+                <i class="fas fa-building"></i> Issuing Office
+              </label>
+              <input type="text" class="form-control rounded-pill shadow-sm" id="issuingOffice"
+                formControlName="issuingOffice" placeholder="Enter issuing office">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="id" class="form-label">
+                <i class="fas fa-receipt"></i> Money Receipt No
+              </label>
+              <input type="number" class="form-control rounded-pill shadow-sm" id="id"
+                formControlName="id" placeholder="Enter money receipt number">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="classOfInsurance" class="form-label">
+                <i class="fas fa-shield-alt"></i> Class Of Insurance
+              </label>
+              <select class="form-control rounded-pill shadow-sm" id="classOfInsurance" formControlName="classOfInsurance">
+                <option value="" disabled selected>Select Class Of Insurance</option>
+                <option value="Fire Insurance">Fire Insurance</option>
+                <option value="Marine Insurance">Marine Insurance</option>
+                <option value="Motor Insurance">Motor Insurance</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="date" class="form-label">
+                <i class="fas fa-calendar-alt"></i> Date
+              </label>
+              <input type="date" class="form-control rounded-pill shadow-sm" id="date" formControlName="date"
+                placeholder="Enter date">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="modeOfPayment" class="form-label">
+                <i class="fas fa-wallet"></i> Mode Of Payment
+              </label>
+              <select class="form-control rounded-pill shadow-sm" id="modeOfPayment" formControlName="modeOfPayment">
+                <option value="" disabled selected>Select Mode Of Payment</option>
+                <option value="Cash">Cash</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Bank Transfer">Bank Transfer</option>
+                <option value="Cheque">Cheque</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="issuedAgainst" class="form-label">
+                <i class="fas fa-file-alt"></i> Issued Against
+              </label>
+              <input type="text" class="form-control rounded-pill shadow-sm" id="issuedAgainst" formControlName="issuedAgainst"
+                placeholder="Enter issued against">
+            </div>
+          </div>
+  
+          <div formGroupName="bill">
+            <!-- Policy Section -->
+            <div formGroupName="policies">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="policyholder" class="form-label">
+                    <i class="fas fa-user"></i> Policy Holder
+                  </label>
+                  <select id="policyholder" formControlName="policyholder" class="form-control rounded-pill shadow-sm" >
+                    <option value="" disabled selected>Select your policy holder</option>
+                    <option *ngFor="let policy of marineDetails" [ngValue]="policy.policyholder">
+                      {{ policy.policyholder }}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="bankName" class="form-label">
+                    <i class="fas fa-university"></i> Bank Name
+                  </label>
+                  <input type="text" class="form-control rounded-pill shadow-sm" id="bankName" formControlName="bankName"
+                    placeholder="Enter bank name">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center mb-3">
+            <button type="submit" class="btn btn-outline-success rounded-pill shadow-sm"
+              [disabled]="!moneyReceiptForm.valid">
+              <i class="fas fa-paper-plane"></i> Update
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

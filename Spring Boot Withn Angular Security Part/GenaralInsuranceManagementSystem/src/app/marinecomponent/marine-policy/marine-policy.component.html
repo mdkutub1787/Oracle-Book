@@ -1,0 +1,64 @@
+<div class="row mt-4">
+    <div class="col text-left">
+        <button type="button" class="btn btn-primary" (click)="navigateToAddMarineBill()">
+            <i class="fas fa-plus"></i> Create Marine Bill
+        </button>
+    </div>
+    <div class="col text-right">
+        <button type="button" class="btn btn-primary" (click)="navigateToAddMarinePolicy()">
+            <i class="fas fa-plus"></i> Create Marine Policy
+        </button>
+    </div>
+</div>
+
+<!-- Search bar with icon -->
+<div class="input-group w-50">
+    <span class="input-group-text" id="search-icon"><i class="fas fa-search"></i></span>
+    <input type="text" class="form-control search-pill" [(ngModel)]="searchTerm" (input)="searchMarinePolicy()"
+        placeholder="Search by policyholder, bank name, or bill number" aria-describedby="search-icon" />
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped mt-1">
+        <thead>
+            <tr>
+                <th><i class="fas fa-file-alt"></i> Marine Bill No</th>
+                <th><i class="fas fa-university"></i> Bank Name</th>
+                <th><i class="fas fa-user"></i> Policy Holder</th>
+                <th><i class="fas fa-map-marker-alt"></i> Address</th>
+                <th><i class="fas fa-dollar-sign"></i> Sum Insured (USD)</th>
+                <th><i class="fas fa-dollar-sign"></i> USD Rate</th>
+                <th><i class="fas fa-dollar-sign"></i> Sum Insured (BDT)</th>
+                <th class="text-center"><i class="fas fa-cogs"></i> Actions</th>
+                <th class="text-center"><i class="fas fa-eye"></i> View Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let marine of searchmarinedetails">
+                <td>{{ marine.id }}</td>
+                <td>{{ marine.bankName }}</td>
+                <td>{{ marine.policyholder }}</td>
+                <td>{{ marine.address }}</td>
+                <td>{{ marine.sumInsuredUsd | currency:'$ ':'symbol' }}</td>
+                <td>{{ marine.usdRate | currency:'TK':'symbol' }}</td>
+                <td>{{ marine.sumInsured | currency:'TK ':'symbol' }}</td>
+                <td class="text-center">
+                    <button class="btn btn-outline-secondary" aria-label="Edit Marine Insurance"
+                        (click)="editMarinePolicy(marine.id)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-outline-danger" aria-label="Delete Marine Insurance"
+                        (click)="deleteMarineDetails(marine.id)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-outline-primary" aria-label="View Marine Insurance Details"
+                        (click)="detailsMarineInsurance(marine.id)">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

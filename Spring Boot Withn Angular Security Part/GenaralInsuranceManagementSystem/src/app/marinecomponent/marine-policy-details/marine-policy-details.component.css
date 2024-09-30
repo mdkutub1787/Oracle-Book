@@ -1,0 +1,41 @@
+.table-wrapper {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table-row {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-cell {
+    flex: 1;
+    padding: 10px;
+}
+
+.action-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.action-cell button {
+    margin: 0 5px;
+}
+
+.data-row strong {
+    display: inline-block;
+    width: 200px;
+}
+
+.table-wrapper, .table-cell {
+    color: rgb(3, 3, 8);
+}
+

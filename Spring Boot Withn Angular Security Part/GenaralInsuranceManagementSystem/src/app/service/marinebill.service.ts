@@ -41,4 +41,19 @@ export class MarinebillService {
     return this.http.get<MarineBillModel[]>(this.baseUrl)
      
   }
+<<<<<<< Updated upstream
+=======
+
+  
+  searchByPolicyHolderAndBankNameAndId(marinebill: MarineBillModel[], searchTerm: string): MarineBillModel[] {
+    const lowerCaseSearchTerm = searchTerm.toLowerCase(); 
+
+    return marinebill.filter(item =>
+      (item.marineDetails.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||   
+       item.marineDetails.bankName?.toLowerCase().includes(lowerCaseSearchTerm) || 
+       item.marineDetails.id?.toString().includes(lowerCaseSearchTerm))  
+    );
+  }
+  
+>>>>>>> Stashed changes
 }

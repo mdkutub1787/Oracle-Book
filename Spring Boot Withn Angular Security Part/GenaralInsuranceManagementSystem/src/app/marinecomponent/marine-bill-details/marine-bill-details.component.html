@@ -1,0 +1,205 @@
+<!-- Print Section -->
+<div id="print-section">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Receipt Page</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- Custom CSS -->
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="contact-info text-center  mt-5">
+                <h2 class="company-name"><strong>ইসলামী ইন্স্যুরেন্স কোম্পানী বাংলাদেশ লিমিটেড</strong></h2>
+                <h2 class="company-name"><strong>Islami Insurance Com. Bangladesh Ltd</strong></h2>
+                <div class="address">
+                    <strong>DR Tower (14th floor), 65/2/2, Box Culvert Road, Purana Paltan, Dhaka-1000.</strong><br>
+                    <strong>Tel: 02478853405, Mob: 01763001787</strong><br>
+                    <strong>Fax: +88 02 55112742</strong><br>
+                    <strong>Email: infociclbd.com</strong><br>
+                    <strong>Web:www.islamiinsurance.com</strong>
+                </div>
+            </div>
+
+            <!-- Tables -->
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="text-center">Marine  Insurance Bill Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Marine Bill No:</strong></td>
+                        <td>{{ marinebill.marineDetails.id }}</td>
+                        <td><strong>Issu Date:</strong></td>
+                        <td>{{ marinebill.marineDetails.date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center">Insured Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Bank & Branch Name:</strong></td>
+                        <td>{{ marinebill.marineDetails.bankName }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Policy Holder Name :</strong></td>
+                        <td>{{ marinebill.marineDetails.policyholder }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Address:</strong></td>
+                        <td>{{ marinebill.marineDetails.address }}</td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-center">Segregation of The Sum Insured</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>Stock Item:</strong></td>
+                        <td>{{ marinebill.marineDetails.stockItem }}</td>
+                    </tr>
+
+
+                    <tr>
+                        <td><strong>Sum Insured:</strong></td>
+                        <td><strong>
+                                {{ marinebill.marineDetails.sumInsuredUsd | currency:'USD $ ':'symbol':'1.2-2' }} ,
+                                USD Rate {{ marinebill.marineDetails.usdRate | currency:'TK ':'symbol':'1.2-2' }} ,
+                                (BDT) {{ marinebill.marineDetails.sumInsured | currency:'TK ':'symbol':'1.2-2' }}
+                            </strong>
+                        </td>
+                    </tr>
+
+
+                </tbody>
+
+
+            </table>
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-center">Voyage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Voyage From:</strong></td>
+                        <td>Any Port of {{ marinebill.marineDetails.voyageFrom }}</td>
+
+                        <td><strong>Voyage To:</strong></td>
+                        <td>{{ marinebill.marineDetails.voyageTo }}</td>
+
+
+                        <td><strong>Via:</strong></td>
+                        <td>{{ marinebill.marineDetails.via }} , Bangladesh</td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-center">Situation</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>Coverage:</strong></td>
+                        <td colspan="5">{{ marinebill.marineDetails.coverage }}</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center">Premium Rate</th>
+                        <th colspan="2" class="text-center">Payable Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Marine Rate</strong></td>
+                        <td>{{ (marinebill.marineRate ) / 100 | percent }}{{ marinebill.marineDetails.sumInsured
+                            | number:'1.2-2' }}</td> <!-- Ensures 2 decimal places -->
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalFire() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WarSrcc Rate </strong></td>
+                        <td>{{ (marinebill.warSrccRate ) / 100 | percent }}{{ marinebill.marineDetails.sumInsured
+                            | number:'1.2-2' }}</td> <!-- Ensures 2 decimal places -->
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalRsd() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Net Premium </strong></td>
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalPremium() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tax on Net Premium</strong></td>
+                        <td>{{ (marinebill.tax ) / 100 | percent }}{{ getTotalPremium() | number:'1.2-2' }}</td>
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalTax() | number:'1.2-2' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Stamp Duty</strong></td>
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ (marinebill.stampDuty ) | number:'1.2-2' }}</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><strong>Grand Total</strong></td>
+                        <td class="currency-symbol"><strong>TK</strong></td>
+                        <td><strong>{{ getTotalPremiumWithTax() | number:'1.2-2' }}</strong></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+
+
+        </div>
+
+
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Custom Script for ngxPrint if needed -->
+    </body>
+
+    </html>
+</div>
+
+<!-- Print Button -->
+<div class="d-flex justify-content-center mt-3">
+    <button printSectionId="print-section" ngxPrint class="btn btn-primary printbtn">
+        <i class="fas fa-print"></i> Download PDF
+    </button>
+</div>

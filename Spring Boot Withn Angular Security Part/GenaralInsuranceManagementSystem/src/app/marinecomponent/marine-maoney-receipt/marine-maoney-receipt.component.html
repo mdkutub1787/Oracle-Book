@@ -1,0 +1,71 @@
+<div class="row mt-4">
+  <div class="input-group w-50">
+    <div class="input-group-prepend">
+      <span class="input-group-text"><i class="fas fa-search"></i> </span>
+    </div>
+    <input 
+      class="form-control search-pill" [(ngModel)]="searchTerm" (input)="searchMarineMoneyReceipt()" 
+      placeholder="Search by policyholder, bank name, or bill no" aria-label="Search Marine Money Receipts"
+    />
+  </div>
+
+  <div class="col text-right">
+    <button type="button"class="btn btn-primary" (click)="navigateToAddMarineMoneyReceipt()"aria-label="Create Marine Money Receipt">
+      <i class="fas fa-plus"></i> Create Marine Money Receipt
+    </button>
+  </div>
+</div>
+
+<div class="table-wrapper">
+  <table class="table table-striped mt-1">
+    <thead>
+      <tr>
+        <th><i class="fas fa-file-alt"></i> Marine Bill No</th>
+        <th><i class="fas fa-user"></i> Issuing Office</th>
+        <th><i class="fas fa-university"></i> Bank & Branch Name</th>
+        <th><i class="fas fa-user"></i> Policy Holder</th>
+        <th><i class="fas fa-map-marker-alt"></i> Address</th>
+        <th><i class="fas fa-coins"></i> Net Premium</th>
+        <th><i class="fas fa-wallet"></i> Gross Premium</th>
+        <th class="text-center"><i class="fas fa-cogs"></i> Action</th>
+        <th><i class="fas fa-eye"></i> View Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let mr of filteredMarineMoneyReceipts"> <!-- Use filtered list for search results -->
+        <td>{{ mr.marinebill?.marineDetails?.id || 'N/A' }}</td>
+        <td>{{ mr.issuingOffice || 'N/A' }}</td>
+        <td>{{ mr.marinebill?.marineDetails?.bankName || 'N/A' }}</td>
+        <td>{{ mr.marinebill?.marineDetails?.policyholder || 'N/A' }}</td>
+        <td>{{ mr.marinebill?.marineDetails?.address || 'N/A' }}</td>
+        <td>{{ mr.marinebill?.netPremium || 'N/A' | currency:'TK ':'symbol':'1.2-2' }}</td>
+        <td>{{ mr.marinebill?.grossPremium || 'N/A' | currency:'TK ':'symbol':'1.2-2' }}</td>
+        
+        <td class="text-center">
+          <button 
+            class="btn btn-outline-danger" 
+            aria-label="Delete Marine Money Receipt" 
+            (click)="deleteMarineManyReceipt(mr.id)"
+          >
+            <i class="fas fa-trash-alt"></i>
+          </button>
+        </td>
+        
+        <td class="text-center">
+          <button 
+            class="btn btn-outline-primary" 
+            aria-label="View Marine Money Receipt" 
+            (click)="printMarineMoneyReceipt(mr.id)"
+          >
+            <i class="fas fa-eye"></i> Print View
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Conditional rendering for no data -->
+  <div *ngIf="filteredMarineMoneyReceipts.length === 0" class="alert alert-warning text-center">
+    No Marine Money Receipts found.
+  </div>
+</div>
