@@ -13,8 +13,10 @@ export class MarineMaoneyReceiptComponent implements OnInit{
   marinebill: MarineMoneyReceiptModel[] = [];
   filteredMarineMoneyReceipts: MarineMoneyReceiptModel[] = [];
   searchTerm: string = '';
-  isLoading: boolean = false; // Loading state
-  errorMessage: string | null = null; // Error message state
+  isLoading: boolean = false; 
+  errorMessage: string | null = null; 
+  sortBy: 'issuingOffice' | 'policyholder' | 'id' | 'bankName' | 'issuingOffice' = 'policyholder'; 
+
 
   constructor(
     private marineBillMoneyreceiptService: MarineBillMoneyreceiptService,
@@ -93,6 +95,7 @@ export class MarineMaoneyReceiptComponent implements OnInit{
     const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
   
     this.filteredMarineMoneyReceipts = this.marinebill.filter(item => 
+      item.issuingOffice?.toLowerCase().includes(lowerCaseSearchTerm) ||
       item.marinebill?.marineDetails?.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||
       item.marinebill?.marineDetails?.bankName?.toLowerCase().includes(lowerCaseSearchTerm) ||
       item.marinebill?.marineDetails?.id?.toString().includes(lowerCaseSearchTerm)

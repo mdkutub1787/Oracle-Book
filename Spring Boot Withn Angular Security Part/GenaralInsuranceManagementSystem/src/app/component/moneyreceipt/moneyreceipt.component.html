@@ -22,7 +22,7 @@
                         <i class="fas fa-search"></i>
                     </span>
                 </div>
-                <input class="form-control search-pill" [(ngModel)]="searchTerm" (input)="searchMoneyReceipt()" placeholder="Search by policyholder, bank name, or bill no">
+                <input class="form-control search-pill" [(ngModel)]="searchTerm" (input)="searchMoneyReceipt()" placeholder="Search by policyholder, bank name, or bill no issu office">
             </div>
 
             <!-- Button aligned to the right -->
@@ -76,6 +76,11 @@
                 </tr>
             </tbody>
         </table>
+
+        <!-- Conditional rendering for no data -->
+        <div *ngIf="filteredMoneyReceipts.length === 0" class="alert alert-warning text-center">
+            No Fire Money Receipts found.
+        </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->

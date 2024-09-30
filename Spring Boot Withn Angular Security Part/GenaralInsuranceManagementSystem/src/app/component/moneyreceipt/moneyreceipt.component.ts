@@ -13,7 +13,7 @@ export class MoneyreceiptComponent {
   moneyreceipts: MoneyReceiptModel[] = [];
   filteredMoneyReceipts: MoneyReceiptModel[] = []; 
   searchTerm: string = '';            
-  sortBy: 'policyholder' | 'id' | 'bankName' = 'policyholder'; 
+  sortBy: 'issuingOffice' | 'policyholder' | 'id' | 'bankName' = 'policyholder'; 
 
   constructor(
     private moneyreceiptService: MoneyreceiptService,
@@ -69,6 +69,7 @@ export class MoneyreceiptComponent {
     const lowerCaseSearchTerm = this.searchTerm.toLowerCase();
   
     this.filteredMoneyReceipts = this.moneyreceipts.filter(item =>
+      item.issuingOffice?.toLowerCase().includes(lowerCaseSearchTerm) ||
       item.bill?.policy.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||
       item.bill?.policy.bankName?.toLowerCase().includes(lowerCaseSearchTerm) ||
       item.bill?.policy.id?.toString().includes(lowerCaseSearchTerm)

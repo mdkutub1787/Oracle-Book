@@ -43,7 +43,8 @@ export class MarineBillMoneyreceiptService {
       const lowerCaseSearchTerm = searchTerm.toLowerCase(); 
   
       return receipts.filter(item =>
-        (item.marinebill?.marineDetails.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||   
+        ( item.issuingOffice?.toLowerCase().includes(lowerCaseSearchTerm) ||  
+          item.marinebill?.marineDetails.policyholder?.toLowerCase().includes(lowerCaseSearchTerm) ||   
          item.marinebill?.marineDetails.bankName?.toLowerCase().includes(lowerCaseSearchTerm) || 
          item.marinebill?.marineDetails.id?.toString().includes(lowerCaseSearchTerm))  
       );
