@@ -61,6 +61,10 @@ export class MoneyreceiptComponent {
     this.router.navigate(['/printmoneyreciept', id]);
   }
 
+  printFireCoverNote(id: number) {
+    this.router.navigate(['/print-fire-cover-note', id]);
+  }
+
   navigateToAddMoneyReceipt() {
     this.router.navigateByUrl('/createmoneyreciept');
   }

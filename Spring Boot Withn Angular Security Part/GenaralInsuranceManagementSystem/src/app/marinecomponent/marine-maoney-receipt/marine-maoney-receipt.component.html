@@ -28,7 +28,7 @@
         <th><i class="fas fa-coins"></i> Net Premium</th>
         <th><i class="fas fa-wallet"></i> Gross Premium</th>
         <th class="text-center"><i class="fas fa-cogs"></i> Action</th>
-        <th><i class="fas fa-eye"></i> View Details</th>
+        <th class="text-center"> <i class="fas fa-print"></i> Print Section</th>
       </tr>
     </thead>
     <tbody>
@@ -52,13 +52,16 @@
         </td>
         
         <td class="text-center">
-          <button 
-            class="btn btn-outline-primary" 
-            aria-label="View Marine Money Receipt" 
-            (click)="printMarineMoneyReceipt(mr.id)"
-          >
-            <i class="fas fa-eye"></i> Print View
+          <button  class="btn btn-outline-primary" aria-label="View Marine Money Receipt" 
+            (click)="printMarineMoneyReceipt(mr.id)"> <i class="fas fa-eye">
+            </i> Money Receipt 
           </button>
+
+          <button  class="btn btn-outline-primary" aria-label="View Marine Money Receipt" 
+            (click)="printMarineCoverNote(mr.id)"> <i class="fas fa-eye">
+            </i> Cover Note  
+          </button>
+
         </td>
       </tr>
     </tbody>

@@ -43,6 +43,7 @@
                     <th><i class="fas fa-coins"></i> Net Premium</th>
                     <th><i class="fas fa-wallet"></i> Gross Premium</th>
                     <th class="text-center"><i class="fas fa-cogs"></i> Action</th>
+                    <th class="text-center"> <i class="fas fa-print"></i> Print Section</th>
                 </tr>
             </thead>
             <tbody>
@@ -58,18 +59,25 @@
 
                     <td class="text-center">
 
-                        <button class="btn btn-outline-secondary" aria-label="Edit" >
+                        <!-- <button class="btn btn-outline-secondary" aria-label="Edit" >
                             <i class="fas fa-edit"></i>
-                        </button>
+                        </button> -->
 
                         <button class="btn btn-outline-danger ml-2" aria-label="Delete"
                             (click)="mr.id && deleteMoneyReceipt(mr.id)">
                             <i class="fas fa-trash-alt"></i>
                         </button>
+                    </td>
+                    <td>
 
                         <button class="btn btn-outline-primary" aria-label="Print View"
                             (click)="mr.id && viewMoneyReceipt(mr.id)">
-                            <i class="fas fa-print"></i> Print View
+                            <i class="fas fa-print"></i> Money Receipt 
+                        </button>
+
+                        <button class="btn btn-outline-primary" aria-label="Print View"
+                            (click)="mr.id && printFireCoverNote(mr.id)">
+                            <i class="fas fa-print"></i>Cover Note 
                         </button>
                     </td>
 

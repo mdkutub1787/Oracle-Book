@@ -4,12 +4,11 @@ import { MarineBillMoneyreceiptService } from '../../service/marine-bill-moneyre
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-print-marinemoney-receipt',
-  templateUrl: './print-marinemoney-receipt.component.html',
-  styleUrl: './print-marinemoney-receipt.component.css'
+  selector: 'app-print-marine-cover-note',
+  templateUrl: './print-marine-cover-note.component.html',
+  styleUrl: './print-marine-cover-note.component.css'
 })
-export class PrintMarinemoneyReceiptComponent implements OnInit{
-
+export class PrintMarineCoverNoteComponent implements OnInit{
 
   moneyreceipt?: MarineMoneyReceiptModel;
 
@@ -43,6 +42,11 @@ export class PrintMarinemoneyReceiptComponent implements OnInit{
     return (this.moneyreceipt?.marinebill?.warSrccRate ?? 0) / 100;
   }
 
+  getTotalMarine(): number {
+    const sumInsured = this.getSumInsured();
+    const marineRate = this.getwarSrccRate();
+    return Math.round(sumInsured * marineRate);
+  }
   getTotalwarSrcc(): number {
     const sumInsured = this.getSumInsured();
     const warSrccRate = this.getwarSrccRate();
@@ -102,10 +106,9 @@ export class PrintMarinemoneyReceiptComponent implements OnInit{
     return this.convertAmountToWords(totalAmount);
   }
 
-   // New Method to Get Sum Insured in Words
-   getSumInsuredInWords(): string {
-    const sumInsuredAmount = this.getSumInsured();
-    return this.convertAmountToWords(sumInsuredAmount);
-  }
+    // New Method to Get Sum Insured in Words
+    getSumInsuredInWords(): string {
+      const sumInsuredAmount = this.getSumInsured();
+      return this.convertAmountToWords(sumInsuredAmount);
+    }
 }
-

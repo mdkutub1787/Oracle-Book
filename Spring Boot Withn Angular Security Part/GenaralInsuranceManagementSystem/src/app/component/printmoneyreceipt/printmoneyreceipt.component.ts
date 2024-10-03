@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./printmoneyreceipt.component.css']
 })
 export class PrintmoneyreceiptComponent implements OnInit {
+  
   moneyreceipt?: MoneyReceiptModel;
 
   constructor(

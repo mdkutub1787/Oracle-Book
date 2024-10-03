@@ -79,6 +79,13 @@ export class MarineMaoneyReceiptComponent implements OnInit{
       console.error('ID is undefined');
     }
   }
+  printMarineCoverNote(id: number | undefined) {
+    if (id !== undefined) {
+      this.router.navigate(['print-marine-cover-note', id]);
+    } else {
+      console.error('ID is undefined');
+    }
+  }
 
   // Navigate to add a new Marine Money Receipt
   navigateToAddMarineMoneyReceipt() {

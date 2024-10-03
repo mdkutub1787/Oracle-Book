@@ -1,0 +1,260 @@
+<!-- Print Section -->
+<div id="print-section">
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Receipt Page</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <!-- Font Awesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <!-- Custom CSS -->
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="contact-info text-center  mt-5">
+                <h2 class="company-name"><strong>ইসলামী ইন্স্যুরেন্স কোম্পানী বাংলাদেশ লিমিটেড</strong></h2>
+                <h2 class="company-name"><strong>Islami Insurance Com. Bangladesh Ltd</strong></h2>
+                <div class="address">
+                    <strong>DR Tower (14th floor), 65/2/2, Box Culvert Road, Purana Paltan, Dhaka-1000.</strong><br>
+                    <strong>Tel: 02478853405, Mob: 01763001787</strong><br>
+                    <strong>Fax: +88 02 55112742</strong><br>
+                    <strong>Email: infociclbd.com</strong><br>
+                    <strong>Web:www.islamiinsurance.com</strong>
+                </div>
+            </div>
+
+            <!-- Tables -->
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-center fire-cover-heading"><strong>Marine Cover Note</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Marine Cover Note No:</strong></td>
+                        <td>{{ moneyreceipt?.issuedAgainst}}</td>
+                        <td><strong>Marine Bill No:</strong></td>
+                        <td>{{ moneyreceipt?.marinebill?.marineDetails?.id }}</td>
+                        <td><strong>Issu Date:</strong></td>
+                        <td>{{ moneyreceipt?.date}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center"><strong>The Insured Name & Address:</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      
+                        <td>{{ moneyreceipt?.marinebill?.marineDetails?.bankName }} ,
+                            {{ moneyreceipt?.marinebill?.marineDetails?.policyholder }} ,
+                            {{ moneyreceipt?.marinebill?.marineDetails?.address }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <p class="mb-1">
+                                Having this day proposed to effect an insurance against Fire and/or Lightning for a
+                                period of 12 (Twelve) months from
+                                <strong>{{ moneyreceipt?.marinebill?.marineDetails?.voyageFrom  }}</strong> to
+                                <strong>{{ moneyreceipt?.marinebill?.marineDetails?.voyageTo  }}</strong>  on 
+                                <strong>{{ moneyreceipt?.marinebill?.marineDetails?.via  }} , Bangladesh</strong>
+                                on the usual terms and conditions of the company's Fire Policy. Having paid the
+                                undernoted premium in cash/cheque/P.O/D.D./C.A,
+                                the following Property is hereby insured to the extent of
+                                <strong>({{ getSumInsuredInWords() }})</strong> Only in the manner specified below:
+                            </p>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                    <tr>
+                        <th colspan="6" class="text-center">Segregation of The Sum Insured</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>Stock Item:</strong></td>
+                        <td>{{ moneyreceipt?.marinebill?.marineDetails?.stockItem }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>In Transit By:</strong></td>
+                        <td>
+                            Per any steamer or power-vessel as per Institute Classification Clause and/or conveyance by road and/or rail and/or approved aircraft and/or parcel post to be declared. By TRUCK
+                        </td>
+                    </tr>
+                    
+
+
+                    <tr>
+                        <td><strong>Sum Insured:</strong></td>
+                        <td>
+                            <strong>
+                                {{ moneyreceipt?.marinebill?.marineDetails?.sumInsuredUsd 
+                                    | currency: 'USD' : 'symbol' : '1.2-2' }} ,
+                    
+                                USD Rate {{ moneyreceipt?.marinebill?.marineDetails?.usdRate 
+                                    | currency: 'TK' : 'symbol' : '1.2-2' }} 
+                    
+                                = (BDT) {{ moneyreceipt?.marinebill?.marineDetails?.sumInsured 
+                                    | currency: 'TK' : 'symbol' : '1.2-2' }} 
+                    
+                                <strong>({{ getSumInsuredInWords() }} Only)</strong>
+                            </strong>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td><strong>Coverage:</strong></td>
+                        <td colspan="5">{{ moneyreceipt?.marinebill?.marineDetails?.coverage }}</td>
+                    </tr>
+
+                </tbody>
+
+
+            </table>
+            <table class="table table-bordered col-mb-3">
+                <thead>
+                 
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Voyage From:</strong></td>
+                        <td>Any Port of {{ moneyreceipt?.marinebill?.marineDetails?.voyageFrom }}</td>
+
+                        <td><strong>Voyage To:</strong></td>
+                        <td>{{ moneyreceipt?.marinebill?.marineDetails?.voyageTo }}</td>
+
+
+                        <td><strong>Via:</strong></td>
+                        <td>{{ moneyreceipt?.marinebill?.marineDetails?.via }} , Bangladesh</td>
+                    </tr>
+                </tbody>
+            
+            </table>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center">Premium Rate</th>
+                        <th colspan="2" class="text-center">Payable Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Marine Rate</strong></td>
+                        <td>{{ ( moneyreceipt!.marinebill!.marineRate ) / 100 | percent }}{{
+                            moneyreceipt?.marinebill?.marineDetails?.sumInsured
+                            | number:'1.2-2' }}</td> <!-- Ensures 2 decimal places -->
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalMarine() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WarSrcc Rate </strong></td>
+                        <td>{{ (moneyreceipt!.marinebill!.warSrccRate ) / 100 | percent }}{{
+                            moneyreceipt?.marinebill?.marineDetails?.sumInsured
+                            | number:'1.2-2' }}</td> <!-- Ensures 2 decimal places -->
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalwarSrcc() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Net Premium </strong></td>
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalPremium() | number:'1.2-2' }}</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tax on Net Premium</strong></td>
+                        <td>{{ (moneyreceipt!.marinebill!.tax ) / 100 | percent }}{{ getTotalPremium() | number:'1.2-2'
+                            }}</td>
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ getTotalTax() | number:'1.2-2' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Stamp Duty</strong></td>
+                        <td class="currency-symbol">TK</td>
+                        <td>{{ (moneyreceipt!.marinebill!.stampDuty ) | number:'1.2-2' }}</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2"><strong>Grand Total</strong></td>
+                        <td class="currency-symbol"><strong>TK</strong></td>
+                        <td><strong>{{ getTotalPremiumWithTax() | number:'1.2-2' }}</strong></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+            <p class="mb-1">The following terms, conditions and warranties mentioned/attached here to:
+                Note: Should the terms and conditions of the Company's Policy be unknown to the insured, it shall be
+                incumbent upon him to make application to this Office for a copy for such terms and conditions.
+   
+                Failure to comply with the policy terms and conditions, though the insured being unacquainted with them,
+                shall not excuse his failure to act in accordance therewith, and by the acceptance of this Cover Note,
+                the Insured binds himself by the terms and conditions of the Company's Policy.
+                This Cover Note does not cover computer system records unless specifically mentioned and insured by this
+                Cover Note.
+            </p>
+            
+        
+            
+            <div class="container">
+                <div class="row mb-3">
+                    <div class="col-md-4  text-left">  <!-- Corrected class name -->
+                        <p class="mb-1"><strong>Renewal No:</strong></p>
+                        <p>
+                            <strong>{{ moneyreceipt?.issuedAgainst }}</strong> /
+                            <strong>{{ moneyreceipt?.marinebill?.marineDetails?.id }} & </strong>
+                            <strong>{{ moneyreceipt?.date | date }}</strong>
+                        </p>
+                        <p><strong>Check by ________________</strong></p>
+                    </div>
+            
+                    <div class="col-md-4 text-center">
+                        <p><strong>Fully Re-insured with</strong></p>
+                        <p><strong>Sadharan Bima Corporation</strong></p>
+                    </div>
+            
+                    <div class="col-md-4">
+                        <p><strong>For & on behalf of</strong></p>
+                        <p><strong>Islami Insurance Company Ltd.</strong></p>
+                        <p><strong>Authorized Officer __________________</strong></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- Custom Script for ngxPrint if needed -->
+    </body>
+
+    </html>
+</div>
+
+<!-- Print Button -->
+<div class="d-flex justify-content-center mb-3">
+    <button printSectionId="print-section" ngxPrint class="btn btn-primary printbtn">
+        <i class="fas fa-print"></i> Download PDF
+    </button>
+</div>

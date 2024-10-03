@@ -1,27 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { MarineMoneyReceiptModel } from '../../model/MarineMoneyReceipt.Model';
-import { MarineBillMoneyreceiptService } from '../../service/marine-bill-moneyreceipt.service';
+import { MoneyReceiptModel } from '../../model/moneyreceipt.model';
+import { MoneyreceiptService } from '../../service/moneyreceipt.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-print-marinemoney-receipt',
-  templateUrl: './print-marinemoney-receipt.component.html',
-  styleUrl: './print-marinemoney-receipt.component.css'
+  selector: 'app-print-fire-cover-note',
+  templateUrl: './print-fire-cover-note.component.html',
+  styleUrl: './print-fire-cover-note.component.css'
 })
-export class PrintMarinemoneyReceiptComponent implements OnInit{
+export class PrintFireCoverNoteComponent implements OnInit{
 
-
-  moneyreceipt?: MarineMoneyReceiptModel;
+  moneyreceipt?: MoneyReceiptModel;
 
   constructor(
-    private marineBillMoneyreceiptService: MarineBillMoneyreceiptService,
+    private moneyreceiptService: MoneyreceiptService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
-    this.marineBillMoneyreceiptService.getMarineMoneyReceiptById(id).subscribe({
+    this.moneyreceiptService.getMoneyReceiptById(id).subscribe({
       next: response => {
         this.moneyreceipt = response;
       },
@@ -32,36 +31,38 @@ export class PrintMarinemoneyReceiptComponent implements OnInit{
   }
 
   getSumInsured(): number {
-    return this.moneyreceipt?.marinebill?.marineDetails?.sumInsured ?? 0;
+    return this.moneyreceipt?.bill?.policy?.sumInsured ?? 0;
   }
 
-  getMarineRate(): number {
-    return (this.moneyreceipt?.marinebill?.marineRate ?? 0) / 100;
+  getFireRate(): number {
+    return (this.moneyreceipt?.bill?.fire ?? 0) / 100;
   }
 
-  getwarSrccRate(): number {
-    return (this.moneyreceipt?.marinebill?.warSrccRate ?? 0) / 100;
-  }
-
-  getTotalwarSrcc(): number {
+  getTotalFire(): number {
     const sumInsured = this.getSumInsured();
-    const warSrccRate = this.getwarSrccRate();
-    return Math.round(sumInsured * warSrccRate);
+    const fireRate = this.getFireRate();
+    return Math.round(sumInsured * fireRate);
+  }
+
+  getRsdRate(): number {
+    return (this.moneyreceipt?.bill?.rsd ?? 0) / 100;
+  }
+
+  getTotalRsd(): number {
+    const sumInsured = this.getSumInsured();
+    const rsdRate = this.getRsdRate();
+    return Math.round(sumInsured * rsdRate);
   }
 
   getTaxRate(): number {
-    return (this.moneyreceipt?.marinebill?.tax ?? 0) / 100;
-  }
-
-  getTotalStampDuty(): number {
-    return this.moneyreceipt?.marinebill?.stampDuty ?? 0;
+    return (this.moneyreceipt?.bill?.tax ?? 0) / 100;
   }
 
   getTotalPremium(): number {
     const sumInsured = this.getSumInsured();
-    const marineRate = this.getMarineRate();
-    const warSrccRate = this.getwarSrccRate();
-    return Math.round(sumInsured * (marineRate + warSrccRate));
+    const fireRate = this.getFireRate();
+    const rsdRate = this.getRsdRate();
+    return Math.round(sumInsured * (fireRate + rsdRate));
   }
 
   getTotalTax(): number {
@@ -73,8 +74,7 @@ export class PrintMarinemoneyReceiptComponent implements OnInit{
   getTotalPremiumWithTax(): number {
     const totalPremium = this.getTotalPremium();
     const totalTax = this.getTotalTax();
-    const stampDuty = this.getTotalStampDuty();
-    return Math.round(totalPremium + totalTax + stampDuty);
+    return Math.round(totalPremium + totalTax);
   }
 
   convertToWords(num: number): string {
@@ -102,10 +102,9 @@ export class PrintMarinemoneyReceiptComponent implements OnInit{
     return this.convertAmountToWords(totalAmount);
   }
 
-   // New Method to Get Sum Insured in Words
-   getSumInsuredInWords(): string {
-    const sumInsuredAmount = this.getSumInsured();
-    return this.convertAmountToWords(sumInsuredAmount);
-  }
+    // New Method to Get Sum Insured in Words
+    getSumInsuredInWords(): string {
+      const sumInsuredAmount = this.getSumInsured();
+      return this.convertAmountToWords(sumInsuredAmount);
+    }
 }
-

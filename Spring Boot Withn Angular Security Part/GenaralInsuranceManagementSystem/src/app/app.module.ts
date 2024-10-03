@@ -41,6 +41,8 @@ import { MarinePolicyDetailsComponent } from './marinecomponent/marine-policy-de
 import { MarineBillDetailsComponent } from './marinecomponent/marine-bill-details/marine-bill-details.component';
 import { MarineMaoneyReceiptComponent } from './marinecomponent/marine-maoney-receipt/marine-maoney-receipt.component';
 import { CreateMarineMaoneyReceiptComponent } from './marinecomponent/create-marine-maoney-receipt/create-marine-maoney-receipt.component';
+import { PrintMarineCoverNoteComponent } from './marinecomponent/print-marine-cover-note/print-marine-cover-note.component';
+import { PrintFireCoverNoteComponent } from './component/print-fire-cover-note/print-fire-cover-note.component';
 
 
 @NgModule({
@@ -75,6 +77,8 @@ import { CreateMarineMaoneyReceiptComponent } from './marinecomponent/create-mar
     MarineBillDetailsComponent,
     MarineMaoneyReceiptComponent,
     CreateMarineMaoneyReceiptComponent,
+    PrintMarineCoverNoteComponent,
+    PrintFireCoverNoteComponent,
    
    
 
